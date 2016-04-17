@@ -51,6 +51,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
                         firstname: (user.firstname) ? user.firstname : '',
                         lastname: (user.lastname) ? user.lastname : '',
                         name: (user.name) ? user.name : '',
+                        profissao: (user.profissao) ? user.profissao : '',
                         email: user.email,
                         picture: ''
 
