@@ -1,0 +1,12 @@
+{
+  "firebase": "businessme-register",
+  "public": "public_html",
+  "ignore": [
+    "firebase.json",
+    "bower.json",
+    "**/nbproject/*",
+    "**/text/*",
+    "**/node_modules/**",
+    "**/.*"
+  ]
+}

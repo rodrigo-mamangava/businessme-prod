@@ -1,0 +1,30 @@
+{
+  "name": "BusinessMe WebApp",
+  "homepage": "https://github.com/rodrigo-mamangava/login-app",
+  "authors": [
+    "rodrigo-mamangava <rodrigo@mamangava.com>"
+  ],
+  "description": "versao mvp do projeto BusinessMe Web",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-flippy": "^2.0.4",
+    "angular-animate": "^1.5.3",
+    "angular-route": "^1.5.3",
+    "angular-toArrayFilter": "^1.0.1",
+    "angular-moment": "^0.10.3",
+    "angular-material": "^1.0.7",
+    "moment": "^2.12.0",
+    "ngDraggable": "^0.1.8",
+    "bootstrap": "^3.3.6",
+    "angulartics-google-analytics": "^0.1.4"
+  }
+}

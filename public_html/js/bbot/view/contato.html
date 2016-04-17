@@ -1,0 +1,159 @@
+<div class="container">
+    <div class="page page-contato">
+        
+        <h2>Novo contato</h2>
+
+        <div class="row">
+            <div class="col-xs-12">
+
+                <form class="" name="formcontato" ng-submit="addContato()" novalidate>
+
+                    <div class="form-group">
+                        <label for="contatoNome">Nome</label> 
+                        <input id="contatoNome"
+                               type="text" class="form-control inputcontato nome"
+                               name="contatonome" placeholder="" ng-model="contato.nome"
+                               ng-required="true" />
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <label for="contatoNome">Email</label> 
+                                <input id="contatoNome"
+                                       type="email" class="form-control inputcontato email"
+                                       name="contatoemail" placeholder="" ng-model="contato.email"
+                                       />
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <label for="contatoTel">Telefone</label> 
+                                <input id="contatoTel"
+                                       type="tel" class="form-control inputcontato tel"
+                                       name="contatotel" placeholder="" ng-model="contato.tel"
+                                       />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contatoNome">Observação</label> 
+                        <textarea id="contatoObs"
+                                  class="form-control inputcontato obs"
+                                  name="contatoobs" placeholder="" ng-model="contato.obs"
+                                  ng-required="false" />
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-contato"
+                                ng-disabled="formcontato.$invalid">Salvar</button>
+                    </div>
+
+                </form>
+            </div>
+            <!-- col-xs-12 -->
+        </div>
+        <!-- row -->
+
+        <h2>Lista de contatos cadastrardos</h2>
+        <p>Buscar contato: <input type='text' ng-model="query.nome"></p>
+
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        E-mail
+                    </th>
+                    <th>
+                        Telefone
+                    </th>
+                    <th>
+                        Obs:
+                    </th>
+                    <th>
+                        Ações:
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(key, contato) in contatosList | filter: query  | orderBy: 'nome' "  >
+                    <td>
+                        {{contato.nome}}
+                    </td>
+                    <td>
+                        {{contato.email}}
+                    </td>
+                    <td>
+                        {{contato.tel}}
+                    </td>
+                    <td>
+                        {{contato.obs}}
+                    </td>
+                    <td>
+                        <button class='btn btn-default'  data-toggle="modal" 
+                                data-target="#modalEditContato"
+                                ng-click="loadContato(key, contato)" 
+                                >
+                            <i class="fa fa-pencil"></i>
+                        </button>
+
+                        <button class='btn btn-default' ng-click="deleteContato(contato)" ><i class="fa fa-trash"></i></button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <!--  card contato -->
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalEditContato" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Atualizar contato</h4>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" ng-model="contatoModal.nome" class="form-control" id="nome" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Email</label>
+                        <input type="text" ng-model="contatoModal.email" class="form-control" id="nome" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Telefone</label>
+                        <input type="text" ng-model="contatoModal.tel" class="form-control" id="nome" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Obs:</label>
+                        <textarea  class="form-control" id="nome" placeholder="Nome" ng-model="contatoModal.obs"></textarea>
+                    </div>
+                </form>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Não salvar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="modalSalvarContato()" >Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
