@@ -149,7 +149,7 @@
 					</md-radio-button> 
 					-->
 					<md-radio-button value="1" class="md-primary"> 
-						Para hoje
+						Hoje
 					</md-radio-button> 
 					<md-radio-button value="0" class="md-primary" checked>
 						Todos
