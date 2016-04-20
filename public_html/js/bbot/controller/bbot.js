@@ -10,6 +10,15 @@ myApp.controller('BBotController', [
     'FIREBASE_URL',
     function ($scope, $rootScope, $mdDialog, Contatos, Log, $firebaseAuth,
             $firebaseArray, $firebaseObject, FIREBASE_URL) {
+    	
+    	var init = function() {
+        	$scope.filtro = {
+        		data: '0'
+        	};
+        		console.log()
+          }
+    	
+    	init();
 
         var ref = new Firebase(FIREBASE_URL);
         var auth = $firebaseAuth(ref);
@@ -281,6 +290,35 @@ myApp.controller('BBotController', [
                             );
 
                 };
+                
+                
+                
+                $scope.setFiltroData = function(){
+                	
+                	var hj = new Date().setHours(0,0,0,0);
+                	
+                	if($scope.filtro.data == 0){
+                		console.log(1);  
+                		$scope.filtro.lembrete = '';
+                		
+                	}else if($scope.filtro.data == 1){
+                		console.log(2);
+    
+                		
+                		$scope.filtro.lembrete = hj;
+                		
+                	}else if($scope.filtro.data == 2){
+                		console.log(3);
+                		
+                		$scope.filtro.lembrete =  hj;
+                		
+                	}else{
+                		console.log(4);                		
+                	}
+                	
+                	console.log($scope.leadsList);               	
+                	console.log($scope.filtro);
+                }
 
 
                 // somewhere in your webapp
