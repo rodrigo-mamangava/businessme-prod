@@ -146,7 +146,7 @@ body{
 
     .estilo01;
     background-color: @cinza-claro-x;
-    
+
     main{
         background-color: @cinza-claro-x;
     }
@@ -220,6 +220,109 @@ header.interno{
 
 }
 
+.navbar-toggle {
+    margin-top: 38px;
+}
+
+/* ==========================================================================
+   GERAL
+   ========================================================================== */
+.page{
+
+    padding-top: 64px;
+    padding-bottom: 128px;
+
+}
+
+.preco-sem-desconto{
+    text-decoration: line-through;
+}
+
+.moeda{
+    font-size: 8px;
+}
+
+.periodo{
+    font-size: 10px;
+}
+
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;    
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+
+
+
+.disabled{
+    pointer-events: none;
+
+    /* for "disabled" effect */
+    opacity: 0.5;
+    background: #CCC;
+}
+
+
+/* ==========================================================================
+   CORNER FLAG
+   ========================================================================== */
+
+.ribbon-wrapper-green {
+    width: 85px;
+    height: 88px;
+    overflow: hidden;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+}
+
+.ribbon-green {
+    font: bold 13px @fontAzo;
+    color: #333;
+    text-align: center;
+    text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform:    rotate(45deg);
+    -ms-transform:     rotate(45deg);
+    -o-transform:      rotate(45deg);
+    position: relative;
+    padding: 7px 0;
+    left: -5px;
+    top: 15px;
+    width: 120px;
+    background-color: #BFDC7A;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45)); 
+    background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45); 
+    background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45); 
+    background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45); 
+    background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45); 
+    color: #6a6340;
+    -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+    -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+    box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+
+
 /* ==========================================================================
    LANDINGPAGE
    ========================================================================== */
@@ -238,6 +341,9 @@ header.interno{
 
         h1{
             .estilo-h1-hero;
+            @media (max-width: @screen-xs-max) { 
+                font-size: 34px;
+            }
 
         }
 
@@ -390,9 +496,16 @@ header.interno{
             background-color:  @branco;
             min-height: 400px;
             position: relative;
-
+            z-index: 90;
             margin-top: 42px;
             margin-bottom: 116px;
+            padding-bottom: 28px;
+
+
+            @media (max-width: @screen-xs-max) { 
+                min-height: auto;
+                height: auto;
+            }
 
             .plano-texto{
                 padding: 28px 30px;
@@ -669,28 +782,28 @@ header.interno{
         line-height: 32px;/* Aproximação devido à substituição de fonte */
         text-align: left;
     }
-    
+
     .fitro-data{
-    	    margin-top: 16px;
-    	    .pull-right;
+        margin-top: 16px;
+        .pull-right;
     }
-    
-     md-radio-group.md-default-theme:not([disabled]) .md-primary .md-on, md-radio-group:not([disabled]) .md-primary .md-on, md-radio-group.md-default-theme:not([disabled]).md-primary .md-on, md-radio-group:not([disabled]).md-primary .md-on, md-radio-button.md-default-theme:not([disabled]) .md-primary .md-on, md-radio-button:not([disabled]) .md-primary .md-on, md-radio-button.md-default-theme:not([disabled]).md-primary .md-on, md-radio-button:not([disabled]).md-primary .md-on, 
-     md-radio-button:not([disabled]).md-primary.md-checked .md-off {
-    	border-color: rgba(0,0,0,0.54);;
-	}
-	
-	
-	md-radio-button.md-default-theme .md-off, md-radio-button .md-off {
-    	border-color: rgba(0,0,0,0.54);
-	}
-	
-	md-radio-button:not([disabled]).md-primary .md-on, md-radio-group:not([disabled]) .md-primary .md-on{
-		background-color: @laranja;
-		
-	}
-	
-    
+
+    md-radio-group.md-default-theme:not([disabled]) .md-primary .md-on, md-radio-group:not([disabled]) .md-primary .md-on, md-radio-group.md-default-theme:not([disabled]).md-primary .md-on, md-radio-group:not([disabled]).md-primary .md-on, md-radio-button.md-default-theme:not([disabled]) .md-primary .md-on, md-radio-button:not([disabled]) .md-primary .md-on, md-radio-button.md-default-theme:not([disabled]).md-primary .md-on, md-radio-button:not([disabled]).md-primary .md-on, 
+        md-radio-button:not([disabled]).md-primary.md-checked .md-off {
+        border-color: rgba(0,0,0,0.54);;
+    }
+
+
+    md-radio-button.md-default-theme .md-off, md-radio-button .md-off {
+        border-color: rgba(0,0,0,0.54);
+    }
+
+    md-radio-button:not([disabled]).md-primary .md-on, md-radio-group:not([disabled]) .md-primary .md-on{
+        background-color: @laranja;
+
+    }
+
+
 
     .campo-data{
         border: 0;
@@ -778,6 +891,72 @@ header.interno{
 
 
 }
+
+
+
+#chat-box{
+
+    position: fixed;
+    bottom: 1px;
+    right: 20px;
+    background-color: @preto-1;
+    width: 350px;
+    padding: 5px 15px 0;
+
+
+    .msg-aviso{
+        padding: 5px 0;
+        color: @laranja;
+    }
+
+    .chamado-head{
+
+
+
+        h3{
+            color: white;
+            font-size: 16px;
+            padding-bottom: 10px;
+            margin: 5px 0;
+
+
+        }
+
+        .btn-chamado{
+            font-size: 16px;
+            .pull-right;
+            .btn;
+            .button-variant(@branco, transparent, transparent);
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+    }
+    .chamado-body{
+
+        display: none;
+
+        form{
+
+            .radio label, .checkbox label {
+                color: white;
+            }
+
+            button.registrar{
+                .btn;
+                .button-variant(@branco, @laranja, @laranja);
+                width: 100%;
+                border: 0;
+            }
+
+
+
+        }
+    }
+}
+
 
 
 #modalLead{
@@ -887,6 +1066,7 @@ header.interno{
         font-size: 18px;/* Aproximação devido à substituição de fonte */
         text-align: left;
         margin-bottom: 20px;
+
     }
 
 }
@@ -929,12 +1109,12 @@ header.interno{
     .form-control{
         margin-top: -5px;
     }
-    
+
     .btn-mudar-senha{
         .btn;
         .btn-warning;
         .pull-left;
-        
+
         margin-top: 20px;
     }
 
@@ -942,9 +1122,85 @@ header.interno{
 }
 
 #embreve{
-    
-    padding-top: 64px;
-    
+
+
+
+}
+#assinar{
+
+    .plano{
+
+        .preco-sem-desconto{
+            text-decoration: line-through;
+        }
+
+        .moeda{
+            font-size: 8px;
+        }
+
+        .periodo{
+            font-size: 10px;
+        }
+
+    }
+
+    .form-assinatura{
+
+        h2{
+            font-size: 24px;
+            margin: 20px 0 20px;
+        }
+
+        input, select{
+            margin: 10px 0px;
+        }
+
+        .radio input[type="radio"], 
+        .radio-inline input[type="radio"], 
+        .checkbox input[type="checkbox"], 
+        .checkbox-inline input[type="checkbox"]{
+            margin: 0;
+            margin-top: 5px;
+            margin-left: -18px;
+        }
+
+
+        .ng-invalid-required{
+            border-color: #a94442;
+        }
+        .msg-error{
+            color: #a94442;
+        }
+
+        .ng-untouched{
+            border-color: #cccccc;
+        }
+
+
+        .btn-contrato{
+            .btn; 
+            .btn-default;
+            background-color: transparent;
+            border-color: transparent;
+            border: 0;
+            padding: 0;
+            text-decoration: underline;
+            margin: 0;
+            margin-top: -2px;
+        }
+
+    }
+
+    .btn-assinar{
+        .btn;
+        .btn-success;
+        width: 100%;
+        margin-top: 20px;
+
+    }
+
+
+
 }
 
 

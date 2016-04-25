@@ -1,11 +1,131 @@
 @import "bootstrap.less";
 
 
-@cinza: #3c3c3c;
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Typography
+# Elements.navbar-form
+# Forms
+# Navigation
+        ## Links
+        ## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+    ## Posts and pages
+        ## Asides
+        ## Comments
+# Infinite scroll
+# Media
+        ## Captions
+        ## Galleries
+--------------------------------------------------------------*/
+
+/* ==========================================================================
+   Fonts
+   ========================================================================== */
+
+@fontIrma: "Irma Text Round Black";
+
+@fontAzo: "azo-sans-web",sans-serif;
+
+/* ==========================================================================
+   Estilo dos textos
+   ========================================================================== */
+
+.estilo-menu-1{
+    font-family: @fontAzo;
+    color:  #3c3c3c;
+    font-size: 12px;/* Aproximação devido à substituição de fonte */
+    font-weight: 900;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.estilo-h1-hero{
+    font-family: @fontIrma;
+    color:  #ffffff;
+    font-size: 44px;/* Aproximação devido à substituição de fonte */
+    font-weight: 900;
+    line-height: 54px;/* Aproximação devido à substituição de fonte */
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.estilo-texto-padrao(@cor, @tamanho){
+
+    font-family: @fontAzo;
+    color:  @cor;
+    font-size: @tamanho;/* Aproximação devido à substituição de fonte */
+    font-weight: 300;
+    line-height: 30px;/* Aproximação devido à substituição de fonte */
+    text-align: left;
+
+}
+
+.estilo01{
+    font-family: @fontAzo;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.estilo02{
+    font-family: @fontAzo;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.estilo03{
+    font-family: @fontAzo;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.estilo04{
+    font-family: @fontAzo;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.estilo05{
+    font-family: @fontAzo;
+    color:  #403d3b;
+    font-size: 20px;/* Aproximação devido à substituição de fonte */
+    font-weight: 300;
+    line-height: 30px;/* Aproximação devido à substituição de fonte */
+    text-align: left;
+}
+
+
+/* ==========================================================================
+   Cores
+   ========================================================================== */
+
+@preto-1: #3c3c3c;
 @branco: #ffffff;
 @laranja: #FF8838;
+@laranja-claro: #ffa86e;
 
-/* reset */
+@cinza-escuro: #d2d2d2;
+@cinza-claro:  #828282;
+@cinza-claro-x: #f0f0f0;
+
+@verde: #21c939;
+
+
+
+/* ==========================================================================
+   Fonts
+   ========================================================================== */
+
+
+/* ==========================================================================
+   resets
+   ========================================================================== */
 .navbar-default {
     background-color: transparent;
     border-color: transparent;
@@ -18,41 +138,675 @@ input[type="text"], textarea {
     //border:1px solid #ccc !important;
 }
 
-/* nav */
-.navbar img.avatar {
-    width: 40px;
-    height: auto;
-    padding-top: 5px;
+
+/* ==========================================================================
+   Geral
+   ========================================================================== */
+body{
+
+    .estilo01;
+    background-color: @cinza-claro-x;
+
+    main{
+        background-color: @cinza-claro-x;
+    }
+
+    h1{
+        font-family: @fontIrma;
+    }
+}
+
+/* ==========================================================================
+   MENU
+   ========================================================================== */
+
+header{
+    background-color: @laranja;
+}
+header.externo{
+    background-color: @laranja;
+}
+header.interno{
+    background-color: @cinza-claro-x;
 }
 
 
+.navbar{
+
+    min-height: 100px;
+    margin-bottom: 0px;
+
+    .navbar-brand{
+        padding-top: 0;
+        margin-top: 45px;
+        height: auto;
+
+        //margin-left: 0px;
+
+
+        img.logo{
+            width: 190px;
+            height: auto;
+        }
+    }
+
+    img.avatar {
+        width: 40px;
+        height: auto;
+        padding-top: 5px;
+    }
+
+    .navbar-nav{
+
+
+
+    }
+
+    .navbar-right{
+        margin-top: 32px;
+
+
+        li{
+            a{
+                font-family: @fontIrma;
+                color:  #3c3c3c;
+                font-size: 12px;/* Aproximação devido à substituição de fonte */
+                font-weight: 900;
+                text-align: left;
+            }
+        }
+
+    }
+
+}
+
+.navbar-toggle {
+    margin-top: 38px;
+}
+
+/* ==========================================================================
+   GERAL
+   ========================================================================== */
+.page{
+
+    padding-top: 64px;
+    padding-bottom: 128px;
+
+}
+
+.preco-sem-desconto{
+    text-decoration: line-through;
+}
+
+.moeda{
+    font-size: 8px;
+}
+
+.periodo{
+    font-size: 10px;
+}
+
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;    
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+
+
+
+.disabled{
+    pointer-events: none;
+
+    /* for "disabled" effect */
+    opacity: 0.5;
+    background: #CCC;
+}
+
+
+/* ==========================================================================
+   CORNER FLAG
+   ========================================================================== */
+
+.ribbon-wrapper-green {
+    width: 85px;
+    height: 88px;
+    overflow: hidden;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+}
+
+.ribbon-green {
+    font: bold 13px @fontAzo;
+    color: #333;
+    text-align: center;
+    text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform:    rotate(45deg);
+    -ms-transform:     rotate(45deg);
+    -o-transform:      rotate(45deg);
+    position: relative;
+    padding: 7px 0;
+    left: -5px;
+    top: 15px;
+    width: 120px;
+    background-color: #BFDC7A;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45)); 
+    background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45); 
+    background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45); 
+    background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45); 
+    background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45); 
+    color: #6a6340;
+    -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+    -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+    box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+
+
+/* ==========================================================================
+   LANDINGPAGE
+   ========================================================================== */
+.landingpage{
+
+    #missao{
+
+        padding-top: 80px;
+        padding-bottom: 177px;
+
+        background: url(../image/landing/b-me-icon-back.png) no-repeat 250px 66px;
+        background-color: @laranja;
+        background-size: 551px auto;
+
+
+
+        h1{
+            .estilo-h1-hero;
+            @media (max-width: @screen-xs-max) { 
+                font-size: 34px;
+            }
+
+        }
+
+        p{
+            font-family: @fontAzo;
+            color:  #403d3b;
+            font-size: 20px;/* Aproximação devido à substituição de fonte */
+            font-weight: 300;
+            line-height: 30px;/* Aproximação devido à substituição de fonte */
+            text-align: left;
+        }
+
+        .card-landing{
+            width: 100%;
+
+
+            .flip-card-form{
+                margin-top: 25px;
+                .text-center;
+                font-family: @fontAzo;
+                color:  #ffffff;
+                font-size: 18px;/* Aproximação devido à substituição de fonte */
+                font-weight: 300;
+
+                cursor: pointer;
+
+                span{
+                    font-weight: 900;
+
+                }
+            }
+
+        }
+
+        .card-fundo{
+            padding-bottom: 400px;
+        }
+
+        .formcadastro{
+
+            cursor: default;
+
+            p{
+                font-family: @fontAzo;
+                font-size: 12px;/* Aproximação devido à substituição de fonte */
+                font-weight: 300;
+                color: @branco;
+                padding: 5px;
+            }
+
+            input, select{
+                height: 54px;
+                background-color: @laranja-claro;
+                font-family: @fontAzo;
+                font-size: 18px;/* Aproximação devido à substituição de fonte */
+                font-weight: 300;
+                line-height: 32px;/* Aproximação devido à substituição de fonte */
+                text-align: left;
+                border: 0;
+
+                .placeholder(@branco);
+
+            }
+
+            .btn-registro{
+
+                .btn;
+                .button-variant(@laranja, @branco, @branco);
+                width: 100%;
+                height: 54px;
+
+                font-family: @fontIrma;
+                color:  #ff8838;
+                font-size: 18px;/* Aproximação devido à substituição de fonte */
+                font-weight: 900;
+                line-height: 32px;/* Aproximação devido à substituição de fonte */
+                text-align: center;
+                .text-uppercase;
+
+
+
+            }
+        }
+
+    }//#missao
+
+    #features{
+
+        background-color: @branco;
+
+        .card-feature{
+
+            margin-bottom: 140px;
+
+            .center-block;
+            .text-center;
+
+            img{
+                height: 78px;
+                width: auto;
+                margin-top: 130px;
+            }
+
+            h2{
+                margin-top: 34px;
+                font-family: @fontIrma;
+                color:  @preto-1;
+                font-size: 18px;/* Aproximação devido à substituição de fonte */
+                font-weight: 900;
+                line-height: 24px;/* Aproximação devido à substituição de fonte */
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            p{
+                margin-top: 19px;
+                font-family: @fontAzo;
+                color:  #828282;
+                font-size: 16px;/* Aproximação devido à substituição de fonte */
+                font-weight: 300;
+                line-height: 26px;/* Aproximação devido à substituição de fonte */
+                text-align: center;
+                min-height: 90px;
+            }
+
+
+
+
+        }
+
+    }//features
+
+    #preco{
+        background-color: @cinza-claro-x;
+
+
+        h2{
+            padding-top: 89px;
+            font-family: @fontIrma;
+            color:  @laranja;
+            font-size: 26px;/* Aproximação devido à substituição de fonte */
+            font-weight: 900;
+            line-height: 40px;/* Aproximação devido à substituição de fonte */
+            text-align: center;
+
+        }
+
+        .card-plano{
+            border-radius: 4px;
+            background-color:  @branco;
+            min-height: 400px;
+            position: relative;
+            z-index: 90;
+            margin-top: 42px;
+            margin-bottom: 116px;
+            padding-bottom: 28px;
+
+
+            @media (max-width: @screen-xs-max) { 
+                min-height: auto;
+                height: auto;
+            }
+
+            .plano-texto{
+                padding: 28px 30px;
+
+                .plano-nome{
+
+                    font-family: @fontAzo;
+                    color:  @laranja;
+                    font-size: 18px;/* Aproximação devido à substituição de fonte */
+                    font-weight: 300;
+                    line-height: 32px;/* Aproximação devido à substituição de fonte */
+                    text-align: left;
+
+                }
+
+                .plano-preco{
+
+                    .moeda{
+                        font-size: 10px;
+                    }
+
+                    font-family: @fontIrma;
+                    color:  @preto-1;
+                    font-size: 36px;/* Aproximação devido à substituição de fonte */
+                    font-weight: 900;
+                    line-height: 32px;/* Aproximação devido à substituição de fonte */
+                    text-align: left;
+
+                }
+
+                .plano-itens{
+                    font-family: @fontAzo;
+                    color:  @laranja;
+                    font-size: 16px;/* Aproximação devido à substituição de fonte */
+                    font-weight: 300;
+                    line-height: 28px;/* Aproximação devido à substituição de fonte */
+
+                }
+
+            }
+
+            ul{
+                padding: 0;
+            }
+            li {
+                list-style-type: none;
+
+                &:before{
+                    font-family: 'FontAwesome';
+                    content: '\f00c';
+                    margin:0 5px 0 -15px;
+                    color: @verde;
+
+                }
+            }
+
+
+            .btn-assinar{
+                .btn;
+                .button-variant(@branco, @verde, @verde);
+                width: 100%;
+                border-radius: 0 0 5px 5px;
+                position: absolute;
+                bottom: 0;
+
+                font-family: @fontIrma;
+                color:  @branco;
+                font-size: 16px;/* Aproximação devido à substituição de fonte */
+                font-weight: 900;
+                line-height: 32px;/* Aproximação devido à substituição de fonte */
+
+                .text-uppercase;
+
+            }
+
+
+
+
+        }
+
+    }//preco
+
+    #track{
+
+        background-color: @cinza-escuro;
+
+        h2{
+
+            margin-top: 97px;
+            margin-bottom: 105px;
+
+            font-family: @fontIrma;
+            color:  #ffffff;
+            font-size: 30px;/* Aproximação devido à substituição de fonte */
+            font-weight: 900;
+            line-height: 56px;/* Aproximação devido à substituição de fonte */
+            text-align: center;
+
+            img{
+                height: 24px;
+                width: auto;
+                margin-top: -3px;
+            }
+        }
+
+    }//track
+
+    #entre-contato{
+
+        background-color: @laranja;
+
+        h2{
+            margin-top: 85px;
+            font-family: @fontIrma;
+            color:  @branco;
+            font-size: 36px;/* Aproximação devido à substituição de fonte */
+            font-weight: 900;
+            line-height: 32px;/* Aproximação devido à substituição de fonte */
+            text-align: center;
+
+        }
+        p{
+            margin-top: 38px;
+            font-family: @fontAzo;
+            color:  #403d3b;
+            font-size: 20px;/* Aproximação devido à substituição de fonte */
+            font-weight: 300;
+            line-height: 30px;/* Aproximação devido à substituição de fonte */
+            text-align: center;
+
+            span{
+                font-family: @fontIrma;
+                color:  #403d3b;
+                font-size: 20px;/* Aproximação devido à substituição de fonte */
+                font-weight: 900;
+                line-height: 30px;/* Aproximação devido à substituição de fonte */
+                text-align: center;
+            }
+
+
+        }
+
+        .rodape{
+
+
+
+            img{
+                margin-top: 126px;
+                height: 45px;
+                width: auto;
+                .center-block;
+
+            }
+            p{
+                margin-top: 34px;
+                font-family: @fontAzo;
+                color:  #b35f27;
+                font-size: 12px;/* Aproximação devido à substituição de fonte */
+                font-weight: 300;
+                line-height: 30px;/* Aproximação devido à substituição de fonte */
+                text-align: center;
+            }
+        }
+
+
+
+    }//contato
+
+
+}
+
+
+/* ==========================================================================
+   LEADS
+   ========================================================================== */
 #leads{
 
-    .campo-grande {
-        border: solid 0.5px gray;
-        border-radius: 0px;
+    .form-lead{
+        margin-top: 64px;
+
+        .campo-grande {        
+            border-radius: 0px;
+            border: 0;
+            background-color: @branco;
+            height: 70px;
+        }
+
+
+        input.inputbbot, select.inputbbot {
+            border: none; //
+            .text-left;
+            font-size: 14px;
+            margin-right: 10px;
+            height: 70px;
+
+            font-family: @fontAzo;
+            color:  #969696;
+            font-size: 20px;/* Aproximação devido à substituição de fonte */
+            text-align: left;
+            width: 190px;
+
+            .box-shadow(none);
+
+            @media (max-width: @screen-xs-max) { 
+                //width: auto;
+            }
+            @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {  
+                width: 100px;
+            }
+            @media (min-width: @screen-md-min) and (max-width: @screen-md-max) { 
+                width: 100px;
+            }
+
+        }
+
+        input.oque{
+            width: 280px;
+            @media (max-width: @screen-xs-max) {  
+                //width: auto;
+            }
+            @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { 
+                width: 100px;
+            }
+            @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {  
+                width: 200px;
+            }
+        }
+
+        .form-control{
+            .box-shadow(none);
+        }
+
+        .md-datepicker-input{
+            font-size: 20px;
+            margin-top: -5px;
+        }
+
+        .area-btn-bbot{
+            margin-left: -30px;
+
+            @media (max-width: @screen-xs-max) {  
+                //width: auto;
+                margin-left: 0px;
+                font-size: 20px;
+            }
+
+            .btn-bbot {
+                .btn;                
+                .button-variant(@branco, @laranja, @laranja);                
+                margin-top: 0px;
+                height: 44px;
+                width: 100%;
+                border-radius: 0;
+                height: 70px;
+            }
+
+        }
+
+        .btn-bbot-mobile{
+            .btn;                
+            .button-variant(@branco, @laranja, @laranja); 
+            width: 100%;
+        }
+
+
+
     }
 
-    .btn-bbot {
-        margin-top: 0px;
-        height: 44px;
-        width: 100%;
+    .titulo-filtro{
+        font-family: @fontAzo;
+        color:  #969696;
+        font-size: 20px;/* Aproximação devido à substituição de fonte */
+        font-weight: 300;
+        line-height: 32px;/* Aproximação devido à substituição de fonte */
+        text-align: left;
     }
 
-    input.inputbbot {
-        border: none; //
-        .text-left;
-        font-size: 14px;
-        margin-right: 10px;
-        height: 40px;
+    .fitro-data{
+        margin-top: 16px;
+        .pull-right;
     }
 
-    input.oque{
-        width: 260px;
+    md-radio-group.md-default-theme:not([disabled]) .md-primary .md-on, md-radio-group:not([disabled]) .md-primary .md-on, md-radio-group.md-default-theme:not([disabled]).md-primary .md-on, md-radio-group:not([disabled]).md-primary .md-on, md-radio-button.md-default-theme:not([disabled]) .md-primary .md-on, md-radio-button:not([disabled]) .md-primary .md-on, md-radio-button.md-default-theme:not([disabled]).md-primary .md-on, md-radio-button:not([disabled]).md-primary .md-on, 
+        md-radio-button:not([disabled]).md-primary.md-checked .md-off {
+        border-color: rgba(0,0,0,0.54);;
     }
+
+
+    md-radio-button.md-default-theme .md-off, md-radio-button .md-off {
+        border-color: rgba(0,0,0,0.54);
+    }
+
+    md-radio-button:not([disabled]).md-primary .md-on, md-radio-group:not([disabled]) .md-primary .md-on{
+        background-color: @laranja;
+
+    }
+
+
 
     .campo-data{
-        border: 0;    
+        border: 0;
     }
 
     .titulo-filtro{
@@ -89,10 +843,14 @@ input[type="text"], textarea {
         width: 100%;
 
         h2 {
+            font-family: @fontIrma;
             width: 95%;
             .text-center;
             height: 70px;
-            margin-top: 10px;
+            margin-top: 15px;
+            color:  @preto-1;
+            font-size: 22px;
+            font-weight: 900;
         }
 
         p{
@@ -135,35 +893,205 @@ input[type="text"], textarea {
 }
 
 
-#myModal{
+
+#chat-box{
+
+    position: fixed;
+    bottom: 1px;
+    right: 20px;
+    background-color: @preto-1;
+    width: 350px;
+    padding: 5px 15px 0;
+
+
+    .msg-aviso{
+        padding: 5px 0;
+        color: @branco;
+    }
+
+    .chamado-head{
+
+
+
+        h3{
+            color: white;
+            font-size: 16px;
+            padding-bottom: 10px;
+            margin: 5px 0;
+
+
+        }
+
+        .btn-chamado{
+            font-size: 16px;
+            .pull-right;
+            .btn;
+            .button-variant(@branco, transparent, transparent);
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+    }
+    .chamado-body{
+
+        display: none;
+
+        form{
+
+            .radio label, .checkbox label {
+                color: white;
+            }
+
+            button.registrar{
+                .btn;
+                .button-variant(@preto-1, @branco, @branco);
+                width: 100%;
+                border: 0;
+            }
+
+
+
+        }
+    }
+}
+
+
+
+#modalLead{
+
 
     .inputModal{
         border: 0px;
     }
 
-    .formobs{
+    .modal-content{
+        background-color: #f6f6f6;
 
-        padding: 25px 0px;
+        .modal-header{
+            border-bottom: 0;
+
+            h4{
+                font-family: @fontIrma;
+                color:  #3c3c3c;
+                font-size: 26px;/* Aproximação devido à substituição de fonte */
+                font-weight: 900;
+                text-align: left;
+            }
+
+            input{
+                background-color: transparent;
+            }
+
+        }
+
+        .modal-body{
+
+            font-family: @fontAzo;
+            color:  #b4b4b4;
+            font-size: 20px;/* Aproximação devido à substituição de fonte */
+            font-weight: 400;
+            text-align: left;
+
+            p, select{
+                margin: 0 0 20px;
+            }
+
+
+            .form-control{
+
+                font-family: @fontAzo;
+                color:  #b4b4b4;
+                font-size: 20px;/* Aproximação devido à substituição de fonte */
+                text-align: left;
+
+                background-color: transparent;
+                .box-shadow(none);
+                border: 0;                
+            }
+
+            .formobs{
+                padding: 25px 0px;
+
+                .form-control{
+                    background-color: @branco;
+                }
+
+                .btn-cadastrar-obs{
+                    .btn;
+                    .button-variant(@branco, @verde, @verde);
+                    font-family: @fontAzo;
+                    height: 44px;
+                    margin: 5px 0px;
+                    .text-uppercase;
+                }
+
+            }
+        }
+
+        .modal-footer{
+
+            .btn-danger, .btn-default, .btn-primary{
+                font-family: @fontAzo;
+                text-align: left;
+                .text-uppercase;
+
+            }
+
+
+        }
+
 
     }
 
-    .btn-cadastrar-obs{
-        .btn-success;
-        margin: 5px 0px;
-    }
+
+
+
 
 
 }
 
 
+/* ==========================================================================
+   page-contato
+   ========================================================================== */
+.page-contato{
+
+    padding-top: 64px;
+
+    h2{
+        font-family: @fontIrma;
+        color:  @preto-1;
+        font-size: 18px;/* Aproximação devido à substituição de fonte */
+        text-align: left;
+        margin-bottom: 20px;
+
+    }
+
+}
+
 /* bbot */
 
 #settings{
 
+    h2{
+        font-family: @fontIrma;
+        color:  @preto-1;
+        font-size: 18px;/* Aproximação devido à substituição de fonte */
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    background-color: @cinza-claro-x !important;
+    padding-top: 64px;
+
+    md-content{
+        background-color: @cinza-claro-x !important;
+    }
 
     md-tabs.md-default-theme .md-tab.md-active, md-tabs .md-tab.md-active, md-tabs.md-default-theme .md-tab.md-active md-icon, md-tabs .md-tab.md-active md-icon, md-tabs.md-default-theme .md-tab.md-focused, md-tabs .md-tab.md-focused, md-tabs.md-default-theme .md-tab.md-focused md-icon, md-tabs .md-tab.md-focused md-icon {
-        color: initial; 
-
+        color: initial;
     }
 
     md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
@@ -171,10 +1099,106 @@ input[type="text"], textarea {
         background: gray;
     }
 
-
-    h3{
+    h2{
         padding-bottom: 40px;
     }
+
+    label{
+        .text-right;
+    }
+    .form-control{
+        margin-top: -5px;
+    }
+
+    .btn-mudar-senha{
+        .btn;
+        .btn-warning;
+        .pull-left;
+
+        margin-top: 20px;
+    }
+
+
+}
+
+#embreve{
+
+
+
+}
+#assinar{
+
+    .plano{
+
+        .preco-sem-desconto{
+            text-decoration: line-through;
+        }
+
+        .moeda{
+            font-size: 8px;
+        }
+
+        .periodo{
+            font-size: 10px;
+        }
+
+    }
+
+    .form-assinatura{
+
+        h2{
+            font-size: 24px;
+            margin: 20px 0 20px;
+        }
+
+        input, select{
+            margin: 10px 0px;
+        }
+
+        .radio input[type="radio"], 
+        .radio-inline input[type="radio"], 
+        .checkbox input[type="checkbox"], 
+        .checkbox-inline input[type="checkbox"]{
+            margin: 0;
+            margin-top: 5px;
+            margin-left: -18px;
+        }
+
+
+        .ng-invalid-required{
+            border-color: #a94442;
+        }
+        .msg-error{
+            color: #a94442;
+        }
+
+        .ng-untouched{
+            border-color: #cccccc;
+        }
+
+
+        .btn-contrato{
+            .btn; 
+            .btn-default;
+            background-color: transparent;
+            border-color: transparent;
+            border: 0;
+            padding: 0;
+            text-decoration: underline;
+            margin: 0;
+            margin-top: -2px;
+        }
+
+    }
+
+    .btn-assinar{
+        .btn;
+        .btn-success;
+        width: 100%;
+        margin-top: 20px;
+
+    }
+
 
 
 }
@@ -211,4 +1235,3 @@ input[type="text"], textarea {
 .md-default-theme .md-datepicker-input-container, .md-datepicker-input-container {
     border: 0;
 }
-

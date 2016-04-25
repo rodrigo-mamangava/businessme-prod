@@ -6878,6 +6878,9 @@ header.interno {
   font-weight: 900;
   text-align: left;
 }
+.navbar-toggle {
+  margin-top: 38px;
+}
 /* ==========================================================================
    GERAL
    ========================================================================== */
@@ -6979,6 +6982,11 @@ header.interno {
   /* Aproximação devido à substituição de fonte */
   text-align: left;
   text-transform: uppercase;
+}
+@media (max-width: 767px) {
+  .landingpage #missao h1 {
+    font-size: 34px;
+  }
 }
 .landingpage #missao p {
   font-family: "azo-sans-web", sans-serif;
@@ -7227,6 +7235,13 @@ fieldset[disabled] .landingpage #missao .formcadastro .btn-registro.focus {
   z-index: 90;
   margin-top: 42px;
   margin-bottom: 116px;
+  padding-bottom: 28px;
+}
+@media (max-width: 767px) {
+  .landingpage #preco .card-plano {
+    min-height: auto;
+    height: auto;
+  }
 }
 .landingpage #preco .card-plano .plano-texto {
   padding: 28px 30px;
@@ -7856,6 +7871,270 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
 #leads .card-lead .card-back {
   background-color: #ff8838;
   border: 0;
+}
+#chat-box {
+  position: fixed;
+  z-index: 1000;
+  bottom: 0px;
+  right: 20px;
+  background-color: #3c3c3c;
+  width: 350px;
+  padding: 5px 15px 0;
+}
+#chat-box .msg-aviso {
+  padding: 5px 0;
+  color: #ffffff;
+}
+#chat-box .chamado-head h3 {
+  color: white;
+  font-size: 16px;
+  padding-bottom: 10px;
+  margin: 5px 0;
+}
+#chat-box .chamado-head .btn-chamado {
+  font-size: 16px;
+  float: right !important;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #ffffff;
+  background-color: transparent;
+  border-color: transparent;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+#chat-box .chamado-head .btn-chamado:focus,
+#chat-box .chamado-head .btn-chamado:active:focus,
+#chat-box .chamado-head .btn-chamado.active:focus,
+#chat-box .chamado-head .btn-chamado.focus,
+#chat-box .chamado-head .btn-chamado:active.focus,
+#chat-box .chamado-head .btn-chamado.active.focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+#chat-box .chamado-head .btn-chamado:hover,
+#chat-box .chamado-head .btn-chamado:focus,
+#chat-box .chamado-head .btn-chamado.focus {
+  color: #333333;
+  text-decoration: none;
+}
+#chat-box .chamado-head .btn-chamado:active,
+#chat-box .chamado-head .btn-chamado.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+#chat-box .chamado-head .btn-chamado.disabled,
+#chat-box .chamado-head .btn-chamado[disabled],
+fieldset[disabled] #chat-box .chamado-head .btn-chamado {
+  cursor: not-allowed;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+a#chat-box .chamado-head .btn-chamado.disabled,
+fieldset[disabled] a#chat-box .chamado-head .btn-chamado {
+  pointer-events: none;
+}
+#chat-box .chamado-head .btn-chamado:focus,
+#chat-box .chamado-head .btn-chamado.focus {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0);
+}
+#chat-box .chamado-head .btn-chamado:hover {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0);
+}
+#chat-box .chamado-head .btn-chamado:active,
+#chat-box .chamado-head .btn-chamado.active,
+.open > .dropdown-toggle#chat-box .chamado-head .btn-chamado {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0);
+}
+#chat-box .chamado-head .btn-chamado:active:hover,
+#chat-box .chamado-head .btn-chamado.active:hover,
+.open > .dropdown-toggle#chat-box .chamado-head .btn-chamado:hover,
+#chat-box .chamado-head .btn-chamado:active:focus,
+#chat-box .chamado-head .btn-chamado.active:focus,
+.open > .dropdown-toggle#chat-box .chamado-head .btn-chamado:focus,
+#chat-box .chamado-head .btn-chamado:active.focus,
+#chat-box .chamado-head .btn-chamado.active.focus,
+.open > .dropdown-toggle#chat-box .chamado-head .btn-chamado.focus {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0);
+}
+#chat-box .chamado-head .btn-chamado:active,
+#chat-box .chamado-head .btn-chamado.active,
+.open > .dropdown-toggle#chat-box .chamado-head .btn-chamado {
+  background-image: none;
+}
+#chat-box .chamado-head .btn-chamado.disabled:hover,
+#chat-box .chamado-head .btn-chamado[disabled]:hover,
+fieldset[disabled] #chat-box .chamado-head .btn-chamado:hover,
+#chat-box .chamado-head .btn-chamado.disabled:focus,
+#chat-box .chamado-head .btn-chamado[disabled]:focus,
+fieldset[disabled] #chat-box .chamado-head .btn-chamado:focus,
+#chat-box .chamado-head .btn-chamado.disabled.focus,
+#chat-box .chamado-head .btn-chamado[disabled].focus,
+fieldset[disabled] #chat-box .chamado-head .btn-chamado.focus {
+  background-color: transparent;
+  border-color: transparent;
+}
+#chat-box .chamado-head .btn-chamado .badge {
+  color: transparent;
+  background-color: #ffffff;
+}
+#chat-box .chamado-head .btn-chamado:focus,
+#chat-box .chamado-head .btn-chamado:active,
+#chat-box .chamado-head .btn-chamado:hover {
+  outline: none;
+}
+#chat-box .chamado-head .btn-chamado .focus,
+#chat-box .chamado-head .btn-chamado .active {
+  outline: none;
+}
+#chat-box .chamado-body {
+  display: none;
+}
+#chat-box .chamado-body form .radio label,
+#chat-box .chamado-body form .checkbox label {
+  color: white;
+}
+#chat-box .chamado-body form button.registrar {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #3c3c3c;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  width: 100%;
+  border: 0;
+}
+#chat-box .chamado-body form button.registrar:focus,
+#chat-box .chamado-body form button.registrar:active:focus,
+#chat-box .chamado-body form button.registrar.active:focus,
+#chat-box .chamado-body form button.registrar.focus,
+#chat-box .chamado-body form button.registrar:active.focus,
+#chat-box .chamado-body form button.registrar.active.focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+#chat-box .chamado-body form button.registrar:hover,
+#chat-box .chamado-body form button.registrar:focus,
+#chat-box .chamado-body form button.registrar.focus {
+  color: #333333;
+  text-decoration: none;
+}
+#chat-box .chamado-body form button.registrar:active,
+#chat-box .chamado-body form button.registrar.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+#chat-box .chamado-body form button.registrar.disabled,
+#chat-box .chamado-body form button.registrar[disabled],
+fieldset[disabled] #chat-box .chamado-body form button.registrar {
+  cursor: not-allowed;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+a#chat-box .chamado-body form button.registrar.disabled,
+fieldset[disabled] a#chat-box .chamado-body form button.registrar {
+  pointer-events: none;
+}
+#chat-box .chamado-body form button.registrar:focus,
+#chat-box .chamado-body form button.registrar.focus {
+  color: #3c3c3c;
+  background-color: #e6e6e6;
+  border-color: #bfbfbf;
+}
+#chat-box .chamado-body form button.registrar:hover {
+  color: #3c3c3c;
+  background-color: #e6e6e6;
+  border-color: #e0e0e0;
+}
+#chat-box .chamado-body form button.registrar:active,
+#chat-box .chamado-body form button.registrar.active,
+.open > .dropdown-toggle#chat-box .chamado-body form button.registrar {
+  color: #3c3c3c;
+  background-color: #e6e6e6;
+  border-color: #e0e0e0;
+}
+#chat-box .chamado-body form button.registrar:active:hover,
+#chat-box .chamado-body form button.registrar.active:hover,
+.open > .dropdown-toggle#chat-box .chamado-body form button.registrar:hover,
+#chat-box .chamado-body form button.registrar:active:focus,
+#chat-box .chamado-body form button.registrar.active:focus,
+.open > .dropdown-toggle#chat-box .chamado-body form button.registrar:focus,
+#chat-box .chamado-body form button.registrar:active.focus,
+#chat-box .chamado-body form button.registrar.active.focus,
+.open > .dropdown-toggle#chat-box .chamado-body form button.registrar.focus {
+  color: #3c3c3c;
+  background-color: #d4d4d4;
+  border-color: #bfbfbf;
+}
+#chat-box .chamado-body form button.registrar:active,
+#chat-box .chamado-body form button.registrar.active,
+.open > .dropdown-toggle#chat-box .chamado-body form button.registrar {
+  background-image: none;
+}
+#chat-box .chamado-body form button.registrar.disabled:hover,
+#chat-box .chamado-body form button.registrar[disabled]:hover,
+fieldset[disabled] #chat-box .chamado-body form button.registrar:hover,
+#chat-box .chamado-body form button.registrar.disabled:focus,
+#chat-box .chamado-body form button.registrar[disabled]:focus,
+fieldset[disabled] #chat-box .chamado-body form button.registrar:focus,
+#chat-box .chamado-body form button.registrar.disabled.focus,
+#chat-box .chamado-body form button.registrar[disabled].focus,
+fieldset[disabled] #chat-box .chamado-body form button.registrar.focus {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+#chat-box .chamado-body form button.registrar .badge {
+  color: #ffffff;
+  background-color: #3c3c3c;
 }
 #modalLead .inputModal {
   border: 0px;
