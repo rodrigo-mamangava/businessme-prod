@@ -1,0 +1,453 @@
+<div class="" ng-include="'js/chamados/view/chat-box.html'"></div>
+<div class="container">
+
+    <div id="assinar" class="page">
+
+        <div class="row">
+
+            <div class="col-sm-6">
+
+                <div class="plano">
+
+                    <h1>Plano Desbravadores</h1>
+
+                    <p>
+                        <span class="moeda">R$</span> 
+                        <span class="preco-sem-desconto">49,90</span> 
+                        <span class="periodo">/mês</span>
+                    </p>
+                    <h3><span class="moeda">R$</span> 19,90<span class="periodo">/mês</span></h3>
+
+                    <ul>
+                        <li>Prospecções ilimitadas</li>
+                        <li>Contatos ilimitados</li>
+                        <li>Lembretes por e-mail</li>
+                        <li>Relatórios para você entender e melhorar seu fluxo de venda de projetos.</li>
+                    </ul>
+
+                    <hr/>
+                    <p>* Desconto válido para o período de 12 meses após a contratação do plano.</p>
+                    <p>** A emissão de Nota Fiscal Eletrônica de Serviço está disponível apenas para a cidade de São Paulo e o Distrito Federal.</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-sm-6">
+
+                <div class="form-assinatura">
+
+                    <form name="form_assinatura" ng-submit="subscribe()" novalidate>
+
+                        <div class="row">
+
+                            <input type="hidden" ng-model="assinatura.customer.code" value="mvp-001" checked>
+
+                            <div class="col-sm-12">
+                                <h2>1) Cadastre-se no BusinessMe</h2>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="nomeCompleto">Nome completo *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.name.$invalid && form_assinatura.name.$touched">
+                                    <b>Nome completo</b> - é obrigatório.                                        
+                                </p>
+                                <input type="text" class="form-control"  
+                                       ng-model="assinatura.user.name" 
+                                       ng-required="true"
+                                       name="name"
+                                       id="nomeCompleto" placeholder="Nome completo">
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="area">Área de atuação *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.area.$invalid && form_assinatura.area.$touched">
+                                    <b>Área de atuação</b> - é obrigatório.                                        
+                                </p>
+                                <select class="form-control"  id="area"  
+                                        ng-required="true"
+                                        name="area" ng-model="assinatura.user.profissao" >
+                                    <option value="">Selecione uma área</option>
+                                    <option ng-repeat="(key, nome) in areas" >{{nome}}</option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="email">E-mail *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.email.$invalid && form_assinatura.email.$touched">
+                                    <b>E-mail</b> - é obrigatório e deve ser válido.                                        
+                                </p>
+                                <input type="email" class="form-control" id="email"  
+                                       ng-required="true"
+                                       name="email"
+                                       ng-model="assinatura.user.email" 
+                                       placeholder="E-mail">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="senha">Senha *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.password.$invalid && form_assinatura.password.$touched">
+                                    <b>Senha</b> - é obrigatório.                                        
+                                </p>
+                                <input type="password" class="form-control" id="senha"  
+                                       ng-required="true"
+                                       name="password"
+                                       ng-model="assinatura.user.password" 
+                                       placeholder="Senha"> 
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-xs-12">
+                                <h2>2) Informe os dados do seu cartão de crédito</h2>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <label for="diaNasc">Nome impresso cartão *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.fullname.$invalid && form_assinatura.fullname.$touched">
+                                    <b>Nome impresso cartão</b> - é obrigatório.                                        
+                                </p>
+                                <input type="text" class="form-control" id="diaNasc"                                        
+                                       ng-required="true"
+                                       name="fullname"
+                                       ng-model="assinatura.cartao.fullname"
+                                       placeholder="Nome impresso cartão">
+                            </div>
+                            <div class="col-xs-12">
+                                <label for="mesNasc">Número do cartão *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.credit_card_number.$invalid && form_assinatura.credit_card_number.$touched">
+                                    <b>Número do cartão</b> - é obrigatório e deve ser válido.                                        
+                                </p>
+                                <div class="right-inner-addon ">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                    <input type="credit card" class="form-control" id="mesNasc" 
+                                           ng-required="true"
+                                           name="credit_card_number"
+                                           ng-model="assinatura.cartao.credit_card_number"
+                                           placeholder="Número do cartão">
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-xs-12">
+                                <p><b>Data de validade *</b></p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.expiration_month.$invalid && form_assinatura.expiration_month.$touched">
+                                    <b>Mês</b> - é obrigatório.                                        
+                                </p>
+                                <select  class="form-control" id="mesCartao"
+                                         ng-required="true"
+                                         name="expiration_month"
+                                         ng-model="assinatura.cartao.expiration_month"
+                                         >
+                                    <option value="">mês</option>
+                                    <option ng-repeat="n in range(01, 12)" value="{{n}}">{{n}}</option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.expiration_year.$invalid && form_assinatura.expiration_year.$touched">
+                                    <b>Ano</b> - é obrigatório.                                        
+                                </p>
+
+                                <select  class="form-control" id="anoCartao"
+                                         ng-required="true"
+                                         name="expiration_year"
+                                         ng-model="assinatura.cartao.expiration_year"
+                                         >
+                                    <option value="">ano</option>
+                                    <option ng-repeat="n in range(15, 99)" value="{{n}}">{{n}}</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-xs-12">
+                                <h2>3) Dados complementares para assinatura</h2>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <label for="cpf">CPF *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.cpf.$invalid && form_assinatura.cpf.$touched">
+                                    <b>CPF</b> - é obrigatório e deve ser válido.                                        
+                                </p>
+                                <input type="text" class="form-control" id="cpf" 
+                                       ng-required="true"
+                                       name="cpf"
+                                       ng-model="assinatura.customer.cpf"
+                                       ui-br-cpf-mask
+                                       placeholder="Digite seu CPF">
+                            </div>
+
+                            <div class="col-xs-12">
+                                <p><b>Data de nascimento *</b></p>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.birthdate_day.$invalid && form_assinatura.birthdate_day.$touched">
+                                    <b>dia</b> - é obrigatório.                                        
+                                </p>
+
+                                <select  class="form-control" id="diaNasc"
+                                         ng-required="true"
+                                         name="birthdate_day"
+                                         ng-model="assinatura.customer.birthdate_day"
+                                         >
+                                    <option value="">dia</option>
+                                    <option ng-repeat="n in range(01, 31)" value="{{n}}">{{n}}</option>
+                                </select>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.birthdate_month.$invalid && form_assinatura.birthdate_month.$touched">
+                                    <b>mês</b> - é obrigatório.                                        
+                                </p>
+
+                                <select  class="form-control" id="mesNasc"
+                                         ng-required="true"
+                                         name="birthdate_month"
+                                         ng-model="assinatura.customer.birthdate_month"
+                                         >
+                                    <option value="">mês</option>
+                                    <option ng-repeat="n in range(01, 12)" value="{{n}}">{{n}}</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-4">
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.birthdate_year.$invalid && form_assinatura.birthdate_year.$touched">
+                                    <b>ano</b> - é obrigatório.                                        
+                                </p>
+
+                                <select  class="form-control" id="anoNasc"
+                                         ng-required="true"
+                                         name="birthdate_year"
+                                         ng-model="assinatura.customer.birthdate_year"
+                                         >
+                                    <option value="">ano</option>
+                                    <option ng-repeat="n in range(1900, 2000)" value="{{n}}">{{n}}</option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="col-xs-12">
+                                <label for="anoNasc">Telefone *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.phone_number.$invalid && form_assinatura.phone_number.$touched">
+                                    <b>Telefone</b> - é obrigatório e deve ser válido.                                        
+                                </p>
+                                <input type="text" class="form-control" id="telefone" 
+                                       ng-required="true"
+                                       name="phone_number"
+                                       ng-model="assinatura.customer.phone_number"
+                                       ui-br-phone-number
+                                       placeholder="Digitel seu DDD e telefone">
+                            </div>
+
+
+                            <div class="col-xs-12">
+                                <p>Endereço</p>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label for="cep">CEP *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.zipcode.$invalid && form_assinatura.zipcode.$touched">
+                                    <b>CEP</b> - é obrigatório.                                        
+                                </p>
+                                <input type="text" class="form-control" id="cep" 
+                                       ng-required="true"
+                                       name="zipcode"
+                                       ng-model="assinatura.address_params.zipcode"
+                                       ui-br-cep-mask
+                                       placeholder="Digite seu CEP">
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label for="rua">Rua *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.street.$invalid && form_assinatura.street.$touched">
+                                    <b>Rua</b> - é obrigatório.                                        
+                                </p>
+                                <input type="text" class="form-control" id="rua" 
+                                       ng-required="true"
+                                       name="street"
+                                       ng-model="assinatura.address_params.street"
+                                       placeholder="Digite sua rua">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="numeroRua">Número *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.number.$invalid && form_assinatura.number.$touched">
+                                    <b>Número</b> - é obrigatório.                                        
+                                </p>
+                                <input type="number" class="form-control" id="numeroRua" 
+                                       ng-required="true"
+                                       name="number"
+                                       ng-model="assinatura.address_params.number"
+                                       placeholder="número">
+                            </div>
+
+                            <div class="col-xs-6">
+                                <label for="complemento">Complemento</label>
+                                <input type="text" class="form-control" id="complemento" 
+                                       name="complement"
+                                       ng-model="assinatura.address_params.complement"
+                                       placeholder="complemento">
+                            </div>
+
+                            <div class="col-xs-12">
+                                <label for="bairro">Bairro *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.district.$invalid && form_assinatura.district.$touched">
+                                    <b>Bairro</b> - é obrigatório.                                        
+                                </p>
+                                <input type="text" class="form-control" id="bairro" 
+                                       ng-required="true"
+                                       name="district"
+                                       ng-model="assinatura.address_params.district"
+                                       placeholder="nome do bairro">
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="estado">Estado *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.estado.$invalid && form_assinatura.estado.$touched">
+                                    <b>Estado</b> - é obrigatório.                                        
+                                </p>
+                                <select class="form-control"  id="estado" 
+                                        ng-required="true"
+                                        name="estado"
+                                        ng-model="id_estado" ng-change="carregarCidades()" > 
+                                    <option value="">Selecione seu estado</option>
+                                    <option ng-repeat="(key, estado) in estados" value="{{key}}">{{estado.nome}}</option>
+                                </select>
+                            </div>
+
+                            <input type="hidden" ng-model="assinatura.address_params.state">
+
+                            <div class="col-sm-8">
+                                <label for="cidade">Cidade *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.city.$invalid && form_assinatura.city.$touched">
+                                    <b>Cidade</b> - é obrigatório.                                        
+                                </p>
+                                <select  class="form-control" id="cidade"
+                                         ng-required="true"
+                                         name="city"
+                                         ng-model="assinatura.address_params.city"
+                                         > 
+                                    <option value="">Selecione sua cidade</option>
+                                    <option ng-repeat="(key, cidade) in cidades" value="{{cidade}}">{{cidade}}</option>
+                                </select>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <label for="pais">País *</label>
+                                <p class="msg-error" 
+                                   ng-show="form_assinatura.country.$invalid && form_assinatura.country.$touched">
+                                    <b>País</b> - é obrigatório.                                        
+                                </p>
+
+                                <select  class="form-control" id="pais"
+                                         ng-required="true"
+                                         name="country"
+                                         ng-model="assinatura.address_params.country" 
+                                         >
+                                    <option value="">Selecine seu país</option>
+                                    <option value="BRA">Brasil</option>
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-xs-12">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"
+                                               ng-required="true"
+                                               name="termo_contrato"
+                                               ng-model="assinatura.termo_contrato"
+                                               > Lí e concordo com o 
+                                        <button type="button" class="btn-contrato" 
+                                                data-toggle="modal" data-target="#contratoAssinatura"> 
+                                            Contrato de assinatura
+                                        </button> *
+                                    </label>
+                                    <p class="msg-error" 
+                                       ng-show="form_assinatura.termo_contrato.$invalid">
+                                        Você deve concordar com o <b>Contrato de assinatura</b> para assinar.                                        
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12">
+
+                                <button type="submit" class="btn btn-assinar" 
+                                        ng-disabled="form_assinatura.$invalid"
+                                        >Assinar</button>
+
+                                <p class="aviso-btn">
+                                    Preencha todos os campos obrigatórios (*) para
+                                    habilitar o botão de assinatura.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="contratoAssinatura" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
