@@ -7793,9 +7793,17 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
   /* Aproximação devido à substituição de fonte */
   text-align: left;
 }
-#leads .fitro-data {
-  margin-top: 16px;
+#leads .tipo-lista {
   float: right !important;
+}
+#leads .tipo-lista p {
+  text-align: right;
+}
+#leads .fitro-data {
+  float: left !important;
+}
+#leads .settings {
+  padding: 0 0 45px;
 }
 #leads md-radio-group.md-default-theme:not([disabled]) .md-primary .md-on,
 #leads md-radio-group:not([disabled]) .md-primary .md-on,
@@ -7825,6 +7833,13 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
 #leads .area-grid-cards {
   margin-top: 10px;
   padding-top: 50px;
+}
+#leads .area-lista .linha {
+  padding: 12px 6px;
+  background-color: #ffffff;
+}
+#leads .area-lista .btn-default {
+  width: 50px;
 }
 #leads .btn-remover-filtro {
   background-color: transparent;
@@ -7871,6 +7886,36 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
 #leads .card-lead .card-back {
   background-color: #ff8838;
   border: 0;
+}
+#modalDica h2 {
+  font-family: "Irma Text Round Black";
+  width: 95%;
+  text-align: center;
+  height: 70px;
+  margin-top: 15px;
+  color: #3c3c3c;
+  font-size: 22px;
+  font-weight: 900;
+}
+#modalDica p {
+  text-align: left;
+  padding: 0 15px;
+  font-size: 19px;
+  font-size: 1.9rem;
+}
+#modalDica .modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+  border: 0;
+}
+#modalDica .modal-footer {
+  padding: 0;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+  border: 0;
+}
+#modalDica .modal-content {
+  background-color: #ff8838;
 }
 #chat-box {
   position: fixed;

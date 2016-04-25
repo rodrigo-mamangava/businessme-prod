@@ -10,26 +10,25 @@ myApp.controller('BBotController', [
     'FIREBASE_URL',
     function ($scope, $rootScope, $mdDialog, Contatos, Log, $firebaseAuth,
             $firebaseArray, $firebaseObject, FIREBASE_URL) {
-    	
-    	var init = function() {
-        	$scope.filtro = {
-        		data: '0'
-        	};
-        		console.log()
-          }
-    	
-    	init();
 
         var ref = new Firebase(FIREBASE_URL);
         var auth = $firebaseAuth(ref);
+
+        var init = function () {
+
+            $scope.filtro = {
+                data: '0',
+                tipoLista: 'grid'
+            };
+        };
+
+        init();
 
         auth.$onAuth(function (authUser) {
             if (authUser) {
 
                 //variaveis
                 var uid = authUser.uid;
-
-
 
                 //referencias
                 var leadsRef = new Firebase(FIREBASE_URL + 'users/' + uid
@@ -41,15 +40,38 @@ myApp.controller('BBotController', [
                 var fasesRef = new Firebase(FIREBASE_URL + 'users/' + uid
                         + '/fases');
 
+                var configRef = new Firebase(FIREBASE_URL + 'users/' + uid
+                        + '/config');
+
                 //$firebaseArray
                 var leadsInfo = $firebaseArray(leadsRef);
 
                 var contatosList = $firebaseArray(contatoRef);
 
                 var fasesList = $firebaseArray(fasesRef);
+                
+                
 
-
-                //$onload
+                
+                
+//                var configObj = $firebaseObject(configRef);
+//
+//
+//                configObj.$bindTo($scope, "config").then(function () {
+//                    $scope.config.tipoLista = "grid";  // will be saved to the database                        
+//                    console.log($scope.config);
+//                });
+//
+//
+//                configObj.$loaded()
+//                        .then(function (data) {
+//                            $scope.filtro.tipoLista = $scope.config.tipoLista;
+//                            console.log(data);
+//                        })
+//                        .catch(function (error) {
+//                        });
+                
+                
 
                 var countLeads = function (leadsInfo) {
 
@@ -196,8 +218,8 @@ myApp.controller('BBotController', [
 
                     var loadItem = leadsInfo.$getRecord(idLead);
                     $scope.loadItem = loadItem;
-                    
-                    
+
+
 //                    var refLoadLead = new Firebase(FIREBASE_URL + 'users/' + uid
 //                            + '/leads/' + idLead);
 //                    
@@ -290,35 +312,42 @@ myApp.controller('BBotController', [
                             );
 
                 };
-                
-                
-                
-                $scope.setFiltroData = function(){
-                	
-                	var hj = new Date().setHours(0,0,0,0);
-                	
-                	if($scope.filtro.data == 0){
-                		console.log(1);  
-                		$scope.filtro.lembrete = '';
-                		
-                	}else if($scope.filtro.data == 1){
-                		console.log(2);
-    
-                		
-                		$scope.filtro.lembrete = hj;
-                		
-                	}else if($scope.filtro.data == 2){
-                		console.log(3);
-                		
-                		$scope.filtro.lembrete =  hj;
-                		
-                	}else{
-                		console.log(4);                		
-                	}
-                	
-                	console.log($scope.leadsList);               	
-                	console.log($scope.filtro);
-                }
+
+
+
+                $scope.setFiltroData = function () {
+
+                    var hj = new Date().setHours(0, 0, 0, 0);
+
+                    if ($scope.filtro.data == 0) {
+                        console.log(1);
+                        $scope.filtro.lembrete = '';
+
+                    } else if ($scope.filtro.data == 1) {
+                        console.log(2);
+
+
+                        $scope.filtro.lembrete = hj;
+
+                    } else if ($scope.filtro.data == 2) {
+                        console.log(3);
+
+                        $scope.filtro.lembrete = hj;
+
+                    } else {
+                        console.log(4);
+                    }
+
+                    console.log($scope.leadsList);
+                    console.log($scope.filtro);
+                };
+
+
+                $scope.setTipoLista = function () {
+                    console.log($scope.filtro);
+
+                    //$scope.config.tipoLista = $scope.filtro.tipoLista;
+                };
 
 
                 // somewhere in your webapp
