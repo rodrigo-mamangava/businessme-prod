@@ -6,8 +6,8 @@ myApp.controller('ChamadoCoontroller', ['$rootScope', '$scope', '$firebaseArray'
 
         $scope.toggle_chamado = function () {
             jQuery('#chamado').slideToggle();
-            jQuery('.btn-chamado').find('i').toggleClass('fa-angle-up');
-            jQuery('.btn-chamado').find('i').toggleClass('fa-angle-down');
+            jQuery('.btn-chamado').find('i').toggleClass('fa-chevron-down');
+            jQuery('.btn-chamado').find('i').toggleClass('fa-chevron-up');
 
             $scope.chamadoMsg = '';
 

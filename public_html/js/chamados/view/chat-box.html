@@ -1,7 +1,9 @@
 <div id="chat-box" class="" ng-controller="ChamadoCoontroller">
     <div class="chamado-head">
-        <h3>Sugestões & Bugs 
-            <button class="btn-chamado" ng-click="toggle_chamado()" ><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+        <h3>Sugestões e Bugs 
+            <button class="btn-chamado" ng-click="toggle_chamado()" >
+            	<i class="fa fa-chevron-up" aria-hidden="true"></i>
+            </button>
         </h3>        
     </div>
     <div id="chamado" class="chamado-body">
@@ -37,7 +39,7 @@
 
             <div class="form-group">
 
-                <textarea  name="chamado" class="form-control" rows="3" 
+                <textarea  name="chamado" class="form-control" rows="5" 
                            ng-required="true"
                            placeholder="Escreva aqui sua sugestão ou relato de um bug."
                            ng-model="chamado.texto"></textarea>

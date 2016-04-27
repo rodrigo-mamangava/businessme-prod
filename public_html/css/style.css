@@ -7546,8 +7546,11 @@ fieldset[disabled] .landingpage #preco .card-plano .btn-assinar.focus {
   font-size: 20px;
   margin-top: -5px;
 }
+#leads .form-lead .area-campo {
+  padding-right: 0px;
+}
 #leads .form-lead .area-btn-bbot {
-  margin-left: -30px;
+  padding-left: 0px;
 }
 @media (max-width: 767px) {
   #leads .form-lead .area-btn-bbot {
@@ -7582,6 +7585,11 @@ fieldset[disabled] .landingpage #preco .card-plano .btn-assinar.focus {
   width: 100%;
   border-radius: 0;
   height: 70px;
+  font-family: "Irma Text Round Black";
+  font-size: 16px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  text-transform: uppercase;
 }
 #leads .form-lead .area-btn-bbot .btn-bbot:focus,
 #leads .form-lead .area-btn-bbot .btn-bbot:active:focus,
@@ -7795,6 +7803,7 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
 }
 #leads .tipo-lista {
   float: right !important;
+  margin-left: 60px;
 }
 #leads .tipo-lista p {
   text-align: right;
@@ -7803,7 +7812,7 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
   float: left !important;
 }
 #leads .settings {
-  padding: 0 0 45px;
+  padding: 17px 0 17px 17px;
 }
 #leads md-radio-group.md-default-theme:not([disabled]) .md-primary .md-on,
 #leads md-radio-group:not([disabled]) .md-primary .md-on,
@@ -7887,6 +7896,44 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
   background-color: #ff8838;
   border: 0;
 }
+/* ==========================================================================
+   CHECKBOX LIKE A BUTTON
+   ========================================================================== */
+div label input {
+  margin-right: 100px;
+}
+.ck-button {
+  background-color: transparent;
+  border-radius: 4px;
+  border: 0;
+  overflow: auto;
+  float: left;
+}
+.ck-button:hover {
+  background: #dcdcdc;
+}
+.ck-button label {
+  float: left;
+  width: 30px;
+  margin: 0;
+}
+.ck-button label span {
+  text-align: center;
+  padding: 3px 0px;
+  display: block;
+}
+.ck-button label input {
+  position: absolute;
+  top: -20px;
+  display: none;
+}
+.ck-button input:checked + span {
+  background-color: #dcdcdc;
+  color: #3c3c3c;
+}
+/* ==========================================================================
+   modalDica
+   ========================================================================== */
 #modalDica h2 {
   font-family: "Irma Text Round Black";
   width: 95%;
@@ -7923,18 +7970,30 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
   bottom: 0px;
   right: 20px;
   background-color: #3c3c3c;
-  width: 350px;
-  padding: 5px 15px 0;
+  width: 293px;
+  padding: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 #chat-box .msg-aviso {
   padding: 5px 0;
-  color: #ffffff;
+  color: #3c3c3c;
+}
+#chat-box .chamado-head {
+  padding: 19px 19px 16px;
+  background-color: #3c3c3c;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 #chat-box .chamado-head h3 {
-  color: white;
-  font-size: 16px;
-  padding-bottom: 10px;
-  margin: 5px 0;
+  font-family: "Irma Text Round Black";
+  color: #ffffff;
+  font-size: 14px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  text-align: left;
+  padding: 0;
+  margin: 0;
 }
 #chat-box .chamado-head .btn-chamado {
   font-size: 16px;
@@ -7950,7 +8009,6 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 6px 12px;
-  font-size: 14px;
   line-height: 1.42857143;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -7963,6 +8021,10 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
   margin: 0;
   padding: 0;
   outline: none;
+  margin-top: -4px;
+  font-size: 14px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 400;
 }
 #chat-box .chamado-head .btn-chamado:focus,
 #chat-box .chamado-head .btn-chamado:active:focus,
@@ -8062,11 +8124,19 @@ fieldset[disabled] #chat-box .chamado-head .btn-chamado.focus {
   outline: none;
 }
 #chat-box .chamado-body {
+  padding: 19px;
+  font-family: "azo-sans-web", sans-serif;
+  color: #3c3c3c;
+  font-size: 16px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 400;
+  text-align: left;
+  background-color: #e6e6e6;
   display: none;
 }
 #chat-box .chamado-body form .radio label,
 #chat-box .chamado-body form .checkbox label {
-  color: white;
+  color: #3c3c3c;
 }
 #chat-box .chamado-body form button.registrar {
   display: inline-block;
@@ -8080,18 +8150,23 @@ fieldset[disabled] #chat-box .chamado-head .btn-chamado.focus {
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 6px 12px;
-  font-size: 14px;
   line-height: 1.42857143;
   border-radius: 4px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: #3c3c3c;
-  background-color: #ffffff;
-  border-color: #ffffff;
+  color: #ffffff;
+  background-color: #ff8838;
+  border-color: #ff8838;
   width: 100%;
   border: 0;
+  border-bottom: 2px;
+  font-family: "Irma Text Round Black";
+  font-size: 14px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  height: 44px;
 }
 #chat-box .chamado-body form button.registrar:focus,
 #chat-box .chamado-body form button.registrar:active:focus,
@@ -8131,21 +8206,21 @@ fieldset[disabled] a#chat-box .chamado-body form button.registrar {
 }
 #chat-box .chamado-body form button.registrar:focus,
 #chat-box .chamado-body form button.registrar.focus {
-  color: #3c3c3c;
-  background-color: #e6e6e6;
-  border-color: #bfbfbf;
+  color: #ffffff;
+  background-color: #ff6a05;
+  border-color: #b84a00;
 }
 #chat-box .chamado-body form button.registrar:hover {
-  color: #3c3c3c;
-  background-color: #e6e6e6;
-  border-color: #e0e0e0;
+  color: #ffffff;
+  background-color: #ff6a05;
+  border-color: #fa6400;
 }
 #chat-box .chamado-body form button.registrar:active,
 #chat-box .chamado-body form button.registrar.active,
 .open > .dropdown-toggle#chat-box .chamado-body form button.registrar {
-  color: #3c3c3c;
-  background-color: #e6e6e6;
-  border-color: #e0e0e0;
+  color: #ffffff;
+  background-color: #ff6a05;
+  border-color: #fa6400;
 }
 #chat-box .chamado-body form button.registrar:active:hover,
 #chat-box .chamado-body form button.registrar.active:hover,
@@ -8156,9 +8231,9 @@ fieldset[disabled] a#chat-box .chamado-body form button.registrar {
 #chat-box .chamado-body form button.registrar:active.focus,
 #chat-box .chamado-body form button.registrar.active.focus,
 .open > .dropdown-toggle#chat-box .chamado-body form button.registrar.focus {
-  color: #3c3c3c;
-  background-color: #d4d4d4;
-  border-color: #bfbfbf;
+  color: #ffffff;
+  background-color: #e05a00;
+  border-color: #b84a00;
 }
 #chat-box .chamado-body form button.registrar:active,
 #chat-box .chamado-body form button.registrar.active,
@@ -8174,12 +8249,22 @@ fieldset[disabled] #chat-box .chamado-body form button.registrar:focus,
 #chat-box .chamado-body form button.registrar.disabled.focus,
 #chat-box .chamado-body form button.registrar[disabled].focus,
 fieldset[disabled] #chat-box .chamado-body form button.registrar.focus {
-  background-color: #ffffff;
-  border-color: #ffffff;
+  background-color: #ff8838;
+  border-color: #ff8838;
 }
 #chat-box .chamado-body form button.registrar .badge {
-  color: #ffffff;
-  background-color: #3c3c3c;
+  color: #ff8838;
+  background-color: #ffffff;
+}
+#chat-box .chamado-body form textarea::-moz-placeholder {
+  color: #e6e6e6;
+  opacity: 1;
+}
+#chat-box .chamado-body form textarea:-ms-input-placeholder {
+  color: #e6e6e6;
+}
+#chat-box .chamado-body form textarea::-webkit-input-placeholder {
+  color: #e6e6e6;
 }
 #modalLead .inputModal {
   border: 0px;
