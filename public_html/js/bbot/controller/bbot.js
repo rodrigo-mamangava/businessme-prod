@@ -218,6 +218,14 @@ myApp.controller('BBotController', [
 
                     var loadItem = leadsInfo.$getRecord(idLead);
                     $scope.loadItem = loadItem;
+                    
+                    console.log(loadItem);
+                    
+                    
+                    $scope.loadItem.datalembrete = new Date(loadItem.datalembrete);
+                    
+                    
+                    
 
 
 //                    var refLoadLead = new Firebase(FIREBASE_URL + 'users/' + uid
@@ -243,6 +251,8 @@ myApp.controller('BBotController', [
                 };
 
                 $scope.salvarUpdateModal = function () {
+                    
+                    $scope.loadItem.datalembrete = $scope.loadItem.datalembrete.getTime(),
 
                     leadsInfo.$save($scope.loadItem).then(function (item) {
 

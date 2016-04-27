@@ -7835,6 +7835,10 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
 }
 #leads .campo-data {
   border: 0;
+  padding: 0;
+}
+#leads md-icon {
+  margin-top: -6px;
 }
 #leads .titulo-filtro span {
   margin: 0 5px;
@@ -8294,10 +8298,6 @@ fieldset[disabled] #chat-box .chamado-body form button.registrar.focus {
   font-weight: 400;
   text-align: left;
 }
-#modalLead .modal-content .modal-body p,
-#modalLead .modal-content .modal-body select {
-  margin: 0 0 20px;
-}
 #modalLead .modal-content .modal-body .form-control {
   font-family: "azo-sans-web", sans-serif;
   color: #b4b4b4;
@@ -8436,6 +8436,19 @@ fieldset[disabled] #modalLead .modal-content .modal-body .formobs .btn-cadastrar
   font-family: "azo-sans-web", sans-serif;
   text-align: left;
   text-transform: uppercase;
+}
+/* ==========================================================================
+   Date picker do LOAD LEAD MODAL
+   ========================================================================== */
+.md-datepicker-calendar-pane.md-pane-open {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  z-index: 2000;
+}
+md-datepicker.md-default-theme,
+md-datepicker.data-modal {
+  background: transparent;
+  margin-left: -16px;
 }
 /* ==========================================================================
    page-contato
@@ -8869,24 +8882,26 @@ fieldset[disabled] #assinar .btn-assinar.focus {
   color: #5cb85c;
   background-color: #ffffff;
 }
-.datepickerdemoBasicUsage {
-  /** Demo styles for mdCalendar. */
-}
+/* ==========================================================================
+   Date picker do BIG FIELD do BBOT
+   ========================================================================== */
+/*.datepickerdemoBasicUsage {
+    * Demo styles for mdCalendar.  }
 .datepickerdemoBasicUsage md-content {
-  padding-bottom: 200px;
-}
+    padding-bottom: 200px; }
 .datepickerdemoBasicUsage .validation-messages {
-  font-size: 12px;
-  color: #dd2c00;
-  margin: 10px 0 0 25px;
-}
-/*.md-datepicker-triangle-button.md-button.md-icon-button {
+    font-size: 12px;
+    color: #dd2c00;
+    margin: 10px 0 0 25px; }
+
+.md-datepicker-triangle-button.md-button.md-icon-button {
     top: 8px;
-}*/
+}
+
 .md-datepicker-button {
-  display: none;
+    display: none;
 }
-.md-default-theme .md-datepicker-input-container,
-.md-datepicker-input-container {
-  border: 0;
-}
+
+.md-default-theme .md-datepicker-input-container, .md-datepicker-input-container {
+    border: 0;
+}*/
