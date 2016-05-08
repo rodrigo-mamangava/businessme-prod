@@ -1,0 +1,630 @@
+<div class="" ng-include="'view/header.html'"></div>
+<div class="" ng-include="'js/chamados/view/chat-box.html'"></div>
+
+
+
+<div class="modal fade" id="modalLoading" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" 
+     data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Processando...</h4>
+      </div>
+      <div class="modal-body">
+          <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+    <div id="assinar" class="page">
+
+        <div class="row">
+
+            <div class="col-sm-12" ng-show="!mostrarFormMoip" >
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+
+                        <div class="card-plano">
+
+
+                            <div class="plano-texto">
+
+                                <p class="plano-nome">TRIAL</p>
+
+                                <p class="">
+                                    <span>Por 30 dias</span> 
+                                </p>
+
+
+                                <p class="plano-preco"><span class="moeda">R$</span> 0,00</p>
+                                <div class="plano-itens">
+                                    <ul>
+                                        <li>Até 5 prospecções simultâneas</li>
+                                        <li>Até 50 contatos</li>
+                                        <li>Dicas sobre vendas</li>
+                                        <li>Lembretes por e-mail</li>
+                                        <li>Funil de vendas</li>
+                                        <li>Relatórios para você entender e melhorar seu fluxo de venda de projetos</li>
+                                    </ul>
+                                </div>
+
+                                <p>Você terá acesso a todas funcionalidades do BusinessMe POR 30 DIAS!</p>
+
+                            </div>
+
+
+                            <a class="btn-assinar" ng-click="assinarTrial()">Assinar TRIAL</a>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+
+                        <div class="card-plano">
+
+                            <div class="ribbon-wrapper-green"><div class="ribbon-green">Aproveite!</div></div>
+
+                            <div class="plano-texto">
+
+                                <p class="plano-nome">Desbravadores</p>
+
+                                <p>
+                                    <span class="moeda">R$</span> 
+                                    <span class="preco-sem-desconto">39,90</span> 
+                                    <span class="periodo">/mês</span>
+                                </p>
+                                <p class="plano-preco"><span class="moeda">R$</span> 19,90</p>
+                                <div class="plano-itens">
+                                    <ul>
+                                        <li>Prospecções ilimitadas</li>
+                                        <li>Contatos ilimitados</li>
+                                        <li>Dicas sobre vendas</li>
+                                        <li>Lembretes por e-mail</li>
+                                        <li>Funil de vendas</li>
+                                        <li>Relatórios para você entender e melhorar seu fluxo de venda de projetos</li>
+                                    </ul>
+                                </div>
+
+                                <p>Você terá acesso a todos os benefícios do BusinessMe pelo menor custo, para sempre!</p>
+
+                            </div>
+
+                            <a class="btn-assinar" ng-click="assinarDesbravador()">Assinar DESBRAVADORES</a>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="col-sm-4">
+
+                    <div class="card-plano disabled">
+
+                        <div class="ribbon-wrapper-green"><div class="ribbon-green">Em breve!</div></div>
+
+                        <div class="plano-texto">
+
+                            <p class="plano-nome">Pessoal</p>
+                            <p class="plano-preco"><span class="moeda">R$</span> 19,90</p>
+                            <div class="plano-itens">
+                                <ul>
+                                    <li>Até 10 prospecções simultâneas</li>
+                                    <li>Até 100 contatos</li>
+                                    <li>Lembretes por e-mail</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <a class="btn-assinar" ng-href="#/assine">Assinar</a>
+
+                    </div>
+
+                </div>
+                <div class="col-sm-4">
+
+                    <div class="card-plano disabled">
+
+                        <div class="ribbon-wrapper-green"><div class="ribbon-green">Em breve!</div></div>
+
+                        <div class="plano-texto">
+
+                            <p class="plano-nome">Profissional</p>
+                            <p class="plano-preco"><span class="moeda">R$</span> 29,90</p>
+                            <div class="plano-itens">
+                                <ul>
+                                    <li>Até 30 prospecções simultâneas.</li>
+                                    <li>Até 500 contatos</li>
+                                    <li>Lembretes por e-mail</li>
+                                    <li>Relatórios para você entender e melhorar seu fluxo de venda de projetos</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <a class="btn-assinar" ng-href="#/assine">Assinar</a>
+
+
+                    </div>
+
+
+                </div>
+                <div class="col-sm-4">
+
+                    <div class="card-plano disabled">
+
+                        <div class="ribbon-wrapper-green"><div class="ribbon-green">Em breve!</div></div>
+
+                        <div class="plano-texto">
+
+                            <p class="plano-nome">Empresa</p>
+                            <p class="plano-preco"><span class="moeda">R$</span> 39,90</p>
+                            <div class="plano-itens">
+                                <ul>
+                                    <li>Prospecções ilimitadas</li>
+                                    <li>Contatos ilimitados</li>
+                                    <li>Lembretes por e-mail</li>
+                                    <li>Relatórios para você entender e melhorar seu fluxo de venda de projetos</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <a class="btn-assinar" ng-href="#/assine">Assinar</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-sm-6" ng-show="mostrarFormMoip">
+
+                <div class="card-cadastro">
+
+                    <div class="plano-texto">
+
+                        <h1>Plano Desbravadores</h1>
+
+                        <p>
+                            <span class="moeda">R$</span> 
+                            <span class="preco-sem-desconto">49,90</span> 
+                            <span class="periodo">/mês</span>
+                        </p>
+                        <h3><span class="moeda">R$</span> 19,90<span class="periodo">/mês</span></h3>
+
+                        <ul>
+                            <li>Prospecções ilimitadas</li>
+                            <li>Contatos ilimitados</li>
+                            <li>Lembretes por e-mail</li>
+                            <li>Relatórios para você entender e melhorar seu fluxo de venda de projetos.</li>
+                        </ul>
+
+                        <hr/>
+                        <p>* Desconto válido para o período de 12 meses após a contratação do plano.</p>
+                        <p>** A emissão de Nota Fiscal Eletrônica de Serviço está disponível apenas para a cidade de São Paulo e o Distrito Federal.</p>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="col-sm-6" ng-show="mostrarFormMoip">
+
+                <div class="form-assinatura" >
+
+                    <div class="card-cadastro">
+
+
+                        <form name="form_assinatura" ng-submit="assinar()" novalidate>
+
+                            <div class="plano-texto">
+
+                                <div class="row">
+
+                                    <div class="col-xs-12">
+                                        <h2>2) Informe os dados do seu cartão de crédito</h2>
+                                    </div>
+
+                                    <div class="col-xs-12">
+                                        <label for="diaNasc">Nome impresso cartão *</label>
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.fullname.$invalid && form_assinatura.fullname.$touched">
+                                            <b>Nome impresso cartão</b> - é obrigatório.                                        
+                                        </p>
+                                        <input type="text" class="form-control" id="diaNasc"                                        
+                                               ng-required="true"
+                                               name="fullname"
+                                               ng-model="assinatura.cartao.fullname"
+                                               placeholder="Nome impresso cartão">
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <label for="mesNasc">Número do cartão *</label>
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.credit_card_number.$invalid && form_assinatura.credit_card_number.$touched">
+                                            <b>Número do cartão</b> - é obrigatório e deve ser válido.                                        
+                                        </p>
+                                        <div class="right-inner-addon ">
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                            <input type="credit card" class="form-control" id="mesNasc" 
+                                                   ng-required="true"
+                                                   name="credit_card_number"
+                                                   ng-model="assinatura.cartao.credit_card_number"
+                                                   placeholder="Número do cartão">
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-xs-12">
+                                        <p><b>Data de validade *</b></p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.expiration_month.$invalid && form_assinatura.expiration_month.$touched">
+                                            <b>Mês</b> - é obrigatório.                                        
+                                        </p>
+                                        <select  class="form-control" id="mesCartao"
+                                                 ng-required="true"
+                                                 name="expiration_month"
+                                                 ng-model="assinatura.cartao.expiration_month"
+                                                 >
+                                            <option value="">mês</option>
+                                            <option ng-repeat="n in range(01, 12)" value="{{n}}">{{n}}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.expiration_year.$invalid && form_assinatura.expiration_year.$touched">
+                                            <b>Ano</b> - é obrigatório.                                        
+                                        </p>
+
+                                        <select  class="form-control" id="anoCartao"
+                                                 ng-required="true"
+                                                 name="expiration_year"
+                                                 ng-model="assinatura.cartao.expiration_year"
+                                                 >
+                                            <option value="">ano</option>
+                                            <option ng-repeat="n in range(15, 99)" value="{{n}}">{{n}}</option>
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="col-xs-12">
+                                        <h2>3) Dados complementares para assinatura</h2>
+                                    </div>
+
+                                    <div class="col-xs-12">
+                                        <label for="cpf">CPF *</label>
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.cpf.$invalid && form_assinatura.cpf.$touched">
+                                            <b>CPF</b> - é obrigatório e deve ser válido.                                        
+                                        </p>
+                                        <input type="text" class="form-control" id="cpf" 
+                                               ng-required="true"
+                                               name="cpf"
+                                               ng-model="assinatura.customer.cpf"
+                                               ui-br-cpf-mask
+                                               placeholder="Digite seu CPF">
+                                    </div>
+
+                                    <div class="col-xs-12">
+                                        <p><b>Data de nascimento *</b></p>
+                                    </div>
+
+                                    <div class="col-xs-4">
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.birthdate_day.$invalid && form_assinatura.birthdate_day.$touched">
+                                            <b>dia</b> - é obrigatório.                                        
+                                        </p>
+
+                                        <select  class="form-control" id="diaNasc"
+                                                 ng-required="true"
+                                                 name="birthdate_day"
+                                                 ng-model="assinatura.customer.birthdate_day"
+                                                 >
+                                            <option value="">dia</option>
+                                            <option ng-repeat="n in range(01, 31)" value="{{n}}">{{n}}</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.birthdate_month.$invalid && form_assinatura.birthdate_month.$touched">
+                                            <b>mês</b> - é obrigatório.                                        
+                                        </p>
+
+                                        <select  class="form-control" id="mesNasc"
+                                                 ng-required="true"
+                                                 name="birthdate_month"
+                                                 ng-model="assinatura.customer.birthdate_month"
+                                                 >
+                                            <option value="">mês</option>
+                                            <option ng-repeat="n in range(01, 12)" value="{{n}}">{{n}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.birthdate_year.$invalid && form_assinatura.birthdate_year.$touched">
+                                            <b>ano</b> - é obrigatório.                                        
+                                        </p>
+
+                                        <select  class="form-control" id="anoNasc"
+                                                 ng-required="true"
+                                                 name="birthdate_year"
+                                                 ng-model="assinatura.customer.birthdate_year"
+                                                 >
+                                            <option value="">ano</option>
+                                            <option ng-repeat="n in range(1900, 2000)" value="{{n}}">{{n}}</option>
+                                        </select>
+                                    </div>
+
+
+
+                                    <div class="col-xs-12">
+                                        <label for="anoNasc">Telefone *</label>
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.phone_number.$invalid && form_assinatura.phone_number.$touched">
+                                            <b>Telefone</b> - é obrigatório e deve ser válido.                                        
+                                        </p>
+                                        <input type="text" class="form-control" id="telefone" 
+                                               ng-required="true"
+                                               name="phone_number"
+                                               ng-model="assinatura.customer.phone_number"
+                                               ui-br-phone-number
+                                               placeholder="Digitel seu DDD e telefone">
+                                    </div>
+
+
+                                    <div class="col-xs-12">
+                                        <p>Endereço</p>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <label for="cep">CEP *</label>
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.zipcode.$invalid && form_assinatura.zipcode.$touched">
+                                            <b>CEP</b> - é obrigatório.                                        
+                                        </p>
+                                        <input type="text" class="form-control" id="cep" 
+                                               ng-required="true"
+                                               name="zipcode"
+                                               ng-model="assinatura.address_params.zipcode"
+                                               ui-br-cep-mask
+                                               placeholder="Digite seu CEP">
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <label for="rua">Rua *</label>
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.street.$invalid && form_assinatura.street.$touched">
+                                            <b>Rua</b> - é obrigatório.                                        
+                                        </p>
+                                        <input type="text" class="form-control" id="rua" 
+                                               ng-required="true"
+                                               name="street"
+                                               ng-model="assinatura.address_params.street"
+                                               placeholder="Digite sua rua">
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label for="numeroRua">Número *</label>
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.number.$invalid && form_assinatura.number.$touched">
+                                            <b>Número</b> - é obrigatório.                                        
+                                        </p>
+                                        <input type="number" class="form-control" id="numeroRua" 
+                                               ng-required="true"
+                                               name="number"
+                                               ng-model="assinatura.address_params.number"
+                                               placeholder="número">
+                                    </div>
+
+                                    <div class="col-xs-6">
+                                        <label for="complemento">Complemento</label>
+                                        <input type="text" class="form-control" id="complemento" 
+                                               name="complement"
+                                               ng-model="assinatura.address_params.complement"
+                                               placeholder="complemento">
+                                    </div>
+
+                                    <div class="col-xs-12">
+                                        <label for="bairro">Bairro *</label>
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.district.$invalid && form_assinatura.district.$touched">
+                                            <b>Bairro</b> - é obrigatório.                                        
+                                        </p>
+                                        <input type="text" class="form-control" id="bairro" 
+                                               ng-required="true"
+                                               name="district"
+                                               ng-model="assinatura.address_params.district"
+                                               placeholder="nome do bairro">
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label for="estado">Estado *</label>
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.estado.$invalid && form_assinatura.estado.$touched">
+                                            <b>Estado</b> - é obrigatório.                                        
+                                        </p>
+                                        <select class="form-control"  id="estado" 
+                                                ng-required="true"
+                                                name="estado"
+                                                ng-model="id_estado" ng-change="carregarCidades()" > 
+                                            <option value="">Selecione seu estado</option>
+                                            <option ng-repeat="(key, estado) in estados" value="{{key}}">{{estado.nome}}</option>
+                                        </select>
+                                    </div>
+
+                                    <input type="hidden" ng-model="assinatura.address_params.state">
+
+                                    <div class="col-sm-8">
+                                        <label for="cidade">Cidade *</label>
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.city.$invalid && form_assinatura.city.$touched">
+                                            <b>Cidade</b> - é obrigatório.                                        
+                                        </p>
+                                        <select  class="form-control" id="cidade"
+                                                 ng-required="true"
+                                                 name="city"
+                                                 ng-model="assinatura.address_params.city"
+                                                 > 
+                                            <option value="">Selecione sua cidade</option>
+                                            <option ng-repeat="(key, cidade) in cidades" value="{{cidade}}">{{cidade}}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-xs-12">
+                                        <label for="pais">País *</label>
+                                        <p class="msg-error" 
+                                           ng-show="form_assinatura.country.$invalid && form_assinatura.country.$touched">
+                                            <b>País</b> - é obrigatório.                                        
+                                        </p>
+
+                                        <select  class="form-control" id="pais"
+                                                 ng-required="true"
+                                                 name="country"
+                                                 ng-model="assinatura.address_params.country" 
+                                                 >
+                                            <option value="">Selecine seu país</option>
+                                            <option value="BRA">Brasil</option>
+                                        </select>
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="col-xs-12">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"
+                                                       ng-required="true"
+                                                       name="termo_contrato"
+                                                       ng-model="assinatura.termo_contrato"
+                                                       > Lí e concordo com o 
+                                                <button type="button" class="btn-contrato" 
+                                                        data-toggle="modal" data-target="#contratoAssinatura"> 
+                                                    Contrato de assinatura
+                                                </button> *
+                                            </label>
+                                            <p class="msg-error" 
+                                               ng-show="form_assinatura.termo_contrato.$invalid">
+                                                Você deve concordar com o <b>Contrato de assinatura</b> para assinar.                                        
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p class="aviso-btn">
+                                        Preencha todos os campos obrigatórios (*) para
+                                        habilitar o botão de assinatura.
+                                    </p>
+
+
+
+                                </div>
+
+                            </div>
+
+
+
+
+                            <button type="submit" class="btn-assinar" 
+                                    ng-disabled="form_assinatura.$invalid"
+                                    >Assinar</button>
+
+
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="contratoAssinatura" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">TERMOS E CONDIÇÕES DE CONTRATAÇÃO DE ASSINATURAS</h4>
+            </div>
+            <div class="modal-body">
+                <p>1. OBJETO DOS TERMOS E CONDIÇÕES. O presente instrumento tem por objeto estabelecer os termos e condições da contratação celebrada entre a <a href="https://businessme.com.br/">BusinessME</a> e o ASSINANTE (Contratante) para o acesso aos serviços da BusinessME por ele contratadas (“Produtos/Serviços”), por meio internet.</p>
+                <p>1.1 As informações encontram-se disponíveis ao ASSINANTE no BusinessME.
+                </p>
+                <p>2. CÓDIGO DA ASSINATURA: A BusinessME concederá ao ASSINANTE um “Código de Assinante” para identificação do ASSINANTE junto ao Serviço de Atendimento ao Cliente BusinessME, que será um código pessoal e intransferível com 11 dígitos. O ASSINANTE pode encontrá-lo após a confirmação do seu pedido e quando do envio dos Produtos/Serviços ao ASSINANTE.
+                </p>
+                <p>3. ENTREGA A entrega dos Produtos/Serviços se iniciará no prazo máximo de 48 horas a contar da data da contratação.
+                </p>
+                <p>4. CONTRATAÇÃO, PREÇOS, FORMAS DE PAGAMENTO: A contratação pelo ASSINANTE deverá ser realizada por meio do “site” da BusinessME, onde constarão todos os Planos de Assinatura disponíveis, bem como suas condições específicas.</p>
+                <p> 4.1. O ASSINANTE deverá optar pelo Plano de Assinatura que deseja contratar, sendo certo que suas condições específicas (Valores, Prazos, Condições de Pagamento e etc.) constantes do site passarão a fazer parte integrante e inseparável do presente instrumento.
+                </p>
+                <p> 4.2. O ASSINANTE expressamente declara e garante, para todos os fins de direito:</p>
+                <p>(I) possuir capacidade jurídica para celebrar este instrumento e para utilizar o Produto/ Serviço; </p>
+                <p>(II) reconhecer que o presente instrumento se formaliza, vinculando as partes, com a confirmação contratual, o que se fará mediante o clique no espaço reservado paratanto no site da BusinessME.</p>
+                <p>4.3. Como contraprestação pelo objeto deste contrato, o ASSINANTE deverá pagar à BusinessME a quantia correspondente ao Plano contratado, conforme opção realizada na hora da compra e vigente no ato da compra.
+                </p>
+                <p>4.4. A forma de pagamento será escolhida pelo ASSINANTE dentre as constantes do “site” para o Plano escolhido, onde constarão também a periodicidade da cobrança e eventuais penalidades aplicáveis.
+                </p>
+                <p>5. BANCO DE DADOS. O ASSINANTE se declara ciente de que, a partir da contratação da assinatura de um Produto/Serviço, o mesmo passa a fazer parte do banco de dados da BusinessME, por meio do qual poderá vir a receber informações da BusinessME e de outras empresas idôneas com as quais a mesma possua relacionamento. Se acaso o ASSINANTE não tiver o interesse em receber essas informações, fica assegurado ao mesmo o direito de manifestar sua oposição, bastando que tal decisão seja comunicada para o Serviço de Atendimento ao Cliente BusinessME.
+                </p>
+                <p>
+                    5.1. A inviolabilidade e o sigilo dos dados cadastrais de todo os seus ASSINANTES são assegurados pela BusinessME. Todas as suas informações são armazenadas dentro dos mais rígidos critérios de segurança no banco de dados daBusinessME e são tratadas de acordo com a legislação aplicável. Em nenhuma hipótese são fornecidas informações pessoais para terceiros não relacionados à prestação dos serviços, objeto do presente instrumento, somente dados genéricos utilizados para envio de mala direta, e-mail, newsletters e desde que autorizado pelo ASSINANTE.
+                </p>
+                <p>6. SERVIÇO DE ATENDIMENTO AO ASSINANTE. ABusinessME disponibiliza ao ASSINANTE Serviço de Atendimento e coloca à disposição os seguintes canais de contato:
+                </p>
+                <p> a) Telefone: +552139426648</p>
+                <p>b) Site: www.businessme.com.br</p>
+                <p> Periodicidade de funcionamento (dias e horários): de segunda a sexta-feira, das 10hr as 18hr.
+                </p>
+                <p>7. PRAZO. Este instrumento é celebrado pelo prazo de 1 a 12 meses, conforme opção do ASSINANTE no site da BusinessME, sendo prorrogado por períodos iguais, por meio da renovação facilitada, conforme procedimento previsto no próximo item.
+                </p>
+                <p>8. PROCEDIMENTO DE RENOVAÇÃO: BusinessME adota o procedimento de renovação programada da assinatura, dirigido exclusivamente ao ASSINANTE, assegurando facilidade e agilidade na renovação.</p>
+                <p>9. CANCELAMENTO. A BusinessME assegura ao ASSINANTE a possibilidade de cancelamento do presente instrumento a qualquer tempo, través do site da BusinessME. No entanto nenhum valor pago será reembolsado.</p>
+                <p>10. RESCISÃO. A assinatura poderá ser cancelada e o presente instrumento rescindido na hipótese de infração contratual, caso a parte infratora não corrija o inadimplemento, após notificação.</p>
+                <p>10.1. Caso o ASSINANTE não pague o valor devido no prazo estipulado em notificação a ser enviada pela BusinessME, o presente instrumento poderá ser rescindido com a imediata suspensão da entrega dos Produtos/Serviços.</p>
+                <p>11. ALTERAÇÕES DOS TERMOS E CONDIÇÕES. Quaisquer alterações que impactem em ônus financeiro ao ASSINANTE, serão feitas mediante comunicação prévia ao mesmo, que poderá manifestar a sua concordância, por qualquer meio disponível, renegociar tais alterações ou qualquer das partes poderá denunciá-lo, caso não cheguem a um acordo.</p>
+                <p>12. FORO. Fica assegurado ao ASSINANTE o direito de, caso necessário, recorrer ao Foro da Comarca em que residir, para quaisquer dúvidas e questões oriundas deste instrumento.</p>    
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

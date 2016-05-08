@@ -15,6 +15,8 @@ myApp.controller('BBotController', [
         var auth = $firebaseAuth(ref);
 
         var init = function () {
+            
+            
 
             $scope.filtro = {
                 data: '0',
@@ -51,25 +53,6 @@ myApp.controller('BBotController', [
                 var fasesList = $firebaseArray(fasesRef);
                 
                 
-
-                
-                
-//                var configObj = $firebaseObject(configRef);
-//
-//
-//                configObj.$bindTo($scope, "config").then(function () {
-//                    $scope.config.tipoLista = "grid";  // will be saved to the database                        
-//                    console.log($scope.config);
-//                });
-//
-//
-//                configObj.$loaded()
-//                        .then(function (data) {
-//                            $scope.filtro.tipoLista = $scope.config.tipoLista;
-//                            console.log(data);
-//                        })
-//                        .catch(function (error) {
-//                        });
                 
                 
 
@@ -174,7 +157,7 @@ myApp.controller('BBotController', [
 
                     var nomeContato = $scope.lead.contato;
 
-                    console.log($scope.lead.contato);
+
 
                     var result = contatoRef.orderByChild("nome").equalTo($scope.lead.contato);
 //
@@ -219,35 +202,17 @@ myApp.controller('BBotController', [
                     var loadItem = leadsInfo.$getRecord(idLead);
                     $scope.loadItem = loadItem;
                     
-                    console.log(loadItem);
+
                     
                     
                     $scope.loadItem.datalembrete = new Date(loadItem.datalembrete);
                     
-                    
-                    
-
-
-//                    var refLoadLead = new Firebase(FIREBASE_URL + 'users/' + uid
-//                            + '/leads/' + idLead);
-//                    
-//                    var loadLeadData = $firebaseObject(refLoadLead);
-//
-//                    loadLeadData.$bindTo($scope, "loadItem").then(function () {
-//                        console.log($scope.loadItem);
-//                    });
-//
-//
-//                    loadLeadData.$watch(function () {
-//                        console.log("data changed!");
-//                        console.log($scope.loadItem);
-//                    });
 
                 };//loadLead
 
                 $scope.faseChangeModal = function () {
 
-                    mudarFaseMudarLembrete($scope.loadItem, 'modal');
+                    //mudarFaseMudarLembrete($scope.loadItem, 'modal');
                 };
 
                 $scope.salvarUpdateModal = function () {
@@ -262,7 +227,7 @@ myApp.controller('BBotController', [
                 };
                 $scope.excluirUpdateModal = function () {
 
-                    console.log($scope.loadItem);
+
 
                     if (confirm("Tem certeza que deseja excluir esse LEAD?")) {
                         // todo code for deletion
@@ -330,31 +295,30 @@ myApp.controller('BBotController', [
                     var hj = new Date().setHours(0, 0, 0, 0);
 
                     if ($scope.filtro.data == 0) {
-                        console.log(1);
+              
                         $scope.filtro.lembrete = '';
 
                     } else if ($scope.filtro.data == 1) {
-                        console.log(2);
+            
 
 
                         $scope.filtro.lembrete = hj;
 
                     } else if ($scope.filtro.data == 2) {
-                        console.log(3);
+                
 
                         $scope.filtro.lembrete = hj;
 
                     } else {
-                        console.log(4);
+      
                     }
 
-                    console.log($scope.leadsList);
-                    console.log($scope.filtro);
+          
                 };
 
 
                 $scope.setTipoLista = function () {
-                    console.log($scope.filtro);
+                
 
                     //$scope.config.tipoLista = $scope.filtro.tipoLista;
                 };

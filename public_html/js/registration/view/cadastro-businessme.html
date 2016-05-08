@@ -1,0 +1,92 @@
+<div class="" ng-include="'view/header.html'"></div>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-sm-6 col-sm-offset-3">
+
+            <div class="card-cadastro">
+
+                <form name="formcadastro" ng-submit="register()"
+                      class="formcadastro" novalidate>
+
+                    <div class="plano-texto">
+
+                        <div class="form-group">
+
+                            <label for="name">Nome completo *</label>
+                            <p class="msg-error" 
+                               ng-show="formcadastro.name.$invalid && formcadastro.name.$touched">
+                                <b>Nome completo</b> - é obrigatório.                                        
+                            </p>
+                            <input type="text" name="name" class="form-control"
+                                   placeholder="Seu nome" ng-model="user.name" ng-required="true">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="area">Área de atuação *</label>
+                            <p class="msg-error" 
+                               ng-show="formcadastro.area.$invalid && formcadastro.area.$touched">
+                                <b>Área de atuação</b> - é obrigatório.                                        
+                            </p>
+
+                            <select id="area"  
+                                    ng-required="true"
+                                    name="area"
+                                    class="form-control" 
+                                    ng-model="user.profissao" 
+                                    >
+                                <option value="">Selecione uma área</option>
+                                <option ng-repeat="(key, nome) in areas" >{{nome}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <p class="msg-error" 
+                               ng-show="formcadastro.email.$invalid && formcadastro.email.$touched">
+                                <b>E-mail</b> - é obrigatório e deve ser válido.                                        
+                            </p>
+                            <input type="email" name="email" class="form-control"
+                                   placeholder="Email" ng-model="user.email" ng-required="true">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="senha">Senha *</label>
+                            <p class="msg-error" 
+                               ng-show="formcadastro.password.$invalid && formcadastro.password.$touched">
+                                <b>Senha</b> - é obrigatório.                                        
+                            </p>
+
+                            <input type="password" name="password" class="form-control"
+                                   placeholder="Senha" ng-model="user.password" ng-required="true">
+
+                            <p class="error validationerror"
+                               ng-show="formcadastro.password.$invalid && formcadastro.password.$touched">
+                                É necessário uma senha</p>
+                        </div>
+
+                        <p class="message validationerror" ng-show="message">{{message}}</p>
+
+                    </div>
+
+                    <button type="submit" ng-disabled="formcadastro.$invalid"
+                            class="btn-assinar">Selecione o PLANO »</button>
+                </form>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+

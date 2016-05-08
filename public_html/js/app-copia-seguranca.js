@@ -2,7 +2,8 @@ var myApp = angular.module(
 		'myApp',
 		[ 'ngRoute', 'firebase', 'ngMaterial', 'ngDraggable',
 				'angular-toArrayFilter', 'angularMoment', 'angular-flippy',
-				'angulartics', 'angulartics.google.analytics' ]).constant(
+				'angulartics', 'angulartics.google.analytics' ])
+.constant(
 		'FIREBASE_URL', 'https://businessme-register.firebaseio.com/');
 
 myApp.config([ '$httpProvider', function($httpProvider) {

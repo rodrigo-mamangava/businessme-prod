@@ -17,7 +17,6 @@ myApp.controller('RegistrationController', ['$scope', 'Authentication',
             Authentication.register($scope.user);
         };// register
 
-
         $scope.irPara = function (nav) {
 
             if (nav != 'assine') {

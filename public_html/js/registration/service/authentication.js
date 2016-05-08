@@ -10,19 +10,57 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
             if (authUser) {
                 var userRef = new Firebase(FIREBASE_URL + 'users/' + authUser.uid + '/userData/');
                 var userObj = $firebaseObject(userRef);
+
+                userObj.$loaded()
+                        .then(function (data) {
+                            $rootScope.currentUser = data;
+
+                            if ($rootScope.planoCode) {
+                                var plano = {
+                                    datainicio: Firebase.ServerValue.TIMESTAMP,
+                                    code: $rootScope.planoCode,
+                                    assinatura: $rootScope.planoCriado
+                                };
+                                
+                                data.plano = plano;
+                                data.$save();    
+                                
+                                $rootScope.UserTemp = '';
+                                $rootScope.planoCriado = '';
+                            }
+
+                        })//$loaded
+                        .catch(function (error) {
+                            console.error("Error:", error);
+                        });
+
                 $rootScope.currentUser = userObj;
+
             } else {
                 $rootScope.currentUser = '';
             }
         });
 
         var myObject = {
+            loginToSucess: function (user) {
+                auth.$authWithPassword({
+                    email: user.email,
+                    password: user.password
+                }).then(function (regUser) {
+                    $location.path('/sucesso');
+                    
+                }).catch(function (error) {
+                    $rootScope.message = error.message;
+                });
+
+            }, // login
             login: function (user) {
                 auth.$authWithPassword({
                     email: user.email,
                     password: user.password
                 }).then(function (regUser) {
                     $location.path('/bbot');
+                    
                 }).catch(function (error) {
                     $rootScope.message = error.message;
                 });
@@ -34,10 +72,10 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
             }, // logout
 
             requireAuth: function () {
-                return auth.$requireAuth();                
+                return auth.$requireAuth();
             }, // requireAuth
 
-            register: function (user) {
+            register: function (user, tipo) {
                 auth.$createUser({
                     email: user.email,
                     password: user.password
@@ -45,7 +83,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
 
                     var regRef = new Firebase(FIREBASE_URL + 'users/' + regUser.uid);
 
-                    regRef.child('userData').set({
+                    var novoUser = {
                         date: Firebase.ServerValue.TIMESTAMP,
                         regUser: regUser.uid,
                         firstname: (user.firstname) ? user.firstname : '',
@@ -53,9 +91,14 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
                         name: (user.name) ? user.name : '',
                         profissao: (user.profissao) ? user.profissao : '',
                         email: user.email,
-                        picture: ''
+                        picture: '',
+                        plano: {
+                            code: "trial"
+                        }
 
-                    });// user info
+                    };
+
+                    regRef.child('userData').set(novoUser);// user info
 
                     var fasesRef = new Firebase(FIREBASE_URL + 'users/' + regUser.uid + '/fases');
 
@@ -69,7 +112,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
                         posicao: 0,
                         cod: 101
                     };
-                    
+
                     var contato = {
                         comando: "Contato",
                         descricao: "Aqui vai a descrição desse comando",
@@ -78,7 +121,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
                         posicao: 1,
                         cod: 102
                     };
-                    
+
                     var orcamento = {
                         comando: "Orçamento",
                         descricao: "Aqui vai a descrição desse comando",
@@ -87,7 +130,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
                         posicao: 2,
                         cod: 103
                     };
-                    
+
                     var negocicao = {
                         comando: "Negociação",
                         descricao: "Aqui vai a descrição desse comando",
@@ -96,7 +139,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
                         posicao: 3,
                         cod: 104
                     };
-                    
+
                     var sucesso = {
                         comando: "Fechamento: Sucesso",
                         descricao: "Aqui vai a descrição desse comando",
@@ -105,7 +148,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
                         posicao: 4,
                         cod: 201
                     };
-                    
+
                     var falha = {
                         comando: "Fechamento: Falha",
                         descricao: "Aqui vai a descrição desse comando",
@@ -114,8 +157,8 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
                         posicao: 5,
                         cod: 202
                     };
-                    
-                    
+
+
 
                     fases.$add(potencial);
                     fases.$add(contato);
@@ -125,8 +168,16 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
                     fases.$add(falha);
 
 
+                    if (tipo == 'assinatura') {
+                        console.log('assinatura');
+                        $rootScope.msgCadastro = "Cadastro realizado com sucesso!";
+                    } else {
+                        $location.path('/escolher-plano');
+                        $rootScope.UserTemp = novoUser;
+                        $rootScope.UserTemp.password = user.password;
+                    }
 
-                    myObject.login(user);
+
 
                 }).catch(function (error) {
                     $rootScope.message = error.message;
@@ -161,43 +212,43 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
                     $rootScope.message = error.message;
                 });
 
-            },// loginFacebook
-            
-            resetPassword: function(email){
-            	
-            	auth.$resetPassword({
-            		  email: email
-            		}).then(function() {
-            		  $rootScope.messageReset = "Password reset email sent successfully!";
-            		}).catch(function(error) {
-            		  $rootScope.messageReset = error.message;
-            		});
+            }, // loginFacebook
 
-     	
-            },// resetPassword
-            
-            changePass: function (email, oldPass, newPass){
-                
-                
+            resetPassword: function (email) {
+
+                auth.$resetPassword({
+                    email: email
+                }).then(function () {
+                    $rootScope.messageReset = "Password reset email sent successfully!";
+                }).catch(function (error) {
+                    $rootScope.messageReset = error.message;
+                });
+
+
+            }, // resetPassword
+
+            changePass: function (email, oldPass, newPass) {
+
+
                 console.log(email);
                 console.log(oldPass);
                 console.log(newPass);
-            	
-            	auth.$changePassword({
-            		  email: email,
-            		  oldPassword: oldPass,
-            		  newPassword: newPass
-            		}).then(function() {
-                            $rootScope.changeP = 'Senha alterada com sucesso!';
-            		  console.log("Senha alterada com sucesso!");
-            		}).catch(function(error) {
-                            $rootScope.changeP = 'Senha antiga errada. Tente novamente.';
-            		  console.error("Error: ", error);
-            		});
-            	
-            },// changePass
-            
-            
+
+                auth.$changePassword({
+                    email: email,
+                    oldPassword: oldPass,
+                    newPassword: newPass
+                }).then(function () {
+                    $rootScope.changeP = 'Senha alterada com sucesso!';
+                    console.log("Senha alterada com sucesso!");
+                }).catch(function (error) {
+                    $rootScope.changeP = 'Senha antiga errada. Tente novamente.';
+                    console.error("Error: ", error);
+                });
+
+            }, // changePass
+
+
 
         };// return
         return myObject

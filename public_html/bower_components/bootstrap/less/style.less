@@ -29,6 +29,12 @@
    Fonts
    ========================================================================== */
 
+
+
+/* ==========================================================================
+   Fonts
+   ========================================================================== */
+
 @fontIrma: "Irma Text Round Black";
 
 @fontAzo: "azo-sans-web",sans-serif;
@@ -54,6 +60,12 @@
     line-height: 54px;/* Aproximação devido à substituição de fonte */
     text-align: left;
     text-transform: uppercase;
+}
+.estilo-h2{
+    font-family: @fontIrma;
+    font-size: 20px;/* Aproximação devido à substituição de fonte */
+    font-weight: 900;
+    text-align: left;
 }
 
 .estilo-texto-padrao(@cor, @tamanho){
@@ -110,9 +122,12 @@
 @laranja: #FF8838;
 @laranja-claro: #ffa86e;
 
+
+
 @cinza-escuro: #d2d2d2;
 @cinza-claro:  #828282;
 @cinza-claro-x: #f0f0f0;
+@cinza-claro-xx: #e6e6e6;
 
 @verde: #21c939;
 
@@ -139,9 +154,18 @@ input[type="text"], textarea {
 }
 
 
+.layout-row {
+    background-color: transparent;
+}
+
+
 /* ==========================================================================
    Geral
    ========================================================================== */
+html{
+    background-color: @cinza-claro-x;
+}
+
 body{
 
     .estilo01;
@@ -154,6 +178,35 @@ body{
     h1{
         font-family: @fontIrma;
     }
+}
+
+.not-visible{
+    visibility: hidden;
+}
+
+
+.modal-loadind{
+    display: block;
+
+    .modal-body{
+        .text-center;
+        .center-block;
+    }
+
+}
+
+#modalLoading{
+    .text-center;
+    p {
+        color: white;
+        font-size: 40px;
+    }
+
+    img{
+        width: 100px;
+        height: auto;
+    }
+
 }
 
 /* ==========================================================================
@@ -324,6 +377,176 @@ header.interno{
 
 
 /* ==========================================================================
+   BOTOES
+   ========================================================================== */
+.btn-assinar{
+    .btn;
+    .button-variant(@branco, @verde, @verde);
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+    position: absolute;
+    bottom: 0;
+
+    font-family: @fontIrma;
+    color:  @branco;
+    font-size: 16px;/* Aproximação devido à substituição de fonte */
+    font-weight: 900;
+    line-height: 32px;/* Aproximação devido à substituição de fonte */
+
+    .text-uppercase;
+
+}
+
+
+/* ==========================================================================
+   PLANOS
+   ========================================================================== */
+.card-plano{
+    border-radius: 4px;
+    background-color:  @branco;
+    min-height: 410px;
+    position: relative;
+    z-index: 90;
+    margin-top: 42px;
+    margin-bottom: 116px;
+    padding-bottom: 28px;
+
+
+    @media (max-width: @screen-xs-max) { 
+        min-height: auto;
+        height: auto;
+    }
+
+    .plano-texto{
+        padding: 28px 30px;
+
+        .plano-nome{
+
+            font-family: @fontAzo;
+            color:  @laranja;
+            font-size: 18px;/* Aproximação devido à substituição de fonte */
+            font-weight: 300;
+            line-height: 32px;/* Aproximação devido à substituição de fonte */
+            text-align: left;
+
+        }
+
+        .plano-preco{
+
+            .moeda{
+                font-size: 10px;
+            }
+
+            font-family: @fontIrma;
+            color:  @preto-1;
+            font-size: 36px;/* Aproximação devido à substituição de fonte */
+            font-weight: 900;
+            line-height: 32px;/* Aproximação devido à substituição de fonte */
+            text-align: left;
+
+        }
+
+        .plano-itens{
+            font-family: @fontAzo;
+            color:  @laranja;
+            font-size: 16px;/* Aproximação devido à substituição de fonte */
+            font-weight: 300;
+            line-height: 28px;/* Aproximação devido à substituição de fonte */
+
+        }
+
+    }
+
+    ul{
+        padding: 0;
+    }
+    li {
+        list-style-type: none;
+
+        &:before{
+            font-family: 'FontAwesome';
+            content: '\f00c';
+            margin:0 5px 0 -15px;
+            color: @verde;
+
+        }
+    }
+
+
+
+
+
+
+
+}
+
+/* ==========================================================================
+   CARD CADASTRO
+   ========================================================================== */
+.card-cadastro{
+    .card-plano;
+}
+
+.card-descricao{
+    border-radius: 4px;
+    background-color:  @branco;
+    min-height: 410px;
+    position: relative;
+    z-index: 90;
+    margin-top: 42px;
+    margin-bottom: 116px;
+    padding-bottom: 28px;
+
+
+    @media (max-width: @screen-xs-max) { 
+        min-height: auto;
+        height: auto;
+    }
+
+    .plano-texto{
+        padding: 28px 30px;
+
+        .plano-nome{
+
+            font-family: @fontAzo;
+            color:  @laranja;
+            font-size: 18px;/* Aproximação devido à substituição de fonte */
+            font-weight: 300;
+            line-height: 32px;/* Aproximação devido à substituição de fonte */
+            text-align: left;
+
+        }
+
+        .plano-preco{
+
+            .moeda{
+                font-size: 10px;
+            }
+
+            font-family: @fontIrma;
+            color:  @preto-1;
+            font-size: 36px;/* Aproximação devido à substituição de fonte */
+            font-weight: 900;
+            line-height: 32px;/* Aproximação devido à substituição de fonte */
+            text-align: left;
+
+        }
+
+        .plano-itens{
+            font-family: @fontAzo;
+            color:  @laranja;
+            font-size: 16px;/* Aproximação devido à substituição de fonte */
+            font-weight: 300;
+            line-height: 28px;/* Aproximação devido à substituição de fonte */
+
+        }
+
+    }
+
+
+}
+
+/* ==========================================================================
    LANDINGPAGE
    ========================================================================== */
 .landingpage{
@@ -403,6 +626,7 @@ header.interno{
                 line-height: 32px;/* Aproximação devido à substituição de fonte */
                 text-align: left;
                 border: 0;
+                color: @branco;
 
                 .placeholder(@branco);
 
@@ -491,100 +715,7 @@ header.interno{
 
         }
 
-        .card-plano{
-            border-radius: 4px;
-            background-color:  @branco;
-            min-height: 400px;
-            position: relative;
-            z-index: 90;
-            margin-top: 42px;
-            margin-bottom: 116px;
-            padding-bottom: 28px;
 
-
-            @media (max-width: @screen-xs-max) { 
-                min-height: auto;
-                height: auto;
-            }
-
-            .plano-texto{
-                padding: 28px 30px;
-
-                .plano-nome{
-
-                    font-family: @fontAzo;
-                    color:  @laranja;
-                    font-size: 18px;/* Aproximação devido à substituição de fonte */
-                    font-weight: 300;
-                    line-height: 32px;/* Aproximação devido à substituição de fonte */
-                    text-align: left;
-
-                }
-
-                .plano-preco{
-
-                    .moeda{
-                        font-size: 10px;
-                    }
-
-                    font-family: @fontIrma;
-                    color:  @preto-1;
-                    font-size: 36px;/* Aproximação devido à substituição de fonte */
-                    font-weight: 900;
-                    line-height: 32px;/* Aproximação devido à substituição de fonte */
-                    text-align: left;
-
-                }
-
-                .plano-itens{
-                    font-family: @fontAzo;
-                    color:  @laranja;
-                    font-size: 16px;/* Aproximação devido à substituição de fonte */
-                    font-weight: 300;
-                    line-height: 28px;/* Aproximação devido à substituição de fonte */
-
-                }
-
-            }
-
-            ul{
-                padding: 0;
-            }
-            li {
-                list-style-type: none;
-
-                &:before{
-                    font-family: 'FontAwesome';
-                    content: '\f00c';
-                    margin:0 5px 0 -15px;
-                    color: @verde;
-
-                }
-            }
-
-
-            .btn-assinar{
-                .btn;
-                .button-variant(@branco, @verde, @verde);
-                width: 100%;
-                border-radius: 0 0 5px 5px;
-                position: absolute;
-                bottom: 0;
-
-                font-family: @fontIrma;
-                color:  @branco;
-                font-size: 16px;/* Aproximação devido à substituição de fonte */
-                font-weight: 900;
-                line-height: 32px;/* Aproximação devido à substituição de fonte */
-
-                .text-uppercase;
-
-            }
-
-
-
-
-        }
 
     }//preco
 
@@ -743,8 +874,12 @@ header.interno{
             margin-top: -5px;
         }
 
+        .area-campo{
+            padding-right: 0px;
+        }
+
         .area-btn-bbot{
-            margin-left: -30px;
+            padding-left: 0px;
 
             @media (max-width: @screen-xs-max) {  
                 //width: auto;
@@ -760,6 +895,10 @@ header.interno{
                 width: 100%;
                 border-radius: 0;
                 height: 70px;
+                font-family: @fontIrma;
+                font-size: 16px;/* Aproximação devido à substituição de fonte */
+                font-weight: 900;
+                text-transform: uppercase;
             }
 
         }
@@ -783,9 +922,26 @@ header.interno{
         text-align: left;
     }
 
-    .fitro-data{
-        margin-top: 16px;
+    .tipo-lista, .order-lista, .fitro-data{
         .pull-right;
+        margin-left: 60px;
+        p{
+            .text-right; 
+        }
+    }
+
+
+    .order-lista{
+        margin-top: -10px;
+
+        .order{
+            margin-left: -10px;
+        }
+
+    }
+
+    .settings{        
+        padding: 17px 0 17px 17px;     
     }
 
     md-radio-group.md-default-theme:not([disabled]) .md-primary .md-on, md-radio-group:not([disabled]) .md-primary .md-on, md-radio-group.md-default-theme:not([disabled]).md-primary .md-on, md-radio-group:not([disabled]).md-primary .md-on, md-radio-button.md-default-theme:not([disabled]) .md-primary .md-on, md-radio-button:not([disabled]) .md-primary .md-on, md-radio-button.md-default-theme:not([disabled]).md-primary .md-on, md-radio-button:not([disabled]).md-primary .md-on, 
@@ -807,7 +963,16 @@ header.interno{
 
     .campo-data{
         border: 0;
+        padding: 0;
     }
+
+    .calendario{
+        md-icon {
+            margin-top: -6px;
+        }
+    }
+
+
 
     .titulo-filtro{
 
@@ -823,6 +988,28 @@ header.interno{
         padding-top: 50px;
 
     }
+
+    .area-lista{
+
+        margin-top: 10px;
+        padding-top: 70px;
+
+        th{
+            .material-icons{
+                margin-top: -5px;
+            }
+        }
+
+        .linha{
+            padding: 12px 6px;
+            background-color: @branco;
+        }
+
+
+
+    }
+
+
 
 
     .btn-remover-filtro{
@@ -881,10 +1068,48 @@ header.interno{
             border: 0;
         }
 
+    }
+
+    //novo modelo de CARDS
+    .card-lead-02{
+
+        width: 350px;
+
+        h2{
+            margin-top: 0;
+            margin-bottom: 15px;
+            .estilo-h2;
+        }
+
+
+        .md-subhead {
+            padding-top: 0;
+            margin-top: -15px;
+            font-size: 10px;
+        }
+
+        p{
+            span.icone{
+                margin-right: 22px;
+            }
+
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        md-icon {
+            margin-top: -5px;
+            margin-left: -2px;
+            margin-right: 5px;
+        }
+
+
 
     }
 
-
+    .contato{}
+    .data{}
+    .alerta{}
 
 
 
@@ -892,35 +1117,136 @@ header.interno{
 
 }
 
+/* ==========================================================================
+   CHECKBOX LIKE A BUTTON
+   ========================================================================== */
+
+div label input {
+    margin-right:100px;
+
+}
+
+
+.ck-button {
+    background-color: transparent;
+    border-radius:4px;
+    border:0;
+    overflow:auto;
+    float:left;
+
+}
+
+
+
+.ck-button:hover {
+    background:#dcdcdc;
+}
+
+.ck-button label {
+    float:left;
+    width: 30px;
+    margin: 0;
+}
+
+.ck-button label span {
+    text-align:center;
+    padding:3px 0px;
+    display:block;
+
+}
+
+.ck-button label input {
+    position:absolute;
+    top:-20px;
+    display: none;
+}
+
+.ck-button input:checked + span {
+    background-color: #dcdcdc;
+    color: @preto-1;
+}
+
+/* ==========================================================================
+   modalDica
+   ========================================================================== */
+
+#modalDica{
+
+    h2 {
+        font-family: @fontIrma;
+        width: 95%;
+        .text-center;
+        height: 70px;
+        margin-top: 15px;
+        color:  @preto-1;
+        font-size: 22px;
+        font-weight: 900;
+    }
+
+    p{
+        .text-left;
+        padding: 0 15px;
+        font-size: 19px;
+        font-size: 1.9rem;
+    }
+
+    .modal-header {
+        padding: 15px;
+        border-bottom: 1px solid #e5e5e5;
+        border: 0;
+    }
+
+    .modal-footer {
+        padding: 0;
+        text-align: right;
+        border-top: 1px solid #e5e5e5;
+        border: 0;
+    }
+
+    .modal-content{
+        background-color: @laranja;
+
+    }
+}
+
 
 
 #chat-box{
 
     position: fixed;
-    bottom: 1px;
+    z-index: 1000;
+    bottom: 0px;
     right: 20px;
     background-color: @preto-1;
-    width: 350px;
-    padding: 5px 15px 0;
+    width: 293px;
+    padding:0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 
 
     .msg-aviso{
         padding: 5px 0;
-        color: @laranja;
+        color: @preto-1;
     }
 
     .chamado-head{
 
-
+        padding: 19px 19px 16px;
+        background-color: @preto-1;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
 
         h3{
-            color: white;
-            font-size: 16px;
-            padding-bottom: 10px;
-            margin: 5px 0;
-
-
+            font-family: @fontIrma;
+            color:  @branco;
+            font-size: 14px;/* Aproximação devido à substituição de fonte */
+            font-weight: 900;
+            text-align: left;
+            padding: 0;
+            margin: 0;
         }
+
+
 
         .btn-chamado{
             font-size: 16px;
@@ -929,6 +1255,18 @@ header.interno{
             .button-variant(@branco, transparent, transparent);
             margin: 0;
             padding: 0;
+            outline: none;
+            margin-top: -4px;
+            font-size: 14px;/* Aproximação devido à substituição de fonte */
+            font-weight: 400;
+
+            &:focus, &:active, &:hover{
+                outline: none;
+            }
+
+            .focus, .active{
+                outline: none;
+            }
         }
 
 
@@ -936,12 +1274,21 @@ header.interno{
     }
     .chamado-body{
 
+        padding: 19px;
+        font-family: @fontAzo;
+        color:  @preto-1;
+        font-size: 16px;/* Aproximação devido à substituição de fonte */
+        font-weight: 400;
+        text-align: left;
+
+        background-color: @cinza-claro-xx;
+
         display: none;
 
         form{
 
             .radio label, .checkbox label {
-                color: white;
+                color:  @preto-1;
             }
 
             button.registrar{
@@ -949,13 +1296,22 @@ header.interno{
                 .button-variant(@branco, @laranja, @laranja);
                 width: 100%;
                 border: 0;
+                border-bottom: 2px;
+                font-family: @fontIrma;
+                font-size: 14px;/* Aproximação devido à substituição de fonte */
+                font-weight: 900;
+                height: 44px;
             }
 
+            textarea{
+                .placeholder(@cinza-claro-xx);
+            }
 
 
         }
     }
 }
+
 
 
 
@@ -995,7 +1351,7 @@ header.interno{
             text-align: left;
 
             p, select{
-                margin: 0 0 20px;
+                //margin: 0 0 20px;
             }
 
 
@@ -1046,10 +1402,21 @@ header.interno{
     }
 
 
+}
 
+/* ==========================================================================
+   Date picker do LOAD LEAD MODAL
+   ========================================================================== */
 
+.md-datepicker-calendar-pane.md-pane-open {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    z-index: 2000;
+}
 
-
+md-datepicker.md-default-theme, md-datepicker.data-modal {
+    background: transparent; 
+    margin-left: -16px;
 }
 
 
@@ -1085,6 +1452,7 @@ header.interno{
 
     background-color: @cinza-claro-x !important;
     padding-top: 64px;
+    padding-bottom: 128px;
 
     md-content{
         background-color: @cinza-claro-x !important;
@@ -1191,32 +1559,34 @@ header.interno{
 
     }
 
-    .btn-assinar{
-        .btn;
-        .btn-success;
-        width: 100%;
-        margin-top: 20px;
-
-    }
-
-
-
 }
 
 
 
 
+/* ==========================================================================
+   Date picker do BIG FIELD do BBOT
+   ========================================================================== */
+
+.contratoAssinatura{
+    h4{
+        font-size: 11px;
+    }
+    p{
+        font-size: 10px;
+    }
+}
 
 
 
-
-
-
+/* ==========================================================================
+   Date picker do BIG FIELD do BBOT
+   ========================================================================== */
 
 
 //
-.datepickerdemoBasicUsage {
-    /** Demo styles for mdCalendar. */ }
+/*.datepickerdemoBasicUsage {
+    * Demo styles for mdCalendar.  }
 .datepickerdemoBasicUsage md-content {
     padding-bottom: 200px; }
 .datepickerdemoBasicUsage .validation-messages {
@@ -1224,9 +1594,9 @@ header.interno{
     color: #dd2c00;
     margin: 10px 0 0 25px; }
 
-/*.md-datepicker-triangle-button.md-button.md-icon-button {
+.md-datepicker-triangle-button.md-button.md-icon-button {
     top: 8px;
-}*/
+}
 
 .md-datepicker-button {
     display: none;
@@ -1234,4 +1604,9 @@ header.interno{
 
 .md-default-theme .md-datepicker-input-container, .md-datepicker-input-container {
     border: 0;
-}
+}*/
+
+
+
+
+

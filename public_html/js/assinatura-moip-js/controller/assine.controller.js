@@ -1,13 +1,51 @@
 myApp.controller('AssineCoontroller', ['$scope', '$http', function ($scope, $http) {
 
 
-       
+        var token = "CXD4ZTOTO50KKZBMAB7ZHTT3HVMUNXF2";
+
+
+        $http({
+            method: "GET",
+            url: "js/assinatura-moip/model/estados-cidades.json"
+        }).then(function mySucces(response) {
+            $scope.estados = response.data.estados;
+
+        }, function myError(response) {
+            $scope.estados = '';
+        });
+
+        $http({
+            method: "GET",
+            url: "js/registration/model/areas-atuacao.json"
+        }).then(function mySucces(response) {
+            $scope.areas = response.data;
+
+        }, function myError(response) {
+            $scope.areas = '';
+        });
+
+
+        $scope.range = function (min, max, step) {
+            step = step || 1;
+            var input = [];
+            for (var i = min; i <= max; i += step) {
+                input.push(i);
+            }
+            return input;
+        };
+
+
+
+        $scope.carregarCidades = function () {
+            $scope.cidades = $scope.estados[$scope.id_estado].cidades;
+        };
+
 
 
 
         var build_customer = function () {
             var customer_params = {
-                fullname: 'Rodrigo Muniz',
+                fullname: 'Dayara',
                 email: 'rodrigobmuniz@gmail.com',
                 code: new Date().getTime(),
                 cpf: '091.711.957-69',
@@ -51,7 +89,9 @@ myApp.controller('AssineCoontroller', ['$scope', '$http', function ($scope, $htt
 
         $scope.subscribe = function () {
 
-            var moip = new MoipAssinaturas("S10K4KHQWNR8TYVDOHKIRJKG9IMHUBGX");
+            console.log($scope.assinatura);
+
+            var moip = new MoipAssinaturas(token);
 
             var customer = build_customer();
             var plan_code = 'mvp-001';
@@ -70,7 +110,7 @@ myApp.controller('AssineCoontroller', ['$scope', '$http', function ($scope, $htt
                     for (i = 0; i < response.errors.length; i++) {
                         var erro = response.errors[i].description;
                         //jQuery("#erros").append(erro);
-                        console.log(erro)
+                        console.log(erro);
                     }
                     return;
                 }
@@ -79,22 +119,6 @@ myApp.controller('AssineCoontroller', ['$scope', '$http', function ($scope, $htt
 
 
 
-
-
-//            var urlAssinatura = 'moip-engine/assinatura-moip-v01.php';
-//
-//            console.log('subscribe aqui!');
-//
-//            jQueryhttp({
-//                method: 'GET',
-//                url: urlAssinatura,
-//                headers: {'Content-Type': 'application/x-www-form-urlencoded'}  // set the headers so angular passing info as form data (not request payload)
-//            })
-//                    .success(function (data) {
-//
-//                        console.log(data);
-//
-//                    });
 //
         };//getListaAssinaturas
 

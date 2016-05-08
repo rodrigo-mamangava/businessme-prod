@@ -6751,6 +6751,9 @@ button.close {
    Fonts
    ========================================================================== */
 /* ==========================================================================
+   Fonts
+   ========================================================================== */
+/* ==========================================================================
    Estilo dos textos
    ========================================================================== */
 .estilo-menu-1 {
@@ -6772,6 +6775,13 @@ button.close {
   /* Aproximação devido à substituição de fonte */
   text-align: left;
   text-transform: uppercase;
+}
+.estilo-h2 {
+  font-family: "Irma Text Round Black";
+  font-size: 20px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  text-align: left;
 }
 .estilo01 {
   font-family: "azo-sans-web", sans-serif;
@@ -6822,9 +6832,15 @@ textarea {
   outline: none;
   box-shadow: none !important;
 }
+.layout-row {
+  background-color: transparent;
+}
 /* ==========================================================================
    Geral
    ========================================================================== */
+html {
+  background-color: #f0f0f0;
+}
 body {
   font-family: "azo-sans-web", sans-serif;
   font-style: normal;
@@ -6836,6 +6852,29 @@ body main {
 }
 body h1 {
   font-family: "Irma Text Round Black";
+}
+.not-visible {
+  visibility: hidden;
+}
+.modal-loadind {
+  display: block;
+}
+.modal-loadind .modal-body {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#modalLoading {
+  text-align: center;
+}
+#modalLoading p {
+  color: white;
+  font-size: 40px;
+}
+#modalLoading img {
+  width: 100px;
+  height: auto;
 }
 /* ==========================================================================
    MENU
@@ -6963,6 +7002,314 @@ header.interno {
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
 }
 /* ==========================================================================
+   BOTOES
+   ========================================================================== */
+.btn-assinar {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #21c939;
+  border-color: #21c939;
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+  position: absolute;
+  bottom: 0;
+  font-family: "Irma Text Round Black";
+  color: #ffffff;
+  font-size: 16px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  line-height: 32px;
+  /* Aproximação devido à substituição de fonte */
+  text-transform: uppercase;
+}
+.btn-assinar:focus,
+.btn-assinar:active:focus,
+.btn-assinar.active:focus,
+.btn-assinar.focus,
+.btn-assinar:active.focus,
+.btn-assinar.active.focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.btn-assinar:hover,
+.btn-assinar:focus,
+.btn-assinar.focus {
+  color: #333333;
+  text-decoration: none;
+}
+.btn-assinar:active,
+.btn-assinar.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.btn-assinar.disabled,
+.btn-assinar[disabled],
+fieldset[disabled] .btn-assinar {
+  cursor: not-allowed;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+a.btn-assinar.disabled,
+fieldset[disabled] a.btn-assinar {
+  pointer-events: none;
+}
+.btn-assinar:focus,
+.btn-assinar.focus {
+  color: #ffffff;
+  background-color: #1a9d2d;
+  border-color: #0f5b1a;
+}
+.btn-assinar:hover {
+  color: #ffffff;
+  background-color: #1a9d2d;
+  border-color: #18942a;
+}
+.btn-assinar:active,
+.btn-assinar.active,
+.open > .dropdown-toggle.btn-assinar {
+  color: #ffffff;
+  background-color: #1a9d2d;
+  border-color: #18942a;
+}
+.btn-assinar:active:hover,
+.btn-assinar.active:hover,
+.open > .dropdown-toggle.btn-assinar:hover,
+.btn-assinar:active:focus,
+.btn-assinar.active:focus,
+.open > .dropdown-toggle.btn-assinar:focus,
+.btn-assinar:active.focus,
+.btn-assinar.active.focus,
+.open > .dropdown-toggle.btn-assinar.focus {
+  color: #ffffff;
+  background-color: #157f24;
+  border-color: #0f5b1a;
+}
+.btn-assinar:active,
+.btn-assinar.active,
+.open > .dropdown-toggle.btn-assinar {
+  background-image: none;
+}
+.btn-assinar.disabled:hover,
+.btn-assinar[disabled]:hover,
+fieldset[disabled] .btn-assinar:hover,
+.btn-assinar.disabled:focus,
+.btn-assinar[disabled]:focus,
+fieldset[disabled] .btn-assinar:focus,
+.btn-assinar.disabled.focus,
+.btn-assinar[disabled].focus,
+fieldset[disabled] .btn-assinar.focus {
+  background-color: #21c939;
+  border-color: #21c939;
+}
+.btn-assinar .badge {
+  color: #21c939;
+  background-color: #ffffff;
+}
+/* ==========================================================================
+   PLANOS
+   ========================================================================== */
+.card-plano {
+  border-radius: 4px;
+  background-color: #ffffff;
+  min-height: 410px;
+  position: relative;
+  z-index: 90;
+  margin-top: 42px;
+  margin-bottom: 116px;
+  padding-bottom: 28px;
+}
+@media (max-width: 767px) {
+  .card-plano {
+    min-height: auto;
+    height: auto;
+  }
+}
+.card-plano .plano-texto {
+  padding: 28px 30px;
+}
+.card-plano .plano-texto .plano-nome {
+  font-family: "azo-sans-web", sans-serif;
+  color: #ff8838;
+  font-size: 18px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 300;
+  line-height: 32px;
+  /* Aproximação devido à substituição de fonte */
+  text-align: left;
+}
+.card-plano .plano-texto .plano-preco {
+  font-family: "Irma Text Round Black";
+  color: #3c3c3c;
+  font-size: 36px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  line-height: 32px;
+  /* Aproximação devido à substituição de fonte */
+  text-align: left;
+}
+.card-plano .plano-texto .plano-preco .moeda {
+  font-size: 10px;
+}
+.card-plano .plano-texto .plano-itens {
+  font-family: "azo-sans-web", sans-serif;
+  color: #ff8838;
+  font-size: 16px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 300;
+  line-height: 28px;
+  /* Aproximação devido à substituição de fonte */
+}
+.card-plano ul {
+  padding: 0;
+}
+.card-plano li {
+  list-style-type: none;
+}
+.card-plano li:before {
+  font-family: 'FontAwesome';
+  content: '\f00c';
+  margin: 0 5px 0 -15px;
+  color: #21c939;
+}
+/* ==========================================================================
+   CARD CADASTRO
+   ========================================================================== */
+.card-cadastro {
+  border-radius: 4px;
+  background-color: #ffffff;
+  min-height: 410px;
+  position: relative;
+  z-index: 90;
+  margin-top: 42px;
+  margin-bottom: 116px;
+  padding-bottom: 28px;
+}
+@media (max-width: 767px) {
+  .card-cadastro {
+    min-height: auto;
+    height: auto;
+  }
+}
+.card-cadastro .plano-texto {
+  padding: 28px 30px;
+}
+.card-cadastro .plano-texto .plano-nome {
+  font-family: "azo-sans-web", sans-serif;
+  color: #ff8838;
+  font-size: 18px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 300;
+  line-height: 32px;
+  /* Aproximação devido à substituição de fonte */
+  text-align: left;
+}
+.card-cadastro .plano-texto .plano-preco {
+  font-family: "Irma Text Round Black";
+  color: #3c3c3c;
+  font-size: 36px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  line-height: 32px;
+  /* Aproximação devido à substituição de fonte */
+  text-align: left;
+}
+.card-cadastro .plano-texto .plano-preco .moeda {
+  font-size: 10px;
+}
+.card-cadastro .plano-texto .plano-itens {
+  font-family: "azo-sans-web", sans-serif;
+  color: #ff8838;
+  font-size: 16px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 300;
+  line-height: 28px;
+  /* Aproximação devido à substituição de fonte */
+}
+.card-cadastro ul {
+  padding: 0;
+}
+.card-cadastro li {
+  list-style-type: none;
+}
+.card-cadastro li:before {
+  font-family: 'FontAwesome';
+  content: '\f00c';
+  margin: 0 5px 0 -15px;
+  color: #21c939;
+}
+.card-descricao {
+  border-radius: 4px;
+  background-color: #ffffff;
+  min-height: 410px;
+  position: relative;
+  z-index: 90;
+  margin-top: 42px;
+  margin-bottom: 116px;
+  padding-bottom: 28px;
+}
+@media (max-width: 767px) {
+  .card-descricao {
+    min-height: auto;
+    height: auto;
+  }
+}
+.card-descricao .plano-texto {
+  padding: 28px 30px;
+}
+.card-descricao .plano-texto .plano-nome {
+  font-family: "azo-sans-web", sans-serif;
+  color: #ff8838;
+  font-size: 18px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 300;
+  line-height: 32px;
+  /* Aproximação devido à substituição de fonte */
+  text-align: left;
+}
+.card-descricao .plano-texto .plano-preco {
+  font-family: "Irma Text Round Black";
+  color: #3c3c3c;
+  font-size: 36px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  line-height: 32px;
+  /* Aproximação devido à substituição de fonte */
+  text-align: left;
+}
+.card-descricao .plano-texto .plano-preco .moeda {
+  font-size: 10px;
+}
+.card-descricao .plano-texto .plano-itens {
+  font-family: "azo-sans-web", sans-serif;
+  color: #ff8838;
+  font-size: 16px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 300;
+  line-height: 28px;
+  /* Aproximação devido à substituição de fonte */
+}
+/* ==========================================================================
    LANDINGPAGE
    ========================================================================== */
 .landingpage #missao {
@@ -7040,6 +7387,7 @@ header.interno {
   /* Aproximação devido à substituição de fonte */
   text-align: left;
   border: 0;
+  color: #ffffff;
 }
 .landingpage #missao .formcadastro input::-moz-placeholder,
 .landingpage #missao .formcadastro select::-moz-placeholder {
@@ -7226,191 +7574,6 @@ fieldset[disabled] .landingpage #missao .formcadastro .btn-registro.focus {
   line-height: 40px;
   /* Aproximação devido à substituição de fonte */
   text-align: center;
-}
-.landingpage #preco .card-plano {
-  border-radius: 4px;
-  background-color: #ffffff;
-  min-height: 400px;
-  position: relative;
-  z-index: 90;
-  margin-top: 42px;
-  margin-bottom: 116px;
-  padding-bottom: 28px;
-}
-@media (max-width: 767px) {
-  .landingpage #preco .card-plano {
-    min-height: auto;
-    height: auto;
-  }
-}
-.landingpage #preco .card-plano .plano-texto {
-  padding: 28px 30px;
-}
-.landingpage #preco .card-plano .plano-texto .plano-nome {
-  font-family: "azo-sans-web", sans-serif;
-  color: #ff8838;
-  font-size: 18px;
-  /* Aproximação devido à substituição de fonte */
-  font-weight: 300;
-  line-height: 32px;
-  /* Aproximação devido à substituição de fonte */
-  text-align: left;
-}
-.landingpage #preco .card-plano .plano-texto .plano-preco {
-  font-family: "Irma Text Round Black";
-  color: #3c3c3c;
-  font-size: 36px;
-  /* Aproximação devido à substituição de fonte */
-  font-weight: 900;
-  line-height: 32px;
-  /* Aproximação devido à substituição de fonte */
-  text-align: left;
-}
-.landingpage #preco .card-plano .plano-texto .plano-preco .moeda {
-  font-size: 10px;
-}
-.landingpage #preco .card-plano .plano-texto .plano-itens {
-  font-family: "azo-sans-web", sans-serif;
-  color: #ff8838;
-  font-size: 16px;
-  /* Aproximação devido à substituição de fonte */
-  font-weight: 300;
-  line-height: 28px;
-  /* Aproximação devido à substituição de fonte */
-}
-.landingpage #preco .card-plano ul {
-  padding: 0;
-}
-.landingpage #preco .card-plano li {
-  list-style-type: none;
-}
-.landingpage #preco .card-plano li:before {
-  font-family: 'FontAwesome';
-  content: '\f00c';
-  margin: 0 5px 0 -15px;
-  color: #21c939;
-}
-.landingpage #preco .card-plano .btn-assinar {
-  display: inline-block;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-align: center;
-  vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: #21c939;
-  border-color: #21c939;
-  width: 100%;
-  border-radius: 0 0 5px 5px;
-  position: absolute;
-  bottom: 0;
-  font-family: "Irma Text Round Black";
-  color: #ffffff;
-  font-size: 16px;
-  /* Aproximação devido à substituição de fonte */
-  font-weight: 900;
-  line-height: 32px;
-  /* Aproximação devido à substituição de fonte */
-  text-transform: uppercase;
-}
-.landingpage #preco .card-plano .btn-assinar:focus,
-.landingpage #preco .card-plano .btn-assinar:active:focus,
-.landingpage #preco .card-plano .btn-assinar.active:focus,
-.landingpage #preco .card-plano .btn-assinar.focus,
-.landingpage #preco .card-plano .btn-assinar:active.focus,
-.landingpage #preco .card-plano .btn-assinar.active.focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-.landingpage #preco .card-plano .btn-assinar:hover,
-.landingpage #preco .card-plano .btn-assinar:focus,
-.landingpage #preco .card-plano .btn-assinar.focus {
-  color: #333333;
-  text-decoration: none;
-}
-.landingpage #preco .card-plano .btn-assinar:active,
-.landingpage #preco .card-plano .btn-assinar.active {
-  outline: 0;
-  background-image: none;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-.landingpage #preco .card-plano .btn-assinar.disabled,
-.landingpage #preco .card-plano .btn-assinar[disabled],
-fieldset[disabled] .landingpage #preco .card-plano .btn-assinar {
-  cursor: not-allowed;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-a.landingpage #preco .card-plano .btn-assinar.disabled,
-fieldset[disabled] a.landingpage #preco .card-plano .btn-assinar {
-  pointer-events: none;
-}
-.landingpage #preco .card-plano .btn-assinar:focus,
-.landingpage #preco .card-plano .btn-assinar.focus {
-  color: #ffffff;
-  background-color: #1a9d2d;
-  border-color: #0f5b1a;
-}
-.landingpage #preco .card-plano .btn-assinar:hover {
-  color: #ffffff;
-  background-color: #1a9d2d;
-  border-color: #18942a;
-}
-.landingpage #preco .card-plano .btn-assinar:active,
-.landingpage #preco .card-plano .btn-assinar.active,
-.open > .dropdown-toggle.landingpage #preco .card-plano .btn-assinar {
-  color: #ffffff;
-  background-color: #1a9d2d;
-  border-color: #18942a;
-}
-.landingpage #preco .card-plano .btn-assinar:active:hover,
-.landingpage #preco .card-plano .btn-assinar.active:hover,
-.open > .dropdown-toggle.landingpage #preco .card-plano .btn-assinar:hover,
-.landingpage #preco .card-plano .btn-assinar:active:focus,
-.landingpage #preco .card-plano .btn-assinar.active:focus,
-.open > .dropdown-toggle.landingpage #preco .card-plano .btn-assinar:focus,
-.landingpage #preco .card-plano .btn-assinar:active.focus,
-.landingpage #preco .card-plano .btn-assinar.active.focus,
-.open > .dropdown-toggle.landingpage #preco .card-plano .btn-assinar.focus {
-  color: #ffffff;
-  background-color: #157f24;
-  border-color: #0f5b1a;
-}
-.landingpage #preco .card-plano .btn-assinar:active,
-.landingpage #preco .card-plano .btn-assinar.active,
-.open > .dropdown-toggle.landingpage #preco .card-plano .btn-assinar {
-  background-image: none;
-}
-.landingpage #preco .card-plano .btn-assinar.disabled:hover,
-.landingpage #preco .card-plano .btn-assinar[disabled]:hover,
-fieldset[disabled] .landingpage #preco .card-plano .btn-assinar:hover,
-.landingpage #preco .card-plano .btn-assinar.disabled:focus,
-.landingpage #preco .card-plano .btn-assinar[disabled]:focus,
-fieldset[disabled] .landingpage #preco .card-plano .btn-assinar:focus,
-.landingpage #preco .card-plano .btn-assinar.disabled.focus,
-.landingpage #preco .card-plano .btn-assinar[disabled].focus,
-fieldset[disabled] .landingpage #preco .card-plano .btn-assinar.focus {
-  background-color: #21c939;
-  border-color: #21c939;
-}
-.landingpage #preco .card-plano .btn-assinar .badge {
-  color: #21c939;
-  background-color: #ffffff;
 }
 .landingpage #track {
   background-color: #d2d2d2;
@@ -7801,15 +7964,22 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
   /* Aproximação devido à substituição de fonte */
   text-align: left;
 }
-#leads .tipo-lista {
+#leads .tipo-lista,
+#leads .order-lista,
+#leads .fitro-data {
   float: right !important;
   margin-left: 60px;
 }
-#leads .tipo-lista p {
+#leads .tipo-lista p,
+#leads .order-lista p,
+#leads .fitro-data p {
   text-align: right;
 }
-#leads .fitro-data {
-  float: left !important;
+#leads .order-lista {
+  margin-top: -10px;
+}
+#leads .order-lista .order {
+  margin-left: -10px;
 }
 #leads .settings {
   padding: 17px 0 17px 17px;
@@ -7837,7 +8007,7 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
   border: 0;
   padding: 0;
 }
-#leads md-icon {
+#leads .calendario md-icon {
   margin-top: -6px;
 }
 #leads .titulo-filtro span {
@@ -7847,12 +8017,16 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
   margin-top: 10px;
   padding-top: 50px;
 }
+#leads .area-lista {
+  margin-top: 10px;
+  padding-top: 70px;
+}
+#leads .area-lista th .material-icons {
+  margin-top: -5px;
+}
 #leads .area-lista .linha {
   padding: 12px 6px;
   background-color: #ffffff;
-}
-#leads .area-lista .btn-default {
-  width: 50px;
 }
 #leads .btn-remover-filtro {
   background-color: transparent;
@@ -7899,6 +8073,35 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
 #leads .card-lead .card-back {
   background-color: #ff8838;
   border: 0;
+}
+#leads .card-lead-02 {
+  width: 350px;
+}
+#leads .card-lead-02 h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-family: "Irma Text Round Black";
+  font-size: 20px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  text-align: left;
+}
+#leads .card-lead-02 .md-subhead {
+  padding-top: 0;
+  margin-top: -15px;
+  font-size: 10px;
+}
+#leads .card-lead-02 p {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+#leads .card-lead-02 p span.icone {
+  margin-right: 22px;
+}
+#leads .card-lead-02 md-icon {
+  margin-top: -5px;
+  margin-left: -2px;
+  margin-right: 5px;
 }
 /* ==========================================================================
    CHECKBOX LIKE A BUTTON
@@ -8468,6 +8671,7 @@ md-datepicker.data-modal {
 #settings {
   background-color: #f0f0f0 !important;
   padding-top: 64px;
+  padding-bottom: 128px;
 }
 #settings h2 {
   font-family: "Irma Text Round Black";
@@ -8769,118 +8973,14 @@ fieldset[disabled] #assinar .form-assinatura .btn-contrato.focus {
   color: #ffffff;
   background-color: #333333;
 }
-#assinar .btn-assinar {
-  display: inline-block;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-align: center;
-  vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: #ffffff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
-  width: 100%;
-  margin-top: 20px;
+/* ==========================================================================
+   Date picker do BIG FIELD do BBOT
+   ========================================================================== */
+.contratoAssinatura h4 {
+  font-size: 11px;
 }
-#assinar .btn-assinar:focus,
-#assinar .btn-assinar:active:focus,
-#assinar .btn-assinar.active:focus,
-#assinar .btn-assinar.focus,
-#assinar .btn-assinar:active.focus,
-#assinar .btn-assinar.active.focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-#assinar .btn-assinar:hover,
-#assinar .btn-assinar:focus,
-#assinar .btn-assinar.focus {
-  color: #333333;
-  text-decoration: none;
-}
-#assinar .btn-assinar:active,
-#assinar .btn-assinar.active {
-  outline: 0;
-  background-image: none;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-#assinar .btn-assinar.disabled,
-#assinar .btn-assinar[disabled],
-fieldset[disabled] #assinar .btn-assinar {
-  cursor: not-allowed;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-a#assinar .btn-assinar.disabled,
-fieldset[disabled] a#assinar .btn-assinar {
-  pointer-events: none;
-}
-#assinar .btn-assinar:focus,
-#assinar .btn-assinar.focus {
-  color: #ffffff;
-  background-color: #449d44;
-  border-color: #255625;
-}
-#assinar .btn-assinar:hover {
-  color: #ffffff;
-  background-color: #449d44;
-  border-color: #398439;
-}
-#assinar .btn-assinar:active,
-#assinar .btn-assinar.active,
-.open > .dropdown-toggle#assinar .btn-assinar {
-  color: #ffffff;
-  background-color: #449d44;
-  border-color: #398439;
-}
-#assinar .btn-assinar:active:hover,
-#assinar .btn-assinar.active:hover,
-.open > .dropdown-toggle#assinar .btn-assinar:hover,
-#assinar .btn-assinar:active:focus,
-#assinar .btn-assinar.active:focus,
-.open > .dropdown-toggle#assinar .btn-assinar:focus,
-#assinar .btn-assinar:active.focus,
-#assinar .btn-assinar.active.focus,
-.open > .dropdown-toggle#assinar .btn-assinar.focus {
-  color: #ffffff;
-  background-color: #398439;
-  border-color: #255625;
-}
-#assinar .btn-assinar:active,
-#assinar .btn-assinar.active,
-.open > .dropdown-toggle#assinar .btn-assinar {
-  background-image: none;
-}
-#assinar .btn-assinar.disabled:hover,
-#assinar .btn-assinar[disabled]:hover,
-fieldset[disabled] #assinar .btn-assinar:hover,
-#assinar .btn-assinar.disabled:focus,
-#assinar .btn-assinar[disabled]:focus,
-fieldset[disabled] #assinar .btn-assinar:focus,
-#assinar .btn-assinar.disabled.focus,
-#assinar .btn-assinar[disabled].focus,
-fieldset[disabled] #assinar .btn-assinar.focus {
-  background-color: #5cb85c;
-  border-color: #4cae4c;
-}
-#assinar .btn-assinar .badge {
-  color: #5cb85c;
-  background-color: #ffffff;
+.contratoAssinatura p {
+  font-size: 10px;
 }
 /* ==========================================================================
    Date picker do BIG FIELD do BBOT

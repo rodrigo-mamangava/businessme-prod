@@ -1,3 +1,4 @@
+<div class="" ng-include="'view/header.html'"></div>
 <div class="" ng-include="'js/chamados/view/chat-box.html'"></div>
 <div class="container">
     <div id="settings" class="card">
@@ -30,7 +31,7 @@
                         </md-content> </md-tab> <md-tab label="Dados pessoais"> <md-content
                             class="md-padding">
                             <h2 class="">Dados pessoais</h2>
-                            
+
 
 
                             <form name="formmeusdados" ng-submit="salvarMeusDados()" novalidate>
@@ -58,19 +59,19 @@
                                                                  ng-model="dadosUsuario.email" class="form-control"
                                                                  placeholder="E-mail" ng-required="true" ng-disable="true">
                                 </div>
-                                
-                                
-                                
+
+
+
 
                                 <button type="submit" class="btn btn-default"
                                         ng-disabled="formmeusdados.$invalid">Salvar</button>
-                                
-                                
-                                
-                                
-                                
+
+
+
+
+
                             </form>
-                            
+
                             <button class="btn-mudar-senha"
                                     data-toggle="modal" data-target="#modalChangePass">Mudar
                                 minha senha</button>
@@ -78,15 +79,80 @@
 
                             <hr/>
 
-                            
 
 
 
-                        </md-content> </md-tab> <md-tab label="Dados assinatura"> <md-content
-                            class="md-padding">
+
+                        </md-content> </md-tab> <md-tab label="Dados assinatura"> 
+
+                        <md-content
+                            class="md-padding" ng-init="initSetting()">
+
+
                             <h2 class="">Dados assinatura</h2>
 
-                        </md-content> </md-tab> </md-tabs> </md-content>
+
+
+                            <md-card ng-show="!dadosAssinatura.plan" >
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">Plano: TRIAL</span>
+                                        <span class="md-subhead">Status: 60 dias de TRIAL  </span>
+                                    </md-card-title-text>
+
+                                </md-card-title>
+                                <md-card-content>
+                                    <p>
+                                        Data de criação: {{currentUser.date|
+						date:'dd/MM/yyyy' }}
+                                    </p>
+                                    <p>Código da assinatura: {{dadosAssinatura.code}}</p>
+                                    <p>Mensalidade: {{dadosAssinatura.amount / 100| currency:"R$":2}} </p>
+
+                                    <h4>Próxima fatura:</h4>
+                                    <p ng-show="dadosAssinatura.next_invoice_date.day" >{{dadosAssinatura.next_invoice_date.day}}/{{dadosAssinatura.next_invoice_date.month}}/{{dadosAssinatura.next_invoice_date.year}}</p>
+
+                                </md-card-content>
+                                <md-card-actions layout="row" layout-align="end center">
+                                    <md-button ng-disabled="true" class="md-raised" ng-click="consultar()" >Atualizar</md-button>
+                                    <md-button ng-disabled="true" class="md-raised" ng-click="suspender($event)" >Upgrade</md-button>
+                                </md-card-actions>
+                            </md-card>
+
+
+                            <md-card ng-show="dadosAssinatura.plan" >
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">Plano: {{dadosAssinatura.plan.name}}</span>
+                                        <span class="md-subhead">Status: {{dadosAssinatura.status}}</span>
+                                    </md-card-title-text>
+
+                                </md-card-title>
+                                <md-card-content>
+                                    <p>
+                                        Data de criação: {{dadosAssinatura.creation_date.day}}/{{dadosAssinatura.creation_date.month}}/{{dadosAssinatura.creation_date.year}}
+                                    </p>
+                                    <p>Código da assinatura: {{dadosAssinatura.code}}</p>
+                                    <p>Mensalidade: {{dadosAssinatura.amount / 100| currency:"R$":2}} </p>
+
+                                    <h4>Próxima fatura:</h4>
+                                    <p ng-show="dadosAssinatura.next_invoice_date.day" >{{dadosAssinatura.next_invoice_date.day}}/{{dadosAssinatura.next_invoice_date.month}}/{{dadosAssinatura.next_invoice_date.year}}</p>
+
+                                </md-card-content>
+                                <md-card-actions layout="row" layout-align="end center">
+                                    <md-button class="md-raised" ng-click="consultar()" >Atualizar</md-button>
+                                    <md-button class="md-raised md-warn" ng-click="suspender($event)" >Suspender</md-button>
+                                    <md-button class="md-raised" ng-click="cancelar($event)" >Cancelar</md-button>
+                                    <md-button class="md-raised md-primary" ng-click="reativar($event)" >Reativar</md-button>
+
+
+                                </md-card-actions>
+                            </md-card>
+
+                        </md-content> 
+                    </md-tab> 
+                </md-tabs> 
+            </md-content>
         </div>
 
 

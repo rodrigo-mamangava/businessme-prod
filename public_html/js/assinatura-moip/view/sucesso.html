@@ -1,0 +1,49 @@
+<div class="" ng-include="'view/header.html'"></div>
+<div class="" ng-include="'js/chamados/view/chat-box.html'"></div>
+
+<div class="container">
+
+    <div id="sucesso" class="page" ng-init="initSucesso()">
+
+        <div class="row">
+
+            <div class="col-sm-12">
+
+                <div class="card-descricao">
+
+                    <div class="plano-texto">
+
+                        <h1>Sua assinatura foi criada com sucesso!</h1>
+
+
+                        <h3>Código da sua assinatura: {{currentUser.plano.assinatura.code}}</h3>
+
+                        <h3>Plano: {{currentUser.plano.assinatura.plan.name}}</h3>
+
+
+                        <h3>Para obter mais informações sobre sua assinatura acesse:</h3>
+
+                        <ol type="1">
+                            <li>No menu, localizado no canto superio direito da tela, clique em "Configurações"</li>
+                            <li>Na tela CONFIGURAÇÕES, clique em DADOS ASSINATURA</li>                   
+                        </ol>
+
+                        <p>Nessa área você poderá acessar os dados da sua assinatura, além de: </p>
+
+                        <ul>
+                            <li>Suspender sua assinatura</li>
+                            <li>Reativar sua assinatura</li>
+                            <li>Cancelar sua assinatura</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    
+                    <a class="btn-assinar" ng-href="#/bbot">Comece a utilizar o BusinessME agora!</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

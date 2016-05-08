@@ -1,3 +1,4 @@
+<div class="" ng-include="'view/header.html'"></div>
 <div class="landingpage">
 
     <section id="missao">
@@ -34,6 +35,25 @@
                                             É necessário um nome</p>
 
                                     </div>
+                                    
+                                    <div class="form-group">
+
+                                        <select id="area"  
+                                                ng-required="true"
+                                                name="profissao"
+                                                class="form-control" 
+                                                ng-model="user.profissao" 
+                                                >
+                                            <option value="" style="color: white;" >Área de atuação</option>
+                                            <option ng-repeat="(key, nome) in areas" >{{nome}}</option>                                            
+                                        </select>
+                                        
+                                        <p class="error validationerror"
+                                           ng-show="formcadastro.profissao.$invalid && formcadastro.profissao.$touched">
+                                            Área é obrigatório</p>
+                                        
+                                    </div>
+                                    
                                     <div class="form-group">
                                         <input type="email" name="email" class="form-control"
                                                placeholder="Email" ng-model="user.email" ng-required="true">
@@ -42,16 +62,7 @@
                                            ng-show="formcadastro.email.$invalid && formcadastro.email.$touched">
                                             É necessário um e-mail válido</p>
                                     </div>
-                                    <div class="form-group">
-
-                                        <input list="listaProf" type="text" name="profissao"
-                                               class="form-control" placeholder="Profissão"
-                                               ng-model="user.profissao">
-
-                                        <datalist id="listaProf">
-                                            <!--<option ng-repeat="(key, contato) in contatosList" value="{{contato.nome}}">-->
-                                        </datalist>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <input type="password" name="password" class="form-control"
                                                placeholder="Senha" ng-model="user.password" ng-required="true">
@@ -201,7 +212,42 @@
                 </div>
 
 
-                <div class="col-sm-8 col-sm-offset-2">
+                <div class="col-sm-6">
+
+                    <div class="card-plano">
+
+
+                        <div class="plano-texto">
+
+                            <p class="plano-nome">TRIAL</p>
+
+                            <p class="">
+                                <span>Por 30 dias</span> 
+                            </p>
+
+
+                            <p class="plano-preco"><span class="moeda">R$</span> 0,00</p>
+                            <div class="plano-itens">
+                                <ul>
+                                    <li>Até 5 prospecções simultâneas</li>
+                                    <li>Até 50 contatos</li>
+                                    <li>Dicas sobre vendas</li>
+                                    <li>Lembretes por e-mail</li>
+                                    <li>Funil de vendas</li>
+                                    <li>Relatórios para você entender e melhorar seu fluxo de venda de projetos</li>
+                                </ul>
+                            </div>
+
+                            <p>Você terá acesso a todas funcionalidades do BusinessMe POR 30 DIAS!</p>
+
+                        </div>
+
+                        <a class="btn-assinar" ng-href="#/cadastro-businessme">Assinar</a>
+
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
 
                     <div class="card-plano">
 
@@ -210,7 +256,7 @@
                         <div class="plano-texto">
 
                             <p class="plano-nome">Desbravadores</p>
-                            
+
                             <p>
                                 <span class="moeda">R$</span> 
                                 <span class="preco-sem-desconto">39,90</span> 
@@ -221,7 +267,9 @@
                                 <ul>
                                     <li>Prospecções ilimitadas</li>
                                     <li>Contatos ilimitados</li>
+                                    <li>Dicas sobre vendas</li>
                                     <li>Lembretes por e-mail</li>
+                                    <li>Funil de vendas</li>
                                     <li>Relatórios para você entender e melhorar seu fluxo de venda de projetos</li>
                                 </ul>
                             </div>
@@ -230,7 +278,7 @@
 
                         </div>
 
-                        <a class="btn-assinar" ng-href="#/assine">Assinar</a>
+                        <a class="btn-assinar" ng-href="#/cadastro-businessme">Assinar</a>
 
 
                     </div>

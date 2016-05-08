@@ -1,3 +1,4 @@
+<div class="" ng-include="'view/header.html'"></div>
 <div class="" ng-include="'js/chamados/view/chat-box.html'"></div>
 <div class="container">
 
@@ -35,21 +36,24 @@
 
             <div class="col-sm-6">
 
-                <div class="form-assinatura">
+                <div class="form-assinatura" >
 
-                    <form name="form_assinatura" ng-submit="subscribe()" novalidate>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>1) Cadastre-se no BusinessMe</h2>
+                        </div>
+
+                    </div>
+
+
+                    <form name="form_cadastro" ng-submit="cadastroBusinessMe()" novalidate ng-show="!msgCadastro">
 
                         <div class="row">
 
-                            <input type="hidden" ng-model="assinatura.customer.code" value="mvp-001" checked>
-
-                            <div class="col-sm-12">
-                                <h2>1) Cadastre-se no BusinessMe</h2>
-                            </div>
                             <div class="col-sm-12">
                                 <label for="nomeCompleto">Nome completo *</label>
                                 <p class="msg-error" 
-                                   ng-show="form_assinatura.name.$invalid && form_assinatura.name.$touched">
+                                   ng-show="form_cadastro.name.$invalid && form_cadastro.name.$touched">
                                     <b>Nome completo</b> - é obrigatório.                                        
                                 </p>
                                 <input type="text" class="form-control"  
@@ -61,7 +65,7 @@
                             <div class="col-sm-12">
                                 <label for="area">Área de atuação *</label>
                                 <p class="msg-error" 
-                                   ng-show="form_assinatura.area.$invalid && form_assinatura.area.$touched">
+                                   ng-show="form_cadastro.area.$invalid && form_cadastro.area.$touched">
                                     <b>Área de atuação</b> - é obrigatório.                                        
                                 </p>
                                 <select class="form-control"  id="area"  
@@ -75,7 +79,7 @@
                             <div class="col-sm-6">
                                 <label for="email">E-mail *</label>
                                 <p class="msg-error" 
-                                   ng-show="form_assinatura.email.$invalid && form_assinatura.email.$touched">
+                                   ng-show="form_cadastro.email.$invalid && form_cadastro.email.$touched">
                                     <b>E-mail</b> - é obrigatório e deve ser válido.                                        
                                 </p>
                                 <input type="email" class="form-control" id="email"  
@@ -87,7 +91,7 @@
                             <div class="col-sm-6">
                                 <label for="senha">Senha *</label>
                                 <p class="msg-error" 
-                                   ng-show="form_assinatura.password.$invalid && form_assinatura.password.$touched">
+                                   ng-show="form_cadastro.password.$invalid && form_cadastro.password.$touched">
                                     <b>Senha</b> - é obrigatório.                                        
                                 </p>
                                 <input type="password" class="form-control" id="senha"  
@@ -96,7 +100,38 @@
                                        ng-model="assinatura.user.password" 
                                        placeholder="Senha"> 
                             </div>
+
+                            <div class="col-xs-12">
+
+                                <p class="message validationerror" ng-show="message">{{message}}</p>
+
+                            </div>
+
+                            <div class="col-xs-12">
+
+                                <button type="submit" class="btn btn-assinar" 
+                                        ng-disabled="form_cadastro.$invalid"
+                                        >Assinar</button>
+
+                                <p class="aviso-btn">
+                                    Preencha todos os campos obrigatórios (*) para
+                                    habilitar o botão de assinatura.
+                                </p>
+
+                            </div>
+
                         </div>
+
+                    </form>
+
+                    <div class="row" ng-show="msgCadastro">
+                        <div class="col-xs-12">
+                            <h3>{{msgCadastro}}</h3>
+                        </div>
+                    </div>
+
+                    <form name="form_assinatura" ng-submit="assinar()" novalidate>
+
 
 
                         <div class="row">
