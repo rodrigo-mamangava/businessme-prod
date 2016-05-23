@@ -1,0 +1,26 @@
+<md-dialog class="modalContato" aria-label="Novo Contato"  ng-controller='BBot03Controller' ng-cloak >
+
+    <form class="form-novo-contato" name="formContato" novalidate >
+
+        <md-dialog-content style="width:500px; padding: 20px 5px">
+
+
+            <md-input-container class="md-icon-float md-block">
+                <!-- Use floating label instead of placeholder -->
+                <label>Nome</label>
+                <md-icon md-font-library="material-icons">work</md-icon>
+                <input ng-model="contato.nome" type="text" ng-required="true">
+            </md-input-container>
+
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+
+            <md-button  ng-click="addContato()" class="md-raised" ng-disabled="formContato.$invalid">Salvar</md-button>
+
+        </md-dialog-actions>
+
+    </form>
+
+
+</md-dialog>

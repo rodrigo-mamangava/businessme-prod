@@ -1,0 +1,63 @@
+<md-dialog class="modalLead" aria-label="Novo Lead"  ng-controller='BBot03Controller' ng-cloak >
+
+    <form class="form-novo-lead" name="formleads" ng-submit="addLead()" novalidate >
+
+        <md-dialog-content style="width:500px; padding: 20px 5px">
+
+
+            <md-input-container class="md-icon-float md-block">
+                <!-- Use floating label instead of placeholder -->
+                <label>Nome do Projeto</label>
+                <md-icon md-font-library="material-icons">work</md-icon>
+                <input ng-model="lead.projeto" type="text" ng-required="true">
+            </md-input-container>
+
+            <md-input-container class="md-icon-float md-block">
+                <!-- Use floating label instead of placeholder -->
+                <label>Valor</label>
+                <md-icon md-font-library="material-icons">monetization_on</md-icon>
+                <input type="text" ng-model="lead.valor" ng-required="true" ui-money-mask="2">
+            </md-input-container>
+
+            <md-input-container class="md-icon-float md-block">
+
+                <label>Contato</label>
+                <md-icon md-font-library="material-icons">person</md-icon>
+              
+                <input type="text" list="listaContatoLoad"
+                       class="inputbbot contato form-control" name="leadname"
+                       ng-model="lead.contato" ng-required="true" />
+
+                <datalist id="listaContatoLoad">
+                    <option  ng-repeat="item in datalistContato | orderBy: 'nome' " value="{{item.nome}}" />
+                </datalist>
+
+            </md-input-container>
+
+            <md-input-container class="md-icon-float md-block">
+                <label>Fase</label>
+                <md-icon md-font-library="material-icons">flag</md-icon>
+                
+                <md-select ng-model="lead.fase" aria-label='fase' ng-required="true" ng-change="faseChange(lead)">
+                    <md-option ng-repeat="item in fases| orderBy:item.order " value="{{item.nome}}" aria-label='{{lead.fase}}'>
+                        {{item.nome}}
+                    </md-option>
+            </md-input-container>
+
+            <md-datepicker class="md-block" ng-model="lead.datalembrete" 
+                           md-placeholder="Data"
+                           ng-required="true">
+            </md-datepicker>
+
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+
+            <md-button  ng-click="addLead()" class="md-raised" ng-disabled="formleads.$invalid">Salvar</md-button>
+
+        </md-dialog-actions>
+
+    </form>
+
+
+</md-dialog>

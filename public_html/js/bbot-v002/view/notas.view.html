@@ -1,0 +1,68 @@
+<md-dialog aria-label="Mango (Fruit)"  ng-controller='BBot03Controller' ng-cloak>
+  <form>
+    <md-toolbar class="modal-toolbar">
+      <div class="md-toolbar-tools" style="background-color: rgb(255,87,34);">
+        <h2>{{load_item.projeto}} (Notas)</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="width:500px; padding: 20px 5px">
+      <div class="md-dialog-content">
+
+        <form class="form-novo-nota" name="formnota" novalidate >
+
+          <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+            <label>Anotação</label>
+            <md-icon md-font-library="material-icons">note</md-icon>
+            <input ng-model="nota.texto" type="text" ng-required="true">
+          </md-input-container>
+
+          <md-button  ng-click="salvarNota2(nota, load_item)" class="md-raised" ng-disabled="formnota.$invalid">Salvar nota</md-button>
+
+        </form>
+
+        <hr/>
+
+        <div>
+
+          <h2>Notas desse lead</h2>
+
+          <md-list>
+            <md-list-item class="md-3-line" ng-repeat="item in load_item.log | toArray | orderBy:'-dataupdate' ">
+              <div class="md-list-item-text" layout="column">
+                <div ng-if="item.tipoLog == 0">
+                            <p>{{item.dataupdate| date:'dd/MM/yyyy' }}</p>
+                            <p>Criado como <b>{{item.fase}}</b></p>
+                            <!-- code to render a large video block-->
+                        </div>
+                        <div ng-if="item.tipoLog == 1">
+                              <p>{{item.dataupdate| date:'dd/MM/yyyy' }}</p>
+                              <p>Atualizado para <b>{{item.fase}}</b></p>
+                        </div>
+                        <div ng-if="item.tipoLog == 2">
+
+                                <p>{{item.dataupdate| date:'dd/MM/yyyy' }}</p>
+                                <p>Nota:</p>
+
+                                <p>
+                                  <samp>{{item.nota}}</samp>
+                              </p>
+                            <!-- code to render a large video block-->
+                        </div>
+                    </div>
+            </md-list-item>
+
+          </md-list>
+
+        </div>
+        
+        
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="answer('useful')" style="margin-right:20px;">
+        Fechar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

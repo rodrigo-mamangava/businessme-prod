@@ -547,6 +547,59 @@ header.interno{
 }
 
 /* ==========================================================================
+   header v002
+   ========================================================================== */
+
+.header002{
+    md-content{
+        background-color: transparent;
+    }
+
+
+}
+md-toolbar:not(.md-menu-toolbar) {
+    background-color: @branco;
+    color: rgba(255,255,255,0.87);
+}
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar) md-icon, md-toolbar:not(.md-menu-toolbar) md-icon {
+    color: black;
+}
+
+.md-toolbar-tools  {
+
+    h1{
+        font-size: 18px;
+        margin-top: 6px;
+    }
+
+    .md-button{
+        padding: 0;
+    }
+
+
+    .campo-pesquisa{
+
+        .input-group-addon:first-child {
+            border-radius: 0;
+            background-color: @cinza-claro-x;
+            border-right: 0;
+
+        }
+
+        input.pesquisar{
+            border-radius: 0;
+            border-left: 0;
+            background-color: @cinza-claro-x;
+        }
+
+    }
+
+}
+
+
+
+/* ==========================================================================
    LANDINGPAGE
    ========================================================================== */
 .landingpage{
@@ -809,6 +862,31 @@ header.interno{
 }
 
 
+
+/* ==========================================================================
+   menu-principal
+   ========================================================================== */
+
+   #menu-principal{
+
+        .menu-titulo{
+                background-color: @laranja;
+        }
+        .menu{
+            width: 100%;
+            text-align: left;
+            font-family: @fontIrma;
+            color:  #3c3c3c;
+            font-weight: 900;
+            text-transform: none;
+
+        }
+        .menu-sair{
+            color: @laranja;
+            margin-top:  40px;
+        }
+   }
+
 /* ==========================================================================
    LEADS
    ========================================================================== */
@@ -994,6 +1072,7 @@ header.interno{
         margin-top: 10px;
         padding-top: 70px;
 
+
         th{
             .material-icons{
                 margin-top: -5px;
@@ -1004,6 +1083,9 @@ header.interno{
             padding: 12px 6px;
             background-color: @branco;
         }
+
+
+
 
 
 
@@ -1112,9 +1194,447 @@ header.interno{
     .alerta{}
 
 
+}
+
+/* ==========================================================================
+   BBOT 03
+   ========================================================================== */
+
+
+.modalMeta{
+
+    width: 50%;
+    max-height: 80%;
+
+    md-tabs[md-align-tabs=bottom] {
+        padding-bottom: 0;
+    }
+
+    .meta{
+        .head-meta{
+            padding: 15px;
+            background-color: @cinza-claro-xx;
+            height: 170px;
+            position: relative;
+            z-index: 888;
+
+            img{
+                vertical-align: middle;
+                position: absolute;
+                width: 192px;
+                height: auto;
+                bottom: -68px;
+                z-index: 888;
+                right: 0;
+            }
+
+
+            h2{
+                font-family: @fontIrma;
+                color:  @laranja;
+                font-size: 24px;/* Aproximação devido à substituição de fonte */
+                font-weight: 900;
+                text-align: left;
+            }
+
+
+        }
+        .corpo-meta{
+            padding: 15px;
+            position: relative;
+            z-index: 999;
+            background-color: white;
+
+            h3{
+                font-family: @fontIrma;
+                color:  #3c3c3c;
+                font-size: 18px;/* Aproximação devido à substituição de fonte */
+                font-weight: 900;
+                line-height: 32px;/* Aproximação devido à substituição de fonte */
+            }
+
+            p{
+                font-family: @fontAzo;
+                color:  #787878;
+                font-size: 20px;/* Aproximação devido à substituição de fonte */
+                font-weight: 400;
+                line-height: 34px;/* Aproximação devido à substituição de fonte */
+            }
+
+            text-align: center;
+
+        }
+    }
+
+    md-tabs-wrapper{
+        display: none;
+    }
+
+    .btns-meta{
+
+        .material-icons{
+            padding: 0;
+            margin: 3px
+        }
+
+
+        .btn-pq-meta{
+            background-color: transparent;
+
+        }
+
+        .btn-criar-meta{
+            background-color: @laranja;
+
+        }
+
+
+    }
+    .md-off {
+        border-color: black;
+    }
+
+     .md-on {
+        background-color: @laranja;
+    }
+
+   .md-checked .md-off {
+        border-color: black;
+    }
+
+
+    
+}
+
+.direita{
+    text-align: right;
+}
+
+.esquerda{
+    text-align: left;
+}
+
+
+.modal-toolbar{
+    background-color: red;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+
+#card-meta{
+
+    h1{
+        font-family: @fontIrma;
+        color:  #3c3c3c;
+        font-size: 18px;/* Aproximação devido à substituição de fonte */
+        font-weight: 900;
+        line-height: 32px;/* Aproximação devido à substituição de fonte */
+    }
+
+    p.detalhe{
+        font-family: @fontAzo;
+        color:  #a0a0a0;
+        font-size: 16px;/* Aproximação devido à substituição de fonte */
+        font-weight: 400;
+        line-height: 32px;/* Aproximação devido à substituição de fonte */
+    }
+
+    .linha{
+
+        .md-bar {
+            background-color: @laranja;
+        }
+
+
+        .md-container {
+            background-color: @cinza-claro-x;
+        }
+
+    }
+
+    button.ativo{
+        .material-icons{
+            color: @laranja;
+        }
+    }
+
+
+    #detalhes-meta{
+
+        display: none;
+
+        h2{
+            color: #3c3c3c;
+            font-size: 18px;
+        }
+
+    }
+
+
+    .card-sem-meta{
+        background-color: @laranja;
+        color: white;
+
+        h1{
+                font-family: @fontIrma;
+                color: #3c3c3c;
+                font-size: 18px;
+                font-weight: 900;
+                line-height: 32px;
+        }
+        p{
+            font-family: @fontIrma;
+                font-size: 16px;
+        }
+
+    }
+
+}
+
+.card-sem-lead{
+        background-color: @laranja;
+        color: white;
+
+        h1{
+                font-family: @fontIrma;
+                color: #3c3c3c;
+                font-size: 18px;
+                font-weight: 900;
+                line-height: 32px;
+        }
+        p{
+            font-family: @fontIrma;
+                font-size: 16px;
+        }
+
+    }
+
+
+.hint{
+    color: @cinza-claro;
+    font-size: 10px;
+    font-style: italic;
+}
+
+
+.bbot_v002{
+
+    background-color: transparent;
+    padding-bottom: 177px;
 
 
 
+    .settings{
+
+        .md-menu {
+            padding: 0;
+        }
+
+        .md-button{
+            min-height: auto;
+        }
+
+        .md-button.md-icon-button {
+            margin: 0;
+            height: auto;
+            min-width: 0;
+            padding: 0;
+        }
+
+
+        .order{
+        }
+    }
+
+
+    .card-lead-03{
+
+        position: relative;
+        min-width: 320px;
+
+        .menu-card{
+            padding: 0;
+            margin-top: -11px;
+            margin-right: -19px;
+        }
+
+        h2{
+            margin-top: 0;
+            margin-bottom: 15px;
+            .estilo-h2;
+        }
+
+
+        .md-subhead {
+            padding-top: 0;
+            margin-top: -15px;
+            font-size: 10px;
+        }
+
+        p{
+            span.icone{
+                margin-right: 22px;
+            }
+
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        md-icon {
+            margin-top: -5px;
+            margin-left: -2px;
+            margin-right: 5px;
+            color: rgba(0,0,0,0.54);
+        }
+
+
+        .criadoEm{
+            position: absolute;
+            bottom: 3px;
+            font-size: 9px;
+        }
+
+        .btn-acao-card{
+            font-weight: bold;
+            font-size: 12px;
+        }
+    }
+
+
+    .md-select-value{
+        margin-left: -7px;
+        margin-top: -10px;
+        font-size: 20px;
+    }
+
+
+    .area-lista{
+        margin-top: 10px;
+        padding-top: 0px;
+        background-color: @branco;
+
+        th{
+            .material-icons{
+                margin-top: -5px;
+            }
+        }
+
+        .linha{
+            padding: 12px 6px;
+            background-color: @branco;
+        }
+
+
+        .md-button.menu-lista {
+            margin: 0 6px;
+            height: 20px;
+            min-width: 0;
+            line-height: normal;
+            padding: 0;
+            width: auto;
+            border-radius: 50%;
+
+        }
+
+    }
+
+
+
+
+    /* ==========================================================================
+       FUNIL
+       ========================================================================== */
+
+    * {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    [ng-drag] {
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    [ng-drag] {
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 0, 0, 0.5);
+        color: white;
+        text-align: center;
+        padding-top: 40px;
+        display: inline-block;
+        margin: 0 10px;
+        cursor: move;
+    }
+    ul.draggable-objects:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+    .draggable-objects li {
+        float: left;
+        display: block;
+        width: 120px;
+        height: 100px;
+    }
+    [ng-drag].drag-over {
+        border: solid 1px red;
+    }
+    [ng-drag].dragging {
+        opacity: 0.5;
+    }
+    [ng-drop] {
+        background: rgba(0, 255, 0, 0.5);
+        text-align: center;
+        width: 600px;
+        min-height: 200px;
+        padding-top: 90px;
+        display: block;
+        margin: 20px auto;
+        position: relative;
+    }
+    [ng-drop].drag-enter {
+        border: solid 5px red;
+    }
+    [ng-drop] span.title {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200px;
+        height: 20px;
+        margin-left: -100px;
+        margin-top: -10px;
+    }
+    [ng-drop] div {
+        position: relative;
+        z-index: 2;
+    }
+
+}
+
+/* ==========================================================================
+FUNIL
+========================================================================== */
+.modalLead{
+    padding: 10px;
+}
+
+
+/* ==========================================================================
+   itens BBOT2
+   ========================================================================== */
+.md-button.md-fab{
+    /*    width: 68px;
+        height: 68px;*/
+}
+
+.btn-mais-multi{
+    position: fixed;
+    bottom: 50px;
+    right: 16px;
 }
 
 /* ==========================================================================
@@ -1216,7 +1736,7 @@ div label input {
     position: fixed;
     z-index: 1000;
     bottom: 0px;
-    right: 20px;
+    left: 20px;
     background-color: @preto-1;
     width: 293px;
     padding:0;
@@ -1605,6 +2125,24 @@ md-datepicker.md-default-theme, md-datepicker.data-modal {
 .md-default-theme .md-datepicker-input-container, .md-datepicker-input-container {
     border: 0;
 }*/
+
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+}
+
+.form-control:focus {
+    border-color: #ccc !important;
+}
 
 
 

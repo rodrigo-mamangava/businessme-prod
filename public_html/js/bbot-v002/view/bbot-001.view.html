@@ -13,17 +13,20 @@
                 <div class="col-sm-10 area-campo">
                     <div class="campo-grande">
                         <div class="form-group">
-                            <label for="leadname"> </label> <input type="text"
-                                                                   class="inputbbot oque form-control" name="oque"
-                                                                   placeholder="Nome do Projeto" ng-model="lead.projeto" />
+                            <label for="leadname"> </label> 
+                            <input type="text"
+                                   class="inputbbot oque form-control" name="oque"
+                                   placeholder="Nome do Projeto" ng-model="lead.projeto" />
                         </div>
 
                         <div class="form-group">
 
-                            <label for="leadname"> <i class="fa fa-at"></i>
-                            </label> <input type="text" list="contatoList"
-                                            class="inputbbot contato form-control" name="leadname"
-                                            placeholder="Contato" ng-model="lead.contato" ng-required="true" />
+                            <label for="leadname"> 
+                                <md-icon md-font-library="material-icons">person</md-icon>
+                            </label> 
+                            <input type="text" list="contatoList"
+                                   class="inputbbot contato form-control" name="leadname"
+                                   placeholder="Contato" ng-model="lead.contato" ng-required="true" />
 
                             <datalist id="contatoList">
                                 <option
@@ -35,7 +38,8 @@
                         <div class="form-group">
 
 
-                            <label for="leadfase"> <i class="fa fa-hashtag"></i>
+                            <label for="leadfase"> 
+                                <md-icon md-font-library="material-icons">flag</md-icon>
                             </label> <select class="inputbbot contato form-control " name="leadfase"
                                              placeholder="+fase" ng-change="faseChange()"
                                              ng-model="lead.fase" ng-required="true">
@@ -47,7 +51,7 @@
 
 
 
-                        <div class="form-group">
+                        <div class="form-group calendario">
 
                             <md-datepicker ng-model="lead.datalembrete" md-placeholder="Data"
                                            class="campo-data inputbbot form-control" ng-required="true"></md-datepicker>
@@ -125,7 +129,7 @@
         <div class="row">
 
 
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-4">
                 <h4 class="titulo-filtro">
                     Filtros ativos: <span class="ng-binding label label-default "
                                           ng-show="lead.projeto">{{lead.projeto}}
@@ -145,37 +149,106 @@
             </div>
 
 
-            <div class="col-sm-6">
+            <div class="col-sm-8">
 
                 <div class="settings">
+
 
                     <div class="tipo-lista">
 
                         <div class="ck-button">
-                            <label> <input type="radio" name=tipolista value="lista"
-                                           ng-model="filtro.tipoLista" ng-change="setTipoLista()">
-                                <span><i class="fa fa-list" aria-hidden="true"></i></span>
+                            <label> 
+                                <input type="radio" name=tipolista value="lista"
+                                       ng-model="filtro.tipoLista" ng-change="setTipoLista()">
+                                <span>
+                                    <md-tooltip md-direction="bottom">
+                                        Lista
+                                    </md-tooltip>
+                                    <md-icon md-font-library="material-icons">view_list</md-icon>
+                                </span>
                             </label>
                         </div>
                         <div class="ck-button">
                             <label> <input type="radio" name="tipolista" value="grid"
                                            ng-model="filtro.tipoLista" ng-change="setTipoLista()">
-                                <span><i class="fa fa-th-large" aria-hidden="true"></i></span>
+                                <span>
+                                    <md-tooltip md-direction="bottom">
+                                        Grade
+                                    </md-tooltip>
+                                    <md-icon md-font-library="material-icons">view_module</md-icon>
+                                </span>
                             </label>
                         </div>
 
 
                     </div>
 
-                    <div class="tipo-lista">
+
+                    <div class="order-lista">
+
+
+                        <md-menu>
+                            <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                                <md-tooltip md-direction="bottom">
+                                    Ordem dos leads
+                                </md-tooltip>
+                                <md-icon md-font-library="material-icons">sort_by_alpha</md-icon>
+                            </md-button>
+                            <md-menu-content width="4">
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('-datacriacao', 'fiber_new')">
+                                        <md-icon md-font-library="material-icons">fiber_new</md-icon>
+                                        Data de criação
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('projeto', 'work')">
+                                        <md-icon md-font-library="material-icons">work</md-icon>
+                                        Projeto
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('contato', 'person')">
+                                        <md-icon md-font-library="material-icons">person</md-icon>
+                                        Contato
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('fase', 'flag')">
+                                        <md-icon md-font-library="material-icons">flag</md-icon>
+                                        Fase
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('datalembrete', 'insert_invitation')">
+                                        <md-icon md-font-library="material-icons">insert_invitation</md-icon>
+                                        Data do lembrete
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+
+                        <md-icon md-font-library="material-icons" class="order">{{orderByListIcon}}</md-icon>
+
+
+                    </div>
+
+
+                    <div class="fitro-data">
+
+
 
                         <md-radio-group ng-model="filtro.data" layout="row"
-                                        ng-change="setFiltroData()"> <md-radio-button
+                                        ng-change="setFiltroData()"> 
+                            <md-radio-button
                                 value="1" class="md-primary"> Leads para hoje </md-radio-button>
                             <md-radio-button value="0" class="md-primary" checked>
                                 Todos </md-radio-button> </md-radio-group>
 
                     </div>
+
+
+
 
                 </div>
 
@@ -187,49 +260,53 @@
 
 
 
-            <div class="area-grid-cards" ng-show="filtro.tipoLista == 'grid'">
+            <div class="area-grid-cards" ng-show="filtro.tipoLista == 'grid'" flex>
 
-                <div class="lead col-xs-12 col-sm-6 col-md-4"
-                     ng-repeat="(key, lead) in leadsList
+                <div class='md-padding' layout="row" layout-wrap layout-align="">
+
+                    <md-card class="card-lead-02"
+                             ng-repeat="(key, lead) in leadsList
                                          | filter: {projeto : lead.projeto}
                                  | filter: {contato : lead.contato}
                                  | filter: {fase : lead.fase}
                                  | filter: {datalembrete : filtro.lembrete}
-                                 | orderBy:'-datacriacao'
-                     ">
+                                 | orderBy: orderByList
+                             ">
 
-                    <flippy class="fancy card-lead" flip="['click']"
-                            flip-back="['click']" duration="800" timing-function="ease-in-out">
+                        <md-card-title>
+                            <md-card-title-text>
+                                <h2>{{lead.projeto}}</h2>
+                                <span class="md-subhead">criado em: {{lead.datacriacao| date:'dd/MM/yyyy' }}</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
 
-                        <flippy-front class="card-front">
-                            <h2>{{lead.projeto}}</h2>
-                            <button class="btn btn-abrir"
-                                    onclick="event.stopPropagation();
-                                                                            jQuery('#modalLead').modal();
-                                    "
-                                    ng-click="loadLead(lead.$id)">
-                                <i class="fa fa-pencil-square-o fa-lg"></i>
-                            </button>
+                            
+
                             <p>
-                                <i class="fa fa-at"></i> {{lead.contato}}
+                            <md-icon md-font-library="material-icons">person</md-icon>
+                            {{lead.contato}}
                             </p>
                             <p>
-                                <i class="fa fa-hashtag"></i> {{lead.fase}}
+                            <md-icon md-font-library="material-icons">flag</md-icon>
+                            {{lead.fase}}
                             </p>
                             <p>
-                                <i class="fa fa-calendar"></i> {{lead.datalembrete|
-						date:'dd/MM/yyyy' }}
+                            <md-icon md-font-library="material-icons">insert_invitation</md-icon>
+                            {{lead.datalembrete| date:'dd/MM/yyyy' }}
                             </p>
 
+                        </md-card-content>
+                        <md-card-actions layout="row" layout-align="end center"> 
+                            <md-button class="" ng-click="loadDica($event)">Dicas</md-button> 
+                            <md-button class="" data-toggle="modal"
+                                       data-target="#modalEditContato"
+                                       ng-click="loadLead(lead.$id)" >Editar</md-button> 
+                        </md-card-actions> 
+                    </md-card>
 
-
-                        </flippy-front> <flippy-back class="card-back">
-                            <h2>Dicas!</h2>
-                            <p>Em breve dicas sobre como facilitar seu dia-a-dia e melhorar
-                                suas vendas.</p>
-                            <p>Para cada lead um dica específica. ;)</p>
-                        </flippy-back> </flippy>
                 </div>
+
 
             </div>
 
@@ -242,11 +319,11 @@
                         <thead>
                             <tr>
                                 <th>Nome do projeto</th>
-                                <th>@ Contato</th>
-                                <th># Fase</th>
-                                <th>* Data do lembrete</th>
-                                <th>Ações</th>
-                            </tr>
+                                <th><md-icon md-font-library="material-icons">person</md-icon> Contato</th>
+                        <th><md-icon md-font-library="material-icons">flag</md-icon> Fase</th>
+                        <th><md-icon md-font-library="material-icons">insert_invitation</md-icon> Data do lembrete</th>
+                        <th>Ações</th>
+                        </tr>
                         </thead>
                         <tbody>
                             <tr
@@ -255,24 +332,25 @@
                                         | filter: {contato : lead.contato}
                                         | filter: {fase : lead.fase}
                                         | filter: {datalembrete : filtro.lembrete}
-                                        | orderBy:'-datacriacao'
+                                        | orderBy: orderByList
                                 ">
                                 <td>{{lead.projeto}}</td>
                                 <td>{{lead.contato}}</td>
                                 <td>{{lead.fase}}</td>
                                 <td>{{lead.datalembrete| date:'dd/MM/yyyy' }}</td>
                                 <td>
+                                    <button class='btn btn-default' ng-click="loadDica($event)">
+                                        Dica
+                                    </button>
+
                                     <button class='btn btn-default' data-toggle="modal"
                                             data-target="#modalEditContato"
                                             onclick="jQuery('#modalLead').modal();"
                                             ng-click="loadLead(lead.$id)">
-                                        <i class="fa fa-pencil-square-o fa-lg"></i>
+                                        Editar
                                     </button>
 
-                                    <button class='btn btn-default' data-toggle="modal"
-                                            data-target="#modalDica">
-                                        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-                                    </button>
+
                                 </td>
                             </tr>
                         </tbody>
@@ -313,23 +391,24 @@
                         </p>
 
                         <p>
-                        <md-datepicker class="data-modal" ng-model="loadItem.datalembrete" md-placeholder="Enter date"></md-datepicker>
+                        <md-datepicker class="data-modal"
+                                       ng-model="loadItem.datalembrete" md-placeholder="Enter date"></md-datepicker>
                         </p>
 
                         <div class="form-group">
-                            <label><i class="fa fa-hashtag"></i></label> 
-                            <select name="fase"
-                                    ng-model="loadItem.fase" 
-                                    class="inputbbot contato form-control "
-                                    ng-change="faseChangeModal()">
-                                
+                            <label><i class="fa fa-hashtag"></i></label> <select name="fase"
+                                                                                 ng-model="loadItem.fase" class="inputbbot contato form-control "
+                                                                                 ng-change="faseChangeModal()">
+
                                 <option name="fase" value="Potencial cliente">Potencial
                                     cliente</option>
                                 <option name="fase" value="Contato">Contato</option>
                                 <option name="fase" value="Orçamento">Orçamento</option>
                                 <option name="fase" value="Negociação">Negociação</option>
-                                <option name="fase" value="Fechamento: Sucesso">Fechamento: Sucesso</option>
-                                <option name="fase" value="Fechamento: Falha">Fechamento: Falha</option>
+                                <option name="fase" value="Fechamento: Sucesso">Fechamento:
+                                    Sucesso</option>
+                                <option name="fase" value="Fechamento: Falha">Fechamento:
+                                    Falha</option>
                             </select><br>
                         </div>
                     </div>

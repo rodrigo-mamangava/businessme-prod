@@ -1,0 +1,420 @@
+<div class="" ng-include="'view/header-interno.html'"></div>
+<div class="" ng-include="'js/chamados/view/chat-box.html'"></div>
+
+<div layout="row" layout-align="center center">
+    <md-content flex-gt-sm="80" layout-fill layout="column" class="bbot_v002">
+
+        <div  layout-padding>
+            <div  layout="row" layout-wrap class="settings" >
+
+
+
+                <div class="tipo-lista" flex>
+                    <div layout="row" layout-align="start center">
+                        <p>Filtro: {{$root.buscar}}</p>
+                    </div>
+                </div>
+
+
+
+                <div class="order-lista" flex="10">
+
+                    <div layout="row" layout-align="end center">
+
+                        <md-menu>
+                            <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                                <md-tooltip md-direction="bottom">
+                                    Ordem dos leads
+                                </md-tooltip>
+                                <md-icon md-font-library="material-icons">sort_by_alpha</md-icon>
+                            </md-button>
+                            <md-menu-content width="4">
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('-datacriacao', 'fiber_new')">
+                                        <md-icon md-font-library="material-icons">fiber_new</md-icon>
+                                        Data de criação
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('projeto', 'work')">
+                                        <md-icon md-font-library="material-icons">work</md-icon>
+                                        Projeto
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('contato', 'person')">
+                                        <md-icon md-font-library="material-icons">person</md-icon>
+                                        Contato
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('fase', 'flag')">
+                                        <md-icon md-font-library="material-icons">flag</md-icon>
+                                        Fase
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('datalembrete', 'insert_invitation')">
+                                        <md-icon md-font-library="material-icons">insert_invitation</md-icon>
+                                        Data do lembrete
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+
+                        <md-icon md-font-library="material-icons" class="order">{{orderByListIcon}}</md-icon>
+
+                    </div>
+
+
+                </div>
+                <div class="tipo-lista" flex="10">
+                    <div layout="row" layout-align="end center">
+
+                        <div class="ck-button">
+                            <label> 
+                                <input type="radio" name=tipolista value="funil"
+                                       ng-model="filtro.tipoLista" ng-change="setTipoLista()">
+                                <span>
+                                    <md-tooltip md-direction="bottom">
+                                        Funil de vendas
+                                    </md-tooltip>
+                                    <md-icon md-font-library="material-icons">filter_list</md-icon>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="ck-button">
+                            <label> 
+                                <input type="radio" name=tipolista value="lista"
+                                       ng-model="filtro.tipoLista" ng-change="setTipoLista()">
+                                <span>
+                                    <md-tooltip md-direction="bottom">
+                                        Lista
+                                    </md-tooltip>
+                                    <md-icon md-font-library="material-icons">view_list</md-icon>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="ck-button">
+                            <label> <input type="radio" name="tipolista" value="grid"
+                                           ng-model="filtro.tipoLista" ng-change="setTipoLista()">
+                                <span>
+                                    <md-tooltip md-direction="bottom">
+                                        Grade
+                                    </md-tooltip>
+                                    <md-icon md-font-library="material-icons">view_module</md-icon>
+                                </span>
+                            </label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+        <div layout="row" class="area-grid-cards" ng-show="filtro.tipoLista == 'grid'" flex>
+
+            <div layout="row" layout-wrap layout-align="space-around end">
+
+                <md-card class="card-lead-03 md-whiteframe-2dp" 
+                         ng-repeat="(key, lead) in leadsList
+                                 | filter: buscar
+                                 | orderBy: orderByList
+                         ">
+
+                    <md-card-title>
+                        <md-card-title-text>
+                            <h2>{{lead.projeto}}</h2>
+
+
+                        </md-card-title-text>
+
+
+                        <md-menu class='menu-card' md-position-mode="target-right target">
+                            <md-button aria-label="Open phone interactions menu" class="md-icon-button" 
+                                       ng-click="openMenuCard($mdOpenMenu, $event)">
+                                <md-tooltip md-direction="top">
+                                    Menu do card
+                                </md-tooltip>
+                                <md-icon md-font-library="material-icons">more_vert</md-icon>
+                            </md-button>
+
+                            <md-menu-content width="4">
+
+                                <md-menu-item>
+                                    <md-button ng-click="loadLeadModal(lead)">
+                                        <md-icon md-font-library="material-icons">edit</md-icon>
+                                        Editar
+                                    </md-button>
+                                </md-menu-item>
+
+                                <md-menu-item>
+                                    <md-button ng-click="deletarLead(lead, $event)">
+                                        <md-icon md-font-library="material-icons">delete_forever</md-icon>
+                                        Excluir
+                                    </md-button>
+                                </md-menu-item>
+
+                            </md-menu-content>
+                        </md-menu>
+
+                    </md-card-title>
+                    <md-card-content>
+
+                        <p>
+                        <md-icon md-font-library="material-icons">monetization_on</md-icon>
+                        {{ (!lead.valor) ? 0 : lead.valor | currency:"R$":2}}
+                        </p>
+
+                        <p>
+                        <md-icon md-font-library="material-icons">person</md-icon>
+                        {{lead.contato}}
+                        </p>
+
+                        <md-input-container class="md-icon-float md-block">
+                            <md-icon md-font-library="material-icons">flag</md-icon>
+                            <md-select ng-model="lead.fase" ng-change="faseHasChange(lead)" aria-label='fase'>
+                                <md-option ng-repeat="item in fases| orderBy:item.order " value="{{item.nome}}" aria-label='{{lead.fase}}'>
+                                    {{item.nome}}
+                                </md-option>
+                        </md-input-container>
+
+                        <p>
+                        <md-icon md-font-library="material-icons">insert_invitation</md-icon>
+                        {{lead.datalembrete| date:'dd/MM/yyyy' }}
+                        </p>
+
+                        <p class="criadoEm" >Criado em: {{lead.datacriacao| date:'dd/MM/yyyy' }}</p>
+
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="end center"> 
+
+<!--                         <md-button class="btn-acao-card" data-toggle="modal"
+                                   data-target="#modalEditContato"
+                                   ng-click="openLeadInside($event, lead.$id)" >Dica</md-button>  -->
+
+                        <md-button class="btn-acao-card" data-toggle="modal"
+                                   data-target="#modalEditContato"
+                                   ng-click="openLeadInside($event, lead.$id)" >Notas</md-button> 
+                    </md-card-actions> 
+                </md-card>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="area-lista md-whiteframe-4dp" ng-show="filtro.tipoLista == 'lista'">
+
+            <div class="md-whiteframe-1dp" layout-padding>
+                <div layout="row" layout-wrap>
+                    <div flex="25">
+                        <md-icon md-font-library="material-icons">work</md-icon>
+                        Projeto
+                    </div>
+                    <div flex="15">
+                        <md-icon md-font-library="material-icons">monetization_on</md-icon>
+                        Valor
+                    </div>
+                    <div flex="20">
+                        <md-icon md-font-library="material-icons">person</md-icon>
+                        Contato
+                    </div>
+                    <div flex="20">
+                        <md-icon md-font-library="material-icons">flag</md-icon>
+                        Fase
+                    </div>
+                    <div flex="15">
+                        <md-icon md-font-library="material-icons">event</md-icon>
+                        Lembrete
+                    </div>
+                    <div flex="5">
+                        Menu
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div  class="md-whiteframe-1dp" layout-padding 
+                  ng-repeat="(key, lead) in leadsList
+              | filter: buscar
+              | orderBy: orderByList
+                  ">
+                <div layout="row" layout-wrap>
+                    <div flex="25">
+                        {{lead.projeto}}
+                    </div>
+                    <div flex="15">
+                        {{ (!lead.valor) ? 0 : lead.valor | currency:"R$":2}}
+                    </div>
+                    <div flex="20">
+                        {{lead.contato}}
+                    </div>
+                    <div flex="20">
+                        {{lead.fase}}
+                    </div>
+                    <div flex="15">
+                        {{lead.datalembrete| date:'dd/MM/yyyy' }}
+                    </div>
+                    <div flex="5">
+                        <md-menu class='menu-card' md-position-mode="target-right target">
+                            <md-button aria-label="Open phone interactions menu" class="md-icon-button menu-lista" 
+                                       ng-click="openMenuCard($mdOpenMenu, $event)">
+                                <md-tooltip md-direction="right">
+                                    Ações
+                                </md-tooltip>
+                                <md-icon md-font-library="material-icons">more_vert</md-icon>
+                            </md-button>
+
+                            <md-menu-content width="4">
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('-datacriacao', 'fiber_new')">
+                                        <md-icon md-font-library="material-icons">fiber_new</md-icon>
+                                        Dica
+                                    </md-button>
+                                </md-menu-item>
+
+
+                                <md-menu-divider></md-menu-divider>
+
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('projeto', 'work')">
+                                        <md-icon md-font-library="material-icons">work</md-icon>
+                                        Editar
+                                    </md-button>
+                                </md-menu-item>
+
+                                <md-menu-item>
+                                    <md-button ng-click="setLeadsOrder('datalembrete', 'insert_invitation')">
+                                        <md-icon md-font-library="material-icons">insert_invitation</md-icon>
+                                        Excluir
+                                    </md-button>
+                                </md-menu-item>
+
+                            </md-menu-content>
+                        </md-menu>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="area-funil" ng-show="filtro.tipoLista == 'funil'">
+
+
+            <h2>Funil</h2>
+
+            <hr/>
+            <span class="title">Contato</span>
+            <div ng-drop="true" ng-drop-success="onDropComplete1($data,$event)">
+  
+
+                <div ng-repeat="obj in droppedObjects1" ng-drag="true" ng-drag-data="obj"
+                     ng-drag-success="onDragSuccess1($data,$event)" ng-center-anchor="{{centerAnchor}}">
+                    {{obj.projeto}}
+                </div>
+
+            </div>
+
+            <span class="title">Potencial cliente</span>
+            <div ng-drop="true" ng-drop-success="onDropComplete2($data,$event)">
+                
+
+                <div ng-repeat="obj in droppedObjects2" ng-drag="true" ng-drag-data="obj"
+                     ng-drag-success="onDragSuccess2($data,$event)" ng-center-anchor="{{centerAnchor}}">
+                    {{obj.projeto}}
+                </div>
+
+            </div>
+
+            <span class="title">Orçamento</span>
+            <div ng-drop="true" ng-drop-success="onDropComplete3($data,$event)">
+                
+
+                <div ng-repeat="obj in droppedObjects3" ng-drag="true" ng-drag-data="obj"
+                     ng-drag-success="onDragSuccess3($data,$event)" ng-center-anchor="{{centerAnchor}}">
+                    {{obj.projeto}}
+                </div>
+
+            </div>
+
+            <span class="title">Negociação</span>
+            <div ng-drop="true" ng-drop-success="onDropComplete4($data,$event)">
+                
+
+                <div ng-repeat="obj in droppedObjects4" ng-drag="true" ng-drag-data="obj"
+                     ng-drag-success="onDragSuccess4($data,$event)" ng-center-anchor="{{centerAnchor}}">
+                    {{obj.projeto}}
+                </div>
+
+            </div>
+
+            <span class="title">Fechamento</span>
+            <div ng-drop="true" ng-drop-success="onDropComplete5($data,$event)">
+                
+
+                <div ng-repeat="obj in droppedObjects5" ng-drag="true" ng-drag-data="obj"
+                     ng-drag-success="onDragSuccess5($data,$event)" ng-center-anchor="{{centerAnchor}}">
+                    {{obj.projeto}}
+                </div>
+
+            </div>
+
+            <hr>
+
+        </div>
+
+
+
+    </md-content>
+</div>
+
+
+
+
+<div class="btn-mais-multi" layout="row" ng-cloak>
+    <md-fab-speed-dial md-open="" md-direction="up" class="md-fling">
+
+        <md-fab-trigger>
+            <md-button aria-label="menu" class="md-fab md-warn">
+                <md-icon md-font-library="material-icons">add</md-icon>
+            </md-button>
+        </md-fab-trigger>
+
+        <md-fab-actions>
+            <md-button aria-label="" class="md-fab md-raised md-mini" ng-click='novoLead($event)'>
+                <md-tooltip md-direction="left" >
+                    Lead
+                </md-tooltip>
+                <md-icon md-font-library="material-icons">assignment</md-icon>
+            </md-button>
+
+            <md-button aria-label="" class="md-fab md-raised md-mini" ng-click='novoContato($event)'>
+                <md-tooltip md-direction="left" >
+                    Contato
+                </md-tooltip>
+                <md-icon md-font-library="material-icons">person_add</md-icon>
+            </md-button>
+
+            <md-button aria-label="" class="md-fab md-raised md-mini" ng-click='novaMeta($event)'>
+                <md-tooltip md-direction="left" >
+                    Meta
+                </md-tooltip>
+                <md-icon md-font-library="material-icons">stars</md-icon>
+            </md-button>
+
+        </md-fab-actions>
+
+    </md-fab-speed-dial>
+</div>

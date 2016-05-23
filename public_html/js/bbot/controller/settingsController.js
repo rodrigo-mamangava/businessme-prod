@@ -10,8 +10,10 @@ myApp.controller('SettingsController', [
     'MoipAssinatura',
     '$http',
     '$mdDialog',
+    '$location',
     function ($scope, $rootScope, Contatos, $firebaseAuth, $firebaseArray,
-            $firebaseObject, FIREBASE_URL, Authentication, MoipAssinatura, $http, $mdDialog) {
+            $firebaseObject, FIREBASE_URL, Authentication, MoipAssinatura, $http, 
+            $mdDialog, $location) {
 
         var ref = new Firebase(FIREBASE_URL);
         var auth = $firebaseAuth(ref);
@@ -24,6 +26,7 @@ myApp.controller('SettingsController', [
                 MoipAssinatura.consultar($rootScope.currentUser.plano);
 
                 var uid = authUser.uid;
+                
 
                 var fasesRef = new Firebase(FIREBASE_URL + 'users/' + uid
                         + '/fases');
@@ -162,6 +165,10 @@ myApp.controller('SettingsController', [
                     //
 
                 };
+                
+                $scope.upgrade = function(){
+                	$location.path('/upgrade');
+                }
 
 
             }// if authUser

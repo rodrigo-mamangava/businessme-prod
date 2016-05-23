@@ -7310,6 +7310,37 @@ fieldset[disabled] .btn-assinar.focus {
   /* Aproximação devido à substituição de fonte */
 }
 /* ==========================================================================
+   header v002
+   ========================================================================== */
+.header002 md-content {
+  background-color: transparent;
+}
+md-toolbar:not(.md-menu-toolbar) {
+  background-color: #ffffff;
+  color: rgba(255, 255, 255, 0.87);
+}
+md-toolbar.md-default-theme:not(.md-menu-toolbar) md-icon,
+md-toolbar:not(.md-menu-toolbar) md-icon {
+  color: black;
+}
+.md-toolbar-tools h1 {
+  font-size: 18px;
+  margin-top: 6px;
+}
+.md-toolbar-tools .md-button {
+  padding: 0;
+}
+.md-toolbar-tools .campo-pesquisa .input-group-addon:first-child {
+  border-radius: 0;
+  background-color: #f0f0f0;
+  border-right: 0;
+}
+.md-toolbar-tools .campo-pesquisa input.pesquisar {
+  border-radius: 0;
+  border-left: 0;
+  background-color: #f0f0f0;
+}
+/* ==========================================================================
    LANDINGPAGE
    ========================================================================== */
 .landingpage #missao {
@@ -7648,6 +7679,24 @@ fieldset[disabled] .landingpage #missao .formcadastro .btn-registro.focus {
   line-height: 30px;
   /* Aproximação devido à substituição de fonte */
   text-align: center;
+}
+/* ==========================================================================
+   menu-principal
+   ========================================================================== */
+#menu-principal .menu-titulo {
+  background-color: #ff8838;
+}
+#menu-principal .menu {
+  width: 100%;
+  text-align: left;
+  font-family: "Irma Text Round Black";
+  color: #3c3c3c;
+  font-weight: 900;
+  text-transform: none;
+}
+#menu-principal .menu-sair {
+  color: #ff8838;
+  margin-top: 40px;
 }
 /* ==========================================================================
    LEADS
@@ -8104,6 +8153,341 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
   margin-right: 5px;
 }
 /* ==========================================================================
+   BBOT 03
+   ========================================================================== */
+.modalMeta {
+  width: 50%;
+  max-height: 80%;
+}
+.modalMeta md-tabs[md-align-tabs=bottom] {
+  padding-bottom: 0;
+}
+.modalMeta .meta .head-meta {
+  padding: 15px;
+  background-color: #e6e6e6;
+  height: 170px;
+  position: relative;
+  z-index: 888;
+}
+.modalMeta .meta .head-meta img {
+  vertical-align: middle;
+  position: absolute;
+  width: 192px;
+  height: auto;
+  bottom: -68px;
+  z-index: 888;
+  right: 0;
+}
+.modalMeta .meta .head-meta h2 {
+  font-family: "Irma Text Round Black";
+  color: #ff8838;
+  font-size: 24px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  text-align: left;
+}
+.modalMeta .meta .corpo-meta {
+  padding: 15px;
+  position: relative;
+  z-index: 999;
+  background-color: white;
+  text-align: center;
+}
+.modalMeta .meta .corpo-meta h3 {
+  font-family: "Irma Text Round Black";
+  color: #3c3c3c;
+  font-size: 18px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  line-height: 32px;
+  /* Aproximação devido à substituição de fonte */
+}
+.modalMeta .meta .corpo-meta p {
+  font-family: "azo-sans-web", sans-serif;
+  color: #787878;
+  font-size: 20px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 400;
+  line-height: 34px;
+  /* Aproximação devido à substituição de fonte */
+}
+.modalMeta md-tabs-wrapper {
+  display: none;
+}
+.modalMeta .btns-meta .material-icons {
+  padding: 0;
+  margin: 3px;
+}
+.modalMeta .btns-meta .btn-pq-meta {
+  background-color: transparent;
+}
+.modalMeta .btns-meta .btn-criar-meta {
+  background-color: #ff8838;
+}
+.modalMeta .md-off {
+  border-color: black;
+}
+.modalMeta .md-on {
+  background-color: #ff8838;
+}
+.modalMeta .md-checked .md-off {
+  border-color: black;
+}
+.direita {
+  text-align: right;
+}
+.esquerda {
+  text-align: left;
+}
+.modal-toolbar {
+  background-color: red;
+  color: rgba(255, 255, 255, 0.87);
+}
+#card-meta h1 {
+  font-family: "Irma Text Round Black";
+  color: #3c3c3c;
+  font-size: 18px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  line-height: 32px;
+  /* Aproximação devido à substituição de fonte */
+}
+#card-meta p.detalhe {
+  font-family: "azo-sans-web", sans-serif;
+  color: #a0a0a0;
+  font-size: 16px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 400;
+  line-height: 32px;
+  /* Aproximação devido à substituição de fonte */
+}
+#card-meta .linha .md-bar {
+  background-color: #ff8838;
+}
+#card-meta .linha .md-container {
+  background-color: #f0f0f0;
+}
+#card-meta button.ativo .material-icons {
+  color: #ff8838;
+}
+#card-meta #detalhes-meta {
+  display: none;
+}
+#card-meta #detalhes-meta h2 {
+  color: #3c3c3c;
+  font-size: 18px;
+}
+#card-meta .card-sem-meta {
+  background-color: #ff8838;
+  color: white;
+}
+#card-meta .card-sem-meta h1 {
+  font-family: "Irma Text Round Black";
+  color: #3c3c3c;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 32px;
+}
+#card-meta .card-sem-meta p {
+  font-family: "Irma Text Round Black";
+  font-size: 16px;
+}
+.card-sem-lead {
+  background-color: #ff8838;
+  color: white;
+}
+.card-sem-lead h1 {
+  font-family: "Irma Text Round Black";
+  color: #3c3c3c;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 32px;
+}
+.card-sem-lead p {
+  font-family: "Irma Text Round Black";
+  font-size: 16px;
+}
+.hint {
+  color: #828282;
+  font-size: 10px;
+  font-style: italic;
+}
+.bbot_v002 {
+  background-color: transparent;
+  padding-bottom: 177px;
+  /* ==========================================================================
+       FUNIL
+       ========================================================================== */
+}
+.bbot_v002 .settings .md-menu {
+  padding: 0;
+}
+.bbot_v002 .settings .md-button {
+  min-height: auto;
+}
+.bbot_v002 .settings .md-button.md-icon-button {
+  margin: 0;
+  height: auto;
+  min-width: 0;
+  padding: 0;
+}
+.bbot_v002 .card-lead-03 {
+  position: relative;
+  min-width: 320px;
+}
+.bbot_v002 .card-lead-03 .menu-card {
+  padding: 0;
+  margin-top: -11px;
+  margin-right: -19px;
+}
+.bbot_v002 .card-lead-03 h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-family: "Irma Text Round Black";
+  font-size: 20px;
+  /* Aproximação devido à substituição de fonte */
+  font-weight: 900;
+  text-align: left;
+}
+.bbot_v002 .card-lead-03 .md-subhead {
+  padding-top: 0;
+  margin-top: -15px;
+  font-size: 10px;
+}
+.bbot_v002 .card-lead-03 p {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+.bbot_v002 .card-lead-03 p span.icone {
+  margin-right: 22px;
+}
+.bbot_v002 .card-lead-03 md-icon {
+  margin-top: -5px;
+  margin-left: -2px;
+  margin-right: 5px;
+  color: rgba(0, 0, 0, 0.54);
+}
+.bbot_v002 .card-lead-03 .criadoEm {
+  position: absolute;
+  bottom: 3px;
+  font-size: 9px;
+}
+.bbot_v002 .card-lead-03 .btn-acao-card {
+  font-weight: bold;
+  font-size: 12px;
+}
+.bbot_v002 .md-select-value {
+  margin-left: -7px;
+  margin-top: -10px;
+  font-size: 20px;
+}
+.bbot_v002 .area-lista {
+  margin-top: 10px;
+  padding-top: 0px;
+  background-color: #ffffff;
+}
+.bbot_v002 .area-lista th .material-icons {
+  margin-top: -5px;
+}
+.bbot_v002 .area-lista .linha {
+  padding: 12px 6px;
+  background-color: #ffffff;
+}
+.bbot_v002 .area-lista .md-button.menu-lista {
+  margin: 0 6px;
+  height: 20px;
+  min-width: 0;
+  line-height: normal;
+  padding: 0;
+  width: auto;
+  border-radius: 50%;
+}
+.bbot_v002 * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.bbot_v002 [ng-drag] {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.bbot_v002 [ng-drag] {
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  padding-top: 40px;
+  display: inline-block;
+  margin: 0 10px;
+  cursor: move;
+}
+.bbot_v002 ul.draggable-objects:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+.bbot_v002 .draggable-objects li {
+  float: left;
+  display: block;
+  width: 120px;
+  height: 100px;
+}
+.bbot_v002 [ng-drag].drag-over {
+  border: solid 1px red;
+}
+.bbot_v002 [ng-drag].dragging {
+  opacity: 0.5;
+}
+.bbot_v002 [ng-drop] {
+  background: rgba(0, 255, 0, 0.5);
+  text-align: center;
+  width: 600px;
+  min-height: 200px;
+  padding-top: 90px;
+  display: block;
+  margin: 20px auto;
+  position: relative;
+}
+.bbot_v002 [ng-drop].drag-enter {
+  border: solid 5px red;
+}
+.bbot_v002 [ng-drop] span.title {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 20px;
+  margin-left: -100px;
+  margin-top: -10px;
+}
+.bbot_v002 [ng-drop] div {
+  position: relative;
+  z-index: 2;
+}
+/* ==========================================================================
+FUNIL
+========================================================================== */
+.modalLead {
+  padding: 10px;
+}
+/* ==========================================================================
+   itens BBOT2
+   ========================================================================== */
+.md-button.md-fab {
+  /*    width: 68px;
+        height: 68px;*/
+}
+.btn-mais-multi {
+  position: fixed;
+  bottom: 50px;
+  right: 16px;
+}
+/* ==========================================================================
    CHECKBOX LIKE A BUTTON
    ========================================================================== */
 div label input {
@@ -8175,7 +8559,7 @@ div label input {
   position: fixed;
   z-index: 1000;
   bottom: 0px;
-  right: 20px;
+  left: 20px;
   background-color: #3c3c3c;
   width: 293px;
   padding: 0;
@@ -9005,3 +9389,18 @@ fieldset[disabled] #assinar .form-assinatura .btn-contrato.focus {
 .md-default-theme .md-datepicker-input-container, .md-datepicker-input-container {
     border: 0;
 }*/
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover {
+  outline: 0px !important;
+  -webkit-appearance: none;
+}
+.form-control:focus {
+  border-color: #ccc !important;
+}

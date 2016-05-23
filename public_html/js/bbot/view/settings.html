@@ -1,9 +1,7 @@
-<div class="" ng-include="'view/header.html'"></div>
+<div class="" ng-include="'view/header-interno.html'"></div>
 <div class="" ng-include="'js/chamados/view/chat-box.html'"></div>
-<div class="container">
-    <div id="settings" class="card">
-
-        <h2>Configurações</h2>
+<div layout="row" layout-align="center center">
+    <div id="settings" class="card" flex-gt-sm="80" layout-fill layout="column">
 
 
         <div ng-cloak>
@@ -93,7 +91,7 @@
 
 
 
-                            <md-card ng-show="!dadosAssinatura.plan" >
+                            <md-card ng-show="!dadosAssinatura.plan && !mostrarUpgrade" >
                                 <md-card-title>
                                     <md-card-title-text>
                                         <span class="md-headline">Plano: TRIAL</span>
@@ -115,12 +113,12 @@
                                 </md-card-content>
                                 <md-card-actions layout="row" layout-align="end center">
                                     <md-button ng-disabled="true" class="md-raised" ng-click="consultar()" >Atualizar</md-button>
-                                    <md-button ng-disabled="true" class="md-raised" ng-click="suspender($event)" >Upgrade</md-button>
+                                    <md-button ng-disabled="true" class="md-raised" ng-click="upgrade()" >Upgrade</md-button>
                                 </md-card-actions>
                             </md-card>
 
 
-                            <md-card ng-show="dadosAssinatura.plan" >
+                            <md-card ng-show="dadosAssinatura.plan">
                                 <md-card-title>
                                     <md-card-title-text>
                                         <span class="md-headline">Plano: {{dadosAssinatura.plan.name}}</span>
@@ -147,6 +145,44 @@
 
 
                                 </md-card-actions>
+                            </md-card>
+                            <md-card ng-show="mostrarUpgrade" >
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">Plano: {{dadosAssinatura.plan.name}}</span>
+                                        <span class="md-subhead">Status: {{dadosAssinatura.status}}</span>
+                                    </md-card-title-text>
+
+                                </md-card-title>
+
+                                <form name="formassinar" ng-submit="assinar()" novalidate>
+
+                                    <md-card-content>
+
+
+                                        <div class="form-group">
+                                            <label>E-mail</label> 
+                                            <input type="email" 
+                                                   ng-disabled="true"
+                                                   ng-model="dadosUsuario.email" class="form-control"
+                                                   placeholder="E-mail"                                                     
+                                                   >
+                                        </div>
+
+                                    </md-card-content>
+                                    <md-card-actions layout="row" layout-align="end center">
+                                        <md-button 
+                                            type="submit"
+                                            ng-disabled="formassinar.$invalid" 
+                                            class="md-raised"
+                                            >
+                                            Assinar
+                                        </md-button>
+
+                                    </md-card-actions>
+
+                                </form>
+
                             </md-card>
 
                         </md-content> 

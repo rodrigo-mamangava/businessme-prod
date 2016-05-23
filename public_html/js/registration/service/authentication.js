@@ -5,14 +5,36 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$location',
 
         var ref = new Firebase(FIREBASE_URL);
         var auth = $firebaseAuth(ref);
+        
+
+
 
         auth.$onAuth(function (authUser) {
             if (authUser) {
                 var userRef = new Firebase(FIREBASE_URL + 'users/' + authUser.uid + '/userData/');
                 var userObj = $firebaseObject(userRef);
 
+                
+
+
+
                 userObj.$loaded()
                         .then(function (data) {
+
+                            var acessoRef = new Firebase(FIREBASE_URL + 'acessos');
+                            var listAcesso = $firebaseArray(acessoRef);
+
+                            listAcesso.$add({
+                                user_email: data.email,
+                                uid: data.regUser,
+                                path: $location.path(),
+                                data_acesso: Firebase.ServerValue.TIMESTAMP
+                            });
+
+                            console.log(data);
+
+
+
                             $rootScope.currentUser = data;
 
                             if ($rootScope.planoCode) {

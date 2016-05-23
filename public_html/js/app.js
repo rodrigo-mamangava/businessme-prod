@@ -1,12 +1,23 @@
+
 var myApp = angular.module(
         'myApp',
         [
-            'ngRoute', 'firebase', 'ngMaterial', 'ngDraggable',
-            'angular-toArrayFilter', 'angularMoment', 'angular-flippy',
-            'ui.utils.masks', 'creditCardInput',
-            'angulartics', 'angulartics.google.analytics'])
-.constant(
-        'FIREBASE_URL', 'https://businessme-register.firebaseio.com/');
+            'ngRoute', 
+            'firebase', 
+            'ngMaterial',
+            'ngMessages',
+            'ngDraggable', 
+            'ui.gravatar',
+            'angular-toArrayFilter', 
+            'angularMoment', 
+            'angular-flippy',
+            'ui.utils.masks', 
+            'creditCardInput', 
+            'angulartics',
+            'angulartics.google.analytics'
+        ])
+        .constant('FIREBASE_URL',
+                'https://businessme-register.firebaseio.com/');
 
 myApp.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -17,13 +28,18 @@ myApp.config(['$httpProvider', function ($httpProvider) {
 
     }]);
 
-//myApp.config(function ($mdIconProvider) {
-//    $mdIconProvider
-//            .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
-//            .defaultIconSet('img/icons/sets/core-icons.svg', 24);
-//});
+// myApp.config(function ($mdIconProvider) {
+// $mdIconProvider
+// .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+// .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+// });
 
 
+myApp.config(function($mdThemingProvider) {
+ $mdThemingProvider.theme('default')
+   .primaryPalette('deep-orange')
+   .warnPalette('deep-orange');
+});
 
 myApp.run(function ($http) {
     $http.defaults.headers.common.Authorization = 'Basic YmVlcDpib29w';
@@ -40,6 +56,17 @@ myApp.run(['$rootScope', '$location', function ($rootScope, $location) {
         });// on
 
     }]);// run
+
+
+myApp.config([
+    'gravatarServiceProvider', function (gravatarServiceProvider) {
+        gravatarServiceProvider.defaults = {
+            size: 100,
+            "default": 'mm'  // Mystery man as default for missing avatars
+        };
+
+    }
+]);
 
 myApp.config(['$routeProvider', function ($routeProvider) {
 
@@ -71,7 +98,16 @@ myApp.config(['$routeProvider', function ($routeProvider) {
                     controller: 'AssineCoontroller'
                 })
 
-
+                // upgrade
+                .when('/upgrade', {
+                    templateUrl: 'js/assinatura-moip/view/upgrade.html',
+                    controller: 'AssineCoontroller',
+                    resolve: {
+                        currentAuth: function (Authentication) {
+                            return Authentication.requireAuth();
+                        }// currentAuth
+                    }
+                })
 
                 // registration
                 .when('/bem-vindo', {
@@ -89,7 +125,7 @@ myApp.config(['$routeProvider', function ($routeProvider) {
                     templateUrl: 'js/registration/view/login.html',
                     controller: 'RegistrationController'
                 })
-                // registration        
+                // registration
                 .when('/register', {
                     templateUrl: 'js/registration/view/register.html',
                     controller: 'RegistrationController'
@@ -116,11 +152,20 @@ myApp.config(['$routeProvider', function ($routeProvider) {
                     }
                     // resolve
                 })// analise
-
+                .when('/funil-temp', {
+                    templateUrl: 'js/funil/view/funil.html',
+                    controller: 'FunilController',
+                    resolve: {
+                        currentAuth: function (Authentication) {
+                            return Authentication.requireAuth();
+                        }// currentAuth
+                    }
+                    // resolve
+                })// analise
 
                 .when('/', {
-                    templateUrl: 'js/bbot-v002/view/bbot.html',
-                    controller: 'BBot02Controller',
+                    templateUrl: 'js/bbot-v002/view/bbot-003.view.html',
+                    controller: 'BBot03Controller',
                     resolve: {
                         currentAuth: function (Authentication) {
                             return Authentication.requireAuth();
@@ -130,30 +175,38 @@ myApp.config(['$routeProvider', function ($routeProvider) {
                 })
 
                 .when('/bbot', {
-//                    templateUrl: 'js/bbot/view/bbot.html',
-//                    controller: 'BBotController',
-                    templateUrl: 'js/bbot-v002/view/bbot.html',
-                    controller: 'BBot02Controller',
+                    templateUrl: 'js/bbot-v002/view/bbot-003.view.html',
+                    controller: 'BBot03Controller',
                     resolve: {
                         currentAuth: function (Authentication) {
                             return Authentication.requireAuth();
                         }// currentAuth
                     }
                     // resolve
-                })//bbot
+                })// bbot
 
-
-                .when('/bbot2', {
-                    templateUrl: 'js/bbot-v002/view/bbot.html',
-                    controller: 'BBot02Controller',
+                .when('/bbot3', {
+                    templateUrl: 'js/bbot-v002/view/bbot-003.view.html',
+                    controller: 'BBot03Controller',
                     resolve: {
                         currentAuth: function (Authentication) {
                             return Authentication.requireAuth();
                         }// currentAuth
                     }
                     // resolve
-                })//bbot2
+                })// bbot2
 
+                // metas
+                .when('/metas', {
+                    templateUrl: 'js/metas/meta-001.view.js',
+                    controller: 'MetaController',
+                    resolve: {
+                        currentAuth: function (Authentication) {
+                            return Authentication.requireAuth();
+                        }// currentAuth
+                    }
+                    // resolve
+                })
 
                 // contato
                 .when('/contato', {
@@ -170,15 +223,14 @@ myApp.config(['$routeProvider', function ($routeProvider) {
                     templateUrl: 'js/bbot/view/settings.html',
                     controller: 'SettingsController',
                     resolve: {
-                        currentAuth: function (Authentication) {
-                            return Authentication.requireAuth();
-                        }// currentAuth
-                    }
-                    // resolve
-                })
+                currentAuth: function (Authentication) {
+                    return Authentication.requireAuth();
+                }// currentAuth
+            }
+            // resolve
+        })
 
-                //new layout
-
+                // new layout
 
                 .otherwise({
                     redirectTo: '/404'

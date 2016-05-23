@@ -1,0 +1,614 @@
+<div class="" ng-include="'view/header-interno.html'"></div>
+<div class="" ng-include="'js/chamados/view/chat-box.html'"></div>
+
+<div layout="row" layout-align="center center">
+	<md-content flex-gt-sm="80" layout-fill layout="column"
+		class="bbot_v002" id="area-bbot">
+
+
+	<div  id="card-meta" layout-padding ng-cloak class='ng-cloak'>
+
+
+		<md-card  ng-show="!lastMeta" class='card-sem-meta' >
+
+			<div layout="row"  layout-align="center center">  
+				<h1>Você ainda não possui uma meta?</h1>
+			</div>
+
+			<p style="text-align: center">As metas são o que norteia o empreendimento. 
+			</p>
+
+			<p style="text-align: center">
+				Elas afetam todas as decisões do empresário, pois apontam para aonde se quer chegar e fazem pensar em providências a serem tomadas nesse sentido. 
+			</p>
+		
+
+			<div layout="row"  layout-align="center center">  
+				<md-button class="md-raised criar-meta" ng-click='novaMeta(meta, $event)' >Criar minha meta</md-button>
+			</div>
+
+		</md-card>
+
+
+
+		<md-card  ng-show="lastMeta.nome" >  
+			<h1>{{lastMeta.nome}}</h1>
+
+			<md-progress-linear class="linha"  
+				md-mode="determinate"
+				value="{{lastMeta.porcentagem}}"	
+				></md-progress-linear> 
+
+
+
+			<div layout="row" class="esquerda" ng-show="lastMeta.tipo == 'Valor'">
+			  <div flex="50">
+				<p class="detalhe">{{ lastMeta.total | currency:"R$":2}} | {{lastMeta.porcentagem | number:2 }}%</p>
+			  </div>
+			  <div flex="50" class="direita">
+				<p class="detalhe">{{ lastMeta.quantidade | currency:"R$":2}}</p>
+			  </div>
+  
+			</div>
+			
+			
+			<div layout="row" class="esquerda" ng-show="lastMeta.tipo == 'Unidade'">
+			  <div flex="50">
+				<p class="detalhe">{{lastMeta.total}} {{lastMeta.unidade}} | {{lastMeta.porcentagem | number:2 }}%</p>
+			  </div>
+			  <div flex="50" class="direita">
+				<p class="detalhe">{{lastMeta.quantidade}} {{lastMeta.unidade}}</p>
+			  </div>
+  
+			</div>
+
+
+			<md-card-actions layout="row" layout-align="end center">
+	          <md-button  id="btn-detalhe-meta" class="md-icon-button" aria-label="More" ng-click="showDetalheMeta()">
+		        <md-icon md-font-library="material-icons">track_changes</md-icon>
+		      </md-button>
+	        </md-card-actions>
+
+
+			<div id="detalhes-meta">
+
+				<hr/>
+
+				<div layout="row" class="esquerda">
+				  <div flex="50">
+					<h2>Porque essa meta é importante?</h2>
+					<p class="detalhe">{{lastMeta.pq}}</p>
+				  </div>
+				  <div flex="50" class="direita">
+					<h2>Data para alcance dessa meta</h2>
+					<p class="detalhe">{{lastMeta.data| date:'dd/MM/yyyy' }}</p>
+				  </div>
+	  
+				</div>
+
+				
+				<h2>Situação atual:</h2>
+
+				<p class="detalhe">{{lastMeta.porcentagem | number:2 }}%</p>
+
+				<div ng-show="lastMeta.tipo == 'Valor'">
+					<p class="detalhe">{{ lastMeta.total | currency:"R$":2}} / {{ lastMeta.quantidade | currency:"R$":2}}</p>
+				</div>
+				<div ng-show="lastMeta.tipo == 'Unidade'">
+					<p class="detalhe">{{lastMeta.total}} / {{lastMeta.quantidade}} {{lastMeta.unidade}}</p>
+				</div>
+
+
+				<h2>Sucessos que contribuiram para essa meta</h2>
+
+
+				<div class="md-whiteframe-1dp" layout-padding>
+					<div layout="row" layout-wrap>
+						<div flex>
+							<md-icon md-font-library="material-icons">work</md-icon>
+							Projeto
+						</div>
+						<div flex="15">
+							<md-icon md-font-library="material-icons">monetization_on</md-icon>
+							Valor
+						</div>
+						<div flex="20">
+							<md-icon md-font-library="material-icons">person</md-icon>
+							Contato
+						</div>
+						
+						<div flex="15">
+							<md-icon md-font-library="material-icons">event</md-icon>
+							Fechado em
+						</div>
+						
+					</div>
+
+				</div>
+
+
+				<div class="md-whiteframe-1dp" layout-padding
+					ng-repeat="lead in lastMeta.sucesso">
+					<div layout="row" layout-wrap>
+						<div flex>{{lead.projeto}}</div>
+						<div flex="15">{{ (!lead.valor) ? 0 : lead.valor |
+							currency:"R$":2}}</div>
+						<div flex="20">{{lead.contato}}</div>
+						
+						<div flex="15">{{lead.close_at| date:'dd/MM/yyyy' }}</div>
+						
+					</div>
+
+				</div>
+
+			</div>	
+				
+		</md-card>
+	</div>
+
+
+
+	<div layout-padding>
+		<div layout="row" layout-wrap class="settings">
+
+			<div class="tipo-lista" flex >
+				<div layout="row" layout-align="start center">
+		            <p class="titulo-filtro">
+		            	Filtros: 
+		            </p>
+
+				</div>
+				<div layout="row" layout-align="start center">
+		            <p class="titulo-filtro">
+		            	<span ng-show="buscar"> <md-icon md-font-library="material-icons">search</md-icon> {{buscar}} </span>
+		            	<span ng-show="filtroFase"> <md-icon md-font-library="material-icons">remove_red_eye</md-icon>  {{filtroFase}} </span>
+						<span ng-show="filtroLista" > <md-icon md-font-library="material-icons">flag</md-icon>  {{filtroLista}} </span>
+		            </p>
+
+				</div>
+			</div>
+
+
+
+			<div class="order-lista" flex="5" flex-xs="10">
+
+				<div layout="row" layout-align="end center">
+
+					<md-menu> 
+
+						<md-button
+							aria-label="" class="md-icon-button"
+							ng-click="openMenu($mdOpenMenu, $event)"> <md-tooltip
+							md-direction="top"> Filtrar por status </md-tooltip> 
+							<md-icon md-font-library="material-icons">remove_red_eye</md-icon> 
+						</md-button> 
+
+						<md-menu-content
+							width="4"> 
+
+							<md-menu-item> 
+
+								<md-button
+								ng-click="filterAtivos('Ativos')">
+								<md-icon md-font-library="material-icons"></md-icon> Ativos</md-button> 
+
+							</md-menu-item>
+
+							<md-menu-item> 
+
+								<md-button
+								ng-click="filterAtivos('Arquivados')">
+								<md-icon md-font-library="material-icons"></md-icon> Arquivados
+							</md-button> 
+
+							</md-menu-item> <md-menu-item> <md-button
+								ng-click="filterAtivos('Todos')"> <md-icon
+								md-font-library="material-icons"></md-icon> Todos 
+							</md-button> 
+						</md-menu-item>  
+
+					</md-menu-content> </md-menu>
+
+				</div>
+
+
+			</div>
+
+ 
+			<div class="order-lista" flex="5" flex-xs="10">
+
+				<div layout="row" layout-align="end center">
+
+					<md-menu> 
+
+						<md-button
+							aria-label="" class="md-icon-button"
+							ng-click="openMenu($mdOpenMenu, $event)"> <md-tooltip
+							md-direction="top"> Filtrar por fase </md-tooltip> 
+							<md-icon md-font-library="material-icons">flag</md-icon> 
+						</md-button> 
+
+						<md-menu-content
+							width="4"> 
+
+							<md-menu-item> 
+
+								<md-button
+								ng-click="filterList('', 'fiber_new')">
+								<md-icon md-font-library="material-icons"></md-icon> Todos</md-button> 
+
+							</md-menu-item>
+
+							<md-menu-item> 
+
+								<md-button
+								ng-click="filterList('Contato', 'fiber_new')">
+								<md-icon md-font-library="material-icons"></md-icon> Contato
+							</md-button> 
+
+							</md-menu-item> <md-menu-item> <md-button
+								ng-click="filterList('Potencial cliente', 'work')"> <md-icon
+								md-font-library="material-icons"></md-icon> Potencial cliente 
+							</md-button> 
+							</md-menu-item> 
+
+
+							<md-menu-item> <md-button
+								ng-click="filterList('Orçamento', 'flag')"> <md-icon
+								md-font-library="material-icons"></md-icon> Orçamento 
+							</md-button> 
+							</md-menu-item> 
+
+							<md-menu-item>
+								<md-button
+								ng-click="filterList('Negociação', 'insert_invitation')">
+								<md-icon md-font-library="material-icons"></md-icon>Negociação
+							</md-button> 
+
+							</md-menu-item> 
+
+					</md-menu-content> 
+					</md-menu>
+
+				</div>
+
+
+			</div>
+
+
+
+
+
+			<div class="order-lista" flex="5" flex-xs="10">
+
+				<div layout="row" layout-align="end center">
+
+					<md-menu> <md-button
+						aria-label="Open phone interactions menu" class="md-icon-button"
+						ng-click="openMenu($mdOpenMenu, $event)"> <md-tooltip
+						md-direction="top"> Ordem dos leads </md-tooltip> <md-icon
+						md-font-library="material-icons">sort_by_alpha</md-icon> </md-button> <md-menu-content
+						width="4"> <md-menu-item> <md-button
+						ng-click="setLeadsOrder('-datacriacao', 'fiber_new')">
+					<md-icon md-font-library="material-icons">fiber_new</md-icon> Data
+					de criação </md-button> </md-menu-item> <md-menu-item> <md-button
+						ng-click="setLeadsOrder('projeto', 'work')"> <md-icon
+						md-font-library="material-icons">work</md-icon> Projeto </md-button> </md-menu-item> <md-menu-item>
+					<md-button ng-click="setLeadsOrder('contato', 'person')">
+					<md-icon md-font-library="material-icons">person</md-icon> Contato
+					</md-button> </md-menu-item> <md-menu-item> <md-button
+						ng-click="setLeadsOrder('fase', 'flag')"> <md-icon
+						md-font-library="material-icons">flag</md-icon> Fase </md-button> </md-menu-item> <md-menu-item>
+					<md-button
+						ng-click="setLeadsOrder('datalembrete', 'insert_invitation')">
+					<md-icon md-font-library="material-icons">insert_invitation</md-icon>
+					Data do lembrete </md-button> </md-menu-item> </md-menu-content> </md-menu>
+				</div>
+
+
+			</div>
+			<div class="tipo-lista" flex="20">
+				<div layout="row" layout-align="end center">
+
+<!-- 					<div class="ck-button">
+						<label> <input type="radio" name=tipolista value="funil"
+							ng-model="filtro.tipoLista" ng-change="setTipoLista()"> <span>
+								<md-tooltip md-direction="bottom"> Funil de vendas
+								</md-tooltip> <md-icon md-font-library="material-icons">filter_list</md-icon>
+						</span>
+						</label>
+					</div> -->
+					<div class="ck-button">
+						<label> <input type="radio" name=tipolista value="lista"
+							ng-model="filtro.tipoLista" ng-change="setTipoLista()"> <span>
+								<md-tooltip md-direction="bottom"> Lista </md-tooltip> <md-icon
+									md-font-library="material-icons">view_list</md-icon>
+						</span>
+						</label>
+					</div>
+					<div class="ck-button">
+						<label> <input type="radio" name="tipolista" value="grid"
+							ng-model="filtro.tipoLista" ng-change="setTipoLista()"> <span>
+								<md-tooltip md-direction="bottom"> Grade </md-tooltip> <md-icon
+									md-font-library="material-icons">view_module</md-icon>
+						</span>
+						</label>
+					</div>
+
+				</div>
+
+			</div>
+
+
+		</div>
+	</div>
+
+	<div  layout-padding ng-cloak class='ng-cloak'>
+
+		<md-card  class='card-sem-lead' ng-show="totalLeads == 0" >
+
+				<div layout="row"  layout-align="center center">  
+					<h1>Você ainda não possui leads cadastrados?</h1>
+				</div>
+
+				<p  layout layout-align="center center" flex> 
+					Um lead é uma pessoa que tem, de alguma forma, interesse nos produtos ou serviços da sua empresa.
+				</p>
+
+				<p  layout layout-align="center center" flex> 
+					Registre todos seus leads e te ajudaremos a gerenciá-los.
+				</p>
+
+				<p  layout layout-align="center center" flex> 
+					Criar leads e gerenciá-los é a chave para alcançar sua meta!
+				</p>
+				
+
+
+				
+				<div layout="row"  layout-align="center center">  
+					<md-button class="md-raised criar-meta" ng-click='novoLead($event)' >Cadastrar meus primeiro lead</md-button>
+				</div>
+
+		</md-card>
+
+	</div>
+
+
+
+	<div layout="row" class="area-grid-cards"
+		ng-show="filtro.tipoLista == 'grid'" flex >
+
+
+		<div layout="row" layout-wrap layout-align="space-around end" ng-show="totalLeads > 0" >
+
+			<md-card class="card-lead-03 md-whiteframe-2dp"
+				ng-repeat="(key, lead) in leadsList
+                                 | filter: {projeto: buscar}
+                                 | filter: {fase: filtroLista}
+                                 | filter: {fase: leadsStatus}
+                                 | orderBy: orderByList
+                         ">
+
+			<md-card-title> <md-card-title-text>
+			<h2>{{lead.projeto}}</h2>
+
+
+			</md-card-title-text> <md-menu class='menu-card' md-position-mode="target-right target">
+			<md-button aria-label="Open phone interactions menu"
+				class="md-icon-button" ng-click="openMenuCard($mdOpenMenu, $event)">
+			<md-tooltip md-direction="top"> Menu do card </md-tooltip> <md-icon
+				md-font-library="material-icons">more_vert</md-icon> </md-button> <md-menu-content
+				width="4"> <md-menu-item> <md-button
+				ng-click="loadLeadModal(lead)"> <md-icon
+				md-font-library="material-icons">edit</md-icon> Editar </md-button> </md-menu-item> <md-menu-item>
+			<md-button ng-click="deletarLead(lead, $event)"> <md-icon
+				md-font-library="material-icons">delete_forever</md-icon> Excluir </md-button> </md-menu-item>
+
+			</md-menu-content> </md-menu> </md-card-title> 
+
+            <md-card-content>
+
+				<p>
+					<md-icon md-font-library="material-icons">monetization_on</md-icon>
+					{{ (!lead.valor) ? 0 : lead.valor | currency:"R$":2}}
+				</p>
+
+				<p>
+					<md-icon md-font-library="material-icons">person</md-icon>
+					{{lead.contato}}
+				</p>
+
+				<md-input-container class="md-icon-float md-block">
+				
+				<md-icon md-font-library="material-icons">flag</md-icon> <md-select
+					ng-model="lead.fase" ng-change="faseHasChange(lead, $event)"
+					aria-label='fase'> 
+					<md-option
+					class="select-fase"
+					ng-repeat="item in fases| orderBy:item.order " value="{{item.nome}}"
+					aria-label='{{lead.fase}}'> {{item.nome}} 
+					</md-option>
+				</md-input-container>
+
+				<p>
+					<md-icon md-font-library="material-icons">insert_invitation</md-icon>
+					{{lead.datalembrete| date:'dd/MM/yyyy' }}
+				</p>
+
+				<p class="criadoEm" >Criado em: {{lead.datacriacao| date:'dd/MM/yyyy' }}</p>
+
+
+			</md-card-content> <md-card-actions layout="row" layout-align="end center">
+
+
+			<md-button class="btn-acao-card" data-toggle="modal"
+				data-target="#modalEditContato"
+				ng-click="loadDica($event)">Dicas</md-button>
+
+			<md-button class="btn-acao-card" data-toggle="modal"
+				data-target="#modalEditContato"
+				ng-click="loadNotas(lead, $event )">Notas</md-button> 
+
+			</md-card-actions> </md-card>
+
+		</div>
+
+
+	</div>
+
+
+	<div class="area-lista md-whiteframe-4dp"
+		ng-show="filtro.tipoLista == 'lista'">
+
+		<div class="md-whiteframe-1dp" layout-padding>
+			<div layout="row" layout-wrap>
+				<div flex="25">
+					<md-icon md-font-library="material-icons">work</md-icon>
+					Projeto
+				</div>
+				<div flex="15">
+					<md-icon md-font-library="material-icons">monetization_on</md-icon>
+					Valor
+				</div>
+				<div flex="20">
+					<md-icon md-font-library="material-icons">person</md-icon>
+					Contato
+				</div>
+				<div flex="20">
+					<md-icon md-font-library="material-icons">flag</md-icon>
+					Fase
+				</div>
+				<div flex="15">
+					<md-icon md-font-library="material-icons">event</md-icon>
+					Lembrete
+				</div>
+				<div flex="5">Menu</div>
+			</div>
+
+		</div>
+
+
+		<div class="md-whiteframe-1dp" layout-padding
+			ng-repeat="(key, lead) in leadsList
+                                 | filter: {projeto: buscar}
+                                 | filter: {fase: filtroLista}
+                                 | filter: {fase: leadsStatus}
+                                 | orderBy: orderByList
+                         ">
+			<div layout="row" layout-wrap>
+				<div flex="25">{{lead.projeto}}</div>
+				<div flex="15">{{ (!lead.valor) ? 0 : lead.valor |
+					currency:"R$":2}}</div>
+				<div flex="20">{{lead.contato}}</div>
+				<div flex="20">{{lead.fase}}</div>
+				<div flex="15">{{lead.datalembrete| date:'dd/MM/yyyy' }}</div>
+				<div flex="5">
+					<md-menu class='menu-card' md-position-mode="target-right target">
+						<md-button aria-label="Open phone interactions menu"
+							class="md-icon-button" ng-click="openMenuCard($mdOpenMenu, $event)">
+						<md-tooltip md-direction="top"> Menu do card </md-tooltip> <md-icon
+							md-font-library="material-icons">more_vert</md-icon> </md-button> <md-menu-content
+							width="4"> <md-menu-item> <md-button
+							ng-click="loadLeadModal(lead)"> <md-icon
+							md-font-library="material-icons">edit</md-icon> Editar </md-button> </md-menu-item> <md-menu-item>
+						<md-button ng-click="deletarLead(lead, $event)"> <md-icon
+							md-font-library="material-icons">delete_forever</md-icon> Excluir </md-button> </md-menu-item>
+
+						</md-menu-content> 
+					</md-menu>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="area-funil" ng-show="filtro.tipoLista == 'funil'">
+
+
+		<h2>Funil</h2>
+
+		<hr />
+		<span class="title">Contato</span>
+		<div ng-drop="true" ng-drop-success="onDropComplete1($data,$event)">
+
+
+			<div ng-repeat="obj in droppedObjects1" ng-drag="true"
+				ng-drag-data="obj" ng-drag-success="onDragSuccess1($data,$event)"
+				ng-center-anchor="{{centerAnchor}}">{{obj.projeto}}</div>
+
+		</div>
+
+		<span class="title">Potencial cliente</span>
+		<div ng-drop="true" ng-drop-success="onDropComplete2($data,$event)">
+
+
+			<div ng-repeat="obj in droppedObjects2" ng-drag="true"
+				ng-drag-data="obj" ng-drag-success="onDragSuccess2($data,$event)"
+				ng-center-anchor="{{centerAnchor}}">{{obj.projeto}}</div>
+
+		</div>
+
+		<span class="title">Orçamento</span>
+		<div ng-drop="true" ng-drop-success="onDropComplete3($data,$event)">
+
+
+			<div ng-repeat="obj in droppedObjects3" ng-drag="true"
+				ng-drag-data="obj" ng-drag-success="onDragSuccess3($data,$event)"
+				ng-center-anchor="{{centerAnchor}}">{{obj.projeto}}</div>
+
+		</div>
+
+		<span class="title">Negociação</span>
+		<div ng-drop="true" ng-drop-success="onDropComplete4($data,$event)">
+
+
+			<div ng-repeat="obj in droppedObjects4" ng-drag="true"
+				ng-drag-data="obj" ng-drag-success="onDragSuccess4($data,$event)"
+				ng-center-anchor="{{centerAnchor}}">{{obj.projeto}}</div>
+
+		</div>
+
+		<span class="title">Fechamento</span>
+		<div ng-drop="true" ng-drop-success="onDropComplete5($data,$event)">
+
+
+			<div ng-repeat="obj in droppedObjects5" ng-drag="true"
+				ng-drag-data="obj" ng-drag-success="onDragSuccess5($data,$event)"
+				ng-center-anchor="{{centerAnchor}}">{{obj.projeto}}</div>
+
+		</div>
+
+		<hr>
+
+	</div>
+
+
+
+	</md-content>
+</div>
+
+
+
+
+<div class="btn-mais-multi" layout="row" ng-cloak>
+	<md-fab-speed-dial md-open="" md-direction="up" class="md-fling">
+
+	<md-fab-trigger> <md-button aria-label="menu"
+		class="md-fab md-warn"> <md-icon
+		md-font-library="material-icons">add</md-icon> </md-button> </md-fab-trigger> <md-fab-actions>
+	<md-button aria-label="" class="md-fab md-raised md-mini"
+		ng-click='novoLead($event)'> <md-tooltip
+		md-direction="left"> Lead </md-tooltip> <md-icon
+		md-font-library="material-icons">assignment</md-icon> </md-button> <!--             <md-button aria-label="" class="md-fab md-raised md-mini" ng-click='novoContato($event)'>
+                <md-tooltip md-direction="left" >
+                    Contato
+                </md-tooltip>
+                <md-icon md-font-library="material-icons">person_add</md-icon>
+            </md-button> --> <md-button aria-label=""
+		class="md-fab md-raised md-mini" ng-click='novaMeta(meta, $event)'>
+	<md-tooltip md-direction="left"> Meta </md-tooltip> <md-icon
+		md-font-library="material-icons">stars</md-icon> </md-button> </md-fab-actions> </md-fab-speed-dial>
+</div>

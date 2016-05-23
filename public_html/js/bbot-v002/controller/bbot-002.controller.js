@@ -148,10 +148,10 @@ myApp.controller('BBot02Controller', [
 
                             itemLead.datalembrete = dataLembrete;
 
-                            if (tipo == 'modal') {
-                                itemLead.datalembrete = dataLembrete.getTime();
-                            }
-
+//                            if (tipo == 'modal') {
+//                                itemLead.datalembrete = dataLembrete.getTime();
+//                            }
+                            
                         }
 
                     });
@@ -175,7 +175,7 @@ myApp.controller('BBot02Controller', [
 
 
                     var result = contatoRef.orderByChild("nome").equalTo($scope.lead.contato);
-//
+
                     var list = $firebaseArray(result);
 
                     list.$loaded().then(function () {
@@ -224,8 +224,10 @@ myApp.controller('BBot02Controller', [
                 };//loadLead
 
                 $scope.faseChangeModal = function () {
+                	
+                	console.log($scope.loadItem);
 
-                    //mudarFaseMudarLembrete($scope.loadItem, 'modal');
+                    mudarFaseMudarLembrete($scope.loadItem, 'modal');
                 };
 
                 $scope.salvarUpdateModal = function () {
@@ -289,7 +291,7 @@ myApp.controller('BBot02Controller', [
                     // Appending dialog to document.body to cover sidenav in docs app
                     var confirm = $mdDialog.confirm()
                             .title('Dica')
-                            .textContent('Em brete teremos dicas para cada momento de seu lead. Aguarde!')
+                            .textContent('Em breve teremos dicas para cada momento de seu lead. Aguarde!')
                             .ariaLabel('Lucky day')
                             .targetEvent(ev)
                             .ok('Gostei :)')

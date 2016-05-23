@@ -1,0 +1,73 @@
+<div layout="column" layout-fill ng-controller="HeaderControllerV002" >
+    <md-toolbar  class="header002 orange md-whiteframe-4dp"  > 
+        <div layout="row" layout-align="center center">
+            <md-content  layout-fill layout="column" class="">
+                <div class="md-toolbar-tools" ng-cloak>
+
+                    <md-button class="md-icon-button menu" aria-label="More" ng-click="toggleLeft()">
+                        <md-icon md-font-library="material-icons">menu</md-icon>
+                    </md-button>
+                    
+                    <h1>{{$root.nomePagina}}</h1>
+
+                    <span flex></span>
+                    			
+			            <div class="input-group campo-pesquisa"  flex="50" >
+			                <span class="input-group-addon" id="basic-addon1">
+			                    <i class="fa fa-search" aria-hidden="true"></i>
+			                </span>
+			                <input type="text" class="form-control pesquisar" placeholder="Pesquisar" ng-model="$root.buscar">
+			            </div>
+                                      
+                    <span flex></span>
+
+                    <img  gravatar-src="'{{currentUser.email}}'" gravatar-size="40" class="img-circle" alt="{{currentUser.name}}">
+
+                </div>
+            </md-content>
+        </div>
+    </md-toolbar>
+
+    <div layout='row' flex>
+        <md-sidenav id="menu-principal" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+            <md-toolbar class="menu-titulo">
+                <h1 class="md-toolbar-tools">BusinessME</h1>
+            </md-toolbar>
+
+            <md-list>
+                <md-list-item >
+                    <md-button class="menu" ng-click="irPrincial()">
+                        Inicial
+                    </md-button>
+                </md-list-item>
+                <md-list-item >
+                    <md-button class="menu" ng-click="irContato()">
+                        Contatos
+                    </md-button>
+                </md-list-item>
+                <md-list-item >
+                    <md-button class="menu"ng-click="irMeta()">
+                        Metas
+                    </md-button>
+                </md-list-item>
+                <md-list-item >
+                    <md-button class="menu"ng-click="irFunil()">
+                        Análise de vendas
+                    </md-button>
+                </md-list-item>
+                <md-list-item >
+                    <md-button class="menu" ng-click="irSetting()">
+                        Configurações
+                    </md-button>
+                </md-list-item>
+                <md-list-item >
+                    <md-button class="menu menu-sair" ng-click="logout()">
+                        Sair
+                    </md-button>
+                </md-list-item>
+            </md-list>
+
+        </md-sidenav>
+    </div>
+</div>
+

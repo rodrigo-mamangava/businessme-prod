@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html lang="pt-br" ng-app="myApp">
+<html lang="pt-br" ng-app="myApp" ng-cloak class=“ng-cloak” >
     <head>
         <title>Business Me » Sua criatividade é um grande negócio »
             venda mais e viva do que você ama fazer.</title>
@@ -29,7 +29,8 @@ and open the template in the editor.
         <link
             href="bower_components/angular-flippy/dist/css/angular-flippy-fancy.min.css"
             rel="stylesheet">
-
+            
+        
         <link rel="stylesheet"
               href="https://fonts.typotheque.com/WF-024180-009282.css"
               type="text/css" />
@@ -61,7 +62,9 @@ and open the template in the editor.
         <script src="bower_components/angular-flippy/js/src/flippy-directive.js"></script>
         <script src="bower_components/angular-input-masks/angular-input-masks-standalone.min.js"></script>
         <script src="bower_components/angular-card-input/angular_card_input.js"></script>
-
+        
+        
+        <script src="bower_components/angular-gravatar/build/angular-gravatar.min.js"></script>
 
         <script src="bower_components/angulartics/dist/angulartics.min.js"></script>
         <script
@@ -92,29 +95,35 @@ and open the template in the editor.
 
         <script src="js/bbot/service/log.js"></script>
         <script src="js/bbot/service/logAssinatura.js"></script>
-
         <script src="js/bbot/service/contatos.js"></script>
         <script src="js/bbot/controller/bbot.js"></script>
         <script src="js/bbot/controller/contatoController.js"></script>
         <script src="js/bbot/controller/settingsController.js"></script>
+        <script src="js/bbot/controller/embreve.controller.js"></script>
+        
+        <script src="js/bbot-v002/controller/bbot-002.controller.js"></script>
+        <script src="js/bbot-v002/controller/bbot-003.controller.js"></script>
 
         <script src="js/assinatura-moip/controller/assine.controller.js"></script>
 
         <script src="js/chamados/controller/chamado.controller.js"></script>
+               
+        <script src="js/funil/controller/funil.controller.js"></script>
 
-        <script src="js/bbot/controller/embreve.controller.js"></script>
-
-
+        <script src="js/metas/meta-001.controller.js"></script>
+        
         <script src="controller/header-controller.js"></script>
+        <script src="controller/header.controller.v002.js"></script>
         
         
-        <script src="js/bbot-v002/controller/bbot-002.controller.js"></script>
+        
+        
 
 
     </head>
     <body >
             
-            <div class="cf" ng-view="" autoscroll="true"> </div>
+            <div class="cf content" ng-view="" autoscroll="true" flex > </div>
 
 
     </body>
