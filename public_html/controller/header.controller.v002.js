@@ -18,7 +18,7 @@ myApp.controller('HeaderControllerV002',
             	
                 $scope.irPrincial = function () {
 
-                    $location.path('/bbot3');
+                    $location.path('/bbot');
                     $rootScope.nomePagina = 'Inicial';
                     $scope.close();
 
