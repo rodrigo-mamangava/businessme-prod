@@ -1,8 +1,8 @@
 <md-dialog class="modalMeta" aria-label="Nova Meta"  ng-controller='BBot03Controller' ng-cloak >
 
-    <md-tabs md-dynamic-height md-border-bottom md-dynamic-height="" 
-        md-border-bottom="" 
-        md-selected="selectedIndex" 
+    <md-tabs md-dynamic-height md-border-bottom md-dynamic-height=""
+        md-border-bottom=""
+        md-selected="selectedIndex"
         md-no-ink-bar="true"
         md-align-tabs="bottom"
         md-stretch-tabs="never"
@@ -50,7 +50,7 @@
                 </div>
                 <div class="corpo-meta">
                     <h3>Mensurável e Temporal</h3>
-                    <p>De acordo com Peter Drucker, guro da Administração, que o que não pode ser medido não pode ser gerenciado.</p>
+                    <p>De acordo com Peter Drucker, guro da Administração, aquilo que não pode ser medido não pode ser gerenciado.</p>
                     <p>Quanto é o resultado esperado da minha meta?</p>
                     <p>Quanto tempo será necessário para realizá-la?</p>
                 </div>
@@ -81,7 +81,7 @@
                 <div class="corpo-meta">
                     <h3>Relevante</h3>
                     <p>Analise os números importantes do seu negócio e vincule uma meta a algum desses números.</p>
-                    <p>Metas devem ser relevantes e impactarem você e seu negócio.</p>
+                    <p>Metas devem ser relevantes e ter impacto tanto para você quanto para o seu negócio.</p>
                 </div>
 
 
@@ -111,7 +111,7 @@
                         <input ng-model="meta.nome" type="text" ng-required="true">
                     </md-input-container>
 
-                    
+
                     <md-input-container class="md-icon-float md-block">
                         <p>Como você vai medir sua meta (mensurável)?</p>
                         <md-icon md-font-library="material-icons">timeline</md-icon>
@@ -120,26 +120,26 @@
                           <md-radio-button value="Valor"> Valor </md-radio-button>
                         </md-radio-group>
                     </md-input-container>
-                    
+
                     <br>
-                    
+
                     <div layout-gt-sm="row" ng-show="meta.tipo == 'Unidade'" ng-cloak>
-                    	
-			         	<md-input-container class="md-icon-float md-block"  flex="50">
-	                        <label>Quantidade da meta</label>
-	                        <md-icon md-font-library="material-icons">star</md-icon>
-	                        <input type="number" ng-model="meta.quantidade" ng-required="meta.tipo == 'Unidade'" min='0'>
-                 			<div class="hint" >Ex: 500</div>
-                 		</md-input-container>	
-                 		
-                 		<md-input-container class="md-icon-float md-block" flex="50">
-	                        <label>Categoria</label>
-	                        <md-icon md-font-library="material-icons">local_offer</md-icon>
-	                        <input type="text" ng-required="meta.tipo == 'Unidade'" ng-model="meta.unidade">
-	                        <div class="hint" >Ex: Downloads; Novos usuários...</div>
-                    	</md-input-container>
-                 				          	
-			        </div>
+
+                        <md-input-container class="md-icon-float md-block"  flex="50">
+                            <label>Quantidade da meta</label>
+                            <md-icon md-font-library="material-icons">star</md-icon>
+                            <input type="number" ng-model="meta.quantidade" ng-required="meta.tipo == 'Unidade'" min='0'>
+                            <div class="hint" >Ex: 500</div>
+                        </md-input-container>
+
+                        <md-input-container class="md-icon-float md-block" flex="50">
+                            <label>Categoria</label>
+                            <md-icon md-font-library="material-icons">local_offer</md-icon>
+                            <input type="text" ng-required="meta.tipo == 'Unidade'" ng-model="meta.unidade">
+                            <div class="hint" >Ex: Downloads; Novos usuários...</div>
+                        </md-input-container>
+
+                    </div>
 
                     <md-input-container class="md-icon-float md-block" ng-show="meta.tipo == 'Unidade'">
                         <label>Quanto já acumulou?</label>
@@ -147,7 +147,7 @@
                         <input ng-model="meta.total" ng-required="meta.tipo == 'Unidade'" type="number"  min='0'>
                     </md-input-container>
 
-                    
+
 
                     <md-input-container class="md-icon-float md-block" ng-show="meta.tipo == 'Valor'" ng-cloak >
                         <label>Valor da meta</label>
@@ -161,7 +161,7 @@
                         <input ng-model="meta.total" ng-required="meta.tipo == 'Valor'" type="text" ui-money-mask="2">
                     </md-input-container>
 
-                    
+
                     <md-input-container class="md-icon-float md-block">
                         <label>Porque essa meta é importante para você (Relevante)?</label>
                         <md-icon md-font-library="material-icons">favorite</md-icon>
@@ -169,7 +169,7 @@
                     </md-input-container>
 
                     <h4>Quando será alcançada?</h4>
-	    			<md-datepicker ng-model="meta.data"  ng-required="true" md-placeholder=""></md-datepicker>
+                    <md-datepicker ng-model="meta.data"  ng-required="true" md-placeholder=""></md-datepicker>
 
 
 
@@ -187,7 +187,7 @@
       </md-tab>
     </md-tabs>
 
-    
+
 
 
 </md-dialog>

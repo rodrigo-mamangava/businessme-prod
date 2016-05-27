@@ -8211,6 +8211,15 @@ fieldset[disabled] #leads .form-lead .btn-bbot-mobile.focus {
   line-height: 34px;
   /* Aproximação devido à substituição de fonte */
 }
+.modalMeta .meta .corpo-meta p.form-texto {
+  font-size: 14px;
+  line-height: 1.42857143;
+  font-family: "azo-sans-web", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.87);
+  text-align: left;
+}
 .modalMeta md-tabs-wrapper {
   display: none;
 }

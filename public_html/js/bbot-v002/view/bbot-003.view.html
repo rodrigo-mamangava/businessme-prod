@@ -11,19 +11,19 @@
 
 		<md-card  ng-show="!lastMeta" class='card-sem-meta' >
 
-			<div layout="row"  layout-align="center center">  
-				<h1>Você ainda não possui uma meta?</h1>
+			<div layout="row"  layout-align="center center">
+				<h1>O primeiro passo para o sucesso das vendas na sua empresa é ter uma <b>META</b></h1>
 			</div>
 
-			<p style="text-align: center">As metas são o que norteia o empreendimento. 
+			<p style="text-align: center">Nenhum negócio cresce sem uma meta clara, desafiadora e mensurável.
 			</p>
 
 			<p style="text-align: center">
-				Elas afetam todas as decisões do empresário, pois apontam para aonde se quer chegar e fazem pensar em providências a serem tomadas nesse sentido. 
+				Elas afetam todas as decisões do empreendedor, pois apontam o caminho para onde queremos chegar e nos fazem pensar em tudo que precisamos fazer para conquistá-la.
 			</p>
-		
 
-			<div layout="row"  layout-align="center center">  
+
+			<div layout="row"  layout-align="center center">
 				<md-button class="md-raised criar-meta" ng-click='novaMeta(meta, $event)' >Criar minha meta</md-button>
 			</div>
 
@@ -31,13 +31,13 @@
 
 
 
-		<md-card  ng-show="lastMeta.nome" >  
+		<md-card  ng-show="lastMeta.nome" >
 			<h1>{{lastMeta.nome}}</h1>
 
-			<md-progress-linear class="linha"  
+			<md-progress-linear class="linha"
 				md-mode="determinate"
-				value="{{lastMeta.porcentagem}}"	
-				></md-progress-linear> 
+				value="{{lastMeta.porcentagem}}"
+				></md-progress-linear>
 
 
 
@@ -48,10 +48,10 @@
 			  <div flex="50" class="direita">
 				<p class="detalhe">{{ lastMeta.quantidade | currency:"R$":2}}</p>
 			  </div>
-  
+
 			</div>
-			
-			
+
+
 			<div layout="row" class="esquerda" ng-show="lastMeta.tipo == 'Unidade'">
 			  <div flex="50">
 				<p class="detalhe">{{lastMeta.total}} {{lastMeta.unidade}} | {{lastMeta.porcentagem | number:2 }}%</p>
@@ -59,7 +59,7 @@
 			  <div flex="50" class="direita">
 				<p class="detalhe">{{lastMeta.quantidade}} {{lastMeta.unidade}}</p>
 			  </div>
-  
+
 			</div>
 
 
@@ -83,10 +83,10 @@
 					<h2>Data para alcance dessa meta</h2>
 					<p class="detalhe">{{lastMeta.data| date:'dd/MM/yyyy' }}</p>
 				  </div>
-	  
+
 				</div>
 
-				
+
 				<h2>Situação atual:</h2>
 
 				<p class="detalhe">{{lastMeta.porcentagem | number:2 }}%</p>
@@ -99,7 +99,7 @@
 				</div>
 
 
-				<h2>Sucessos que contribuiram para essa meta</h2>
+				<h2>Sucessos que contribuíram para essa meta</h2>
 
 
 				<div class="md-whiteframe-1dp" layout-padding>
@@ -116,33 +116,33 @@
 							<md-icon md-font-library="material-icons">person</md-icon>
 							Contato
 						</div>
-						
+
 						<div flex="15">
 							<md-icon md-font-library="material-icons">event</md-icon>
 							Fechado em
 						</div>
-						
+
 					</div>
 
 				</div>
 
 
 				<div class="md-whiteframe-1dp" layout-padding
-					ng-repeat="lead in lastMeta.sucesso">
+					ng-repeat="lead in lastMeta.sucesso | toArray |orderBy: '-lead.close_at' ">
 					<div layout="row" layout-wrap>
 						<div flex>{{lead.projeto}}</div>
 						<div flex="15">{{ (!lead.valor) ? 0 : lead.valor |
 							currency:"R$":2}}</div>
 						<div flex="20">{{lead.contato}}</div>
-						
+
 						<div flex="15">{{lead.close_at| date:'dd/MM/yyyy' }}</div>
-						
+
 					</div>
 
 				</div>
 
-			</div>	
-				
+			</div>
+
 		</md-card>
 	</div>
 
@@ -154,7 +154,7 @@
 			<div class="tipo-lista" flex >
 				<div layout="row" layout-align="start center">
 		            <p class="titulo-filtro">
-		            	Filtros: 
+		            	Filtros:
 		            </p>
 
 				</div>
@@ -174,38 +174,38 @@
 
 				<div layout="row" layout-align="end center">
 
-					<md-menu> 
+					<md-menu>
 
 						<md-button
 							aria-label="" class="md-icon-button"
 							ng-click="openMenu($mdOpenMenu, $event)"> <md-tooltip
-							md-direction="top"> Filtrar por status </md-tooltip> 
-							<md-icon md-font-library="material-icons">remove_red_eye</md-icon> 
-						</md-button> 
+							md-direction="top"> Filtrar por status </md-tooltip>
+							<md-icon md-font-library="material-icons">remove_red_eye</md-icon>
+						</md-button>
 
 						<md-menu-content
-							width="4"> 
+							width="4">
 
-							<md-menu-item> 
+							<md-menu-item>
 
 								<md-button
 								ng-click="filterAtivos('Ativos')">
-								<md-icon md-font-library="material-icons"></md-icon> Ativos</md-button> 
+								<md-icon md-font-library="material-icons"></md-icon> Ativos</md-button>
 
 							</md-menu-item>
 
-							<md-menu-item> 
+							<md-menu-item>
 
 								<md-button
 								ng-click="filterAtivos('Arquivados')">
 								<md-icon md-font-library="material-icons"></md-icon> Arquivados
-							</md-button> 
+							</md-button>
 
 							</md-menu-item> <md-menu-item> <md-button
 								ng-click="filterAtivos('Todos')"> <md-icon
-								md-font-library="material-icons"></md-icon> Todos 
-							</md-button> 
-						</md-menu-item>  
+								md-font-library="material-icons"></md-icon> Todos
+							</md-button>
+						</md-menu-item>
 
 					</md-menu-content> </md-menu>
 
@@ -214,60 +214,60 @@
 
 			</div>
 
- 
+
 			<div class="order-lista" flex="5" flex-xs="10">
 
 				<div layout="row" layout-align="end center">
 
-					<md-menu> 
+					<md-menu>
 
 						<md-button
 							aria-label="" class="md-icon-button"
 							ng-click="openMenu($mdOpenMenu, $event)"> <md-tooltip
-							md-direction="top"> Filtrar por fase </md-tooltip> 
-							<md-icon md-font-library="material-icons">flag</md-icon> 
-						</md-button> 
+							md-direction="top"> Filtrar por fase </md-tooltip>
+							<md-icon md-font-library="material-icons">flag</md-icon>
+						</md-button>
 
 						<md-menu-content
-							width="4"> 
+							width="4">
 
-							<md-menu-item> 
+							<md-menu-item>
 
 								<md-button
 								ng-click="filterList('', 'fiber_new')">
-								<md-icon md-font-library="material-icons"></md-icon> Todos</md-button> 
+								<md-icon md-font-library="material-icons"></md-icon> Todos</md-button>
 
 							</md-menu-item>
 
-							<md-menu-item> 
+							<md-menu-item>
 
 								<md-button
 								ng-click="filterList('Contato', 'fiber_new')">
 								<md-icon md-font-library="material-icons"></md-icon> Contato
-							</md-button> 
+							</md-button>
 
 							</md-menu-item> <md-menu-item> <md-button
 								ng-click="filterList('Potencial cliente', 'work')"> <md-icon
-								md-font-library="material-icons"></md-icon> Potencial cliente 
-							</md-button> 
-							</md-menu-item> 
+								md-font-library="material-icons"></md-icon> Potencial cliente
+							</md-button>
+							</md-menu-item>
 
 
 							<md-menu-item> <md-button
 								ng-click="filterList('Orçamento', 'flag')"> <md-icon
-								md-font-library="material-icons"></md-icon> Orçamento 
-							</md-button> 
-							</md-menu-item> 
+								md-font-library="material-icons"></md-icon> Orçamento
+							</md-button>
+							</md-menu-item>
 
 							<md-menu-item>
 								<md-button
 								ng-click="filterList('Negociação', 'insert_invitation')">
 								<md-icon md-font-library="material-icons"></md-icon>Negociação
-							</md-button> 
+							</md-button>
 
-							</md-menu-item> 
+							</md-menu-item>
 
-					</md-menu-content> 
+					</md-menu-content>
 					</md-menu>
 
 				</div>
@@ -310,7 +310,7 @@
 			<div class="tipo-lista" flex="20">
 				<div layout="row" layout-align="end center">
 
-<!-- 					<div class="ck-button">
+<!--  					<div class="ck-button">
 						<label> <input type="radio" name=tipolista value="funil"
 							ng-model="filtro.tipoLista" ng-change="setTipoLista()"> <span>
 								<md-tooltip md-direction="bottom"> Funil de vendas
@@ -347,26 +347,25 @@
 
 		<md-card  class='card-sem-lead' ng-show="totalLeads == 0" >
 
-				<div layout="row"  layout-align="center center">  
+				<div layout="row"  layout-align="center center">
 					<h1>Você ainda não possui leads cadastrados?</h1>
 				</div>
 
-				<p  layout layout-align="center center" flex> 
+				<p style="text-align: center">
 					Um lead é uma pessoa que tem, de alguma forma, interesse nos produtos ou serviços da sua empresa.
 				</p>
 
-				<p  layout layout-align="center center" flex> 
+				<p style="text-align: center">
 					Registre todos seus leads e te ajudaremos a gerenciá-los.
 				</p>
 
-				<p  layout layout-align="center center" flex> 
-					Criar leads e gerenciá-los é a chave para alcançar sua meta!
+				<p style="text-align: center">
+					Criar leads e gerenciá-los para que passem de potenciais clientes para contratos firmados é a chave para alcançar sua meta!
 				</p>
-				
 
 
-				
-				<div layout="row"  layout-align="center center">  
+
+				<div layout="row"  layout-align="center center">
 					<md-button class="md-raised criar-meta" ng-click='novoLead($event)' >Cadastrar meus primeiro lead</md-button>
 				</div>
 
@@ -405,7 +404,7 @@
 			<md-button ng-click="deletarLead(lead, $event)"> <md-icon
 				md-font-library="material-icons">delete_forever</md-icon> Excluir </md-button> </md-menu-item>
 
-			</md-menu-content> </md-menu> </md-card-title> 
+			</md-menu-content> </md-menu> </md-card-title>
 
             <md-card-content>
 
@@ -420,14 +419,14 @@
 				</p>
 
 				<md-input-container class="md-icon-float md-block">
-				
+
 				<md-icon md-font-library="material-icons">flag</md-icon> <md-select
 					ng-model="lead.fase" ng-change="faseHasChange(lead, $event)"
-					aria-label='fase'> 
+					aria-label='fase'>
 					<md-option
 					class="select-fase"
 					ng-repeat="item in fases| orderBy:item.order " value="{{item.nome}}"
-					aria-label='{{lead.fase}}'> {{item.nome}} 
+					aria-label='{{lead.fase}}'> {{item.nome}}
 					</md-option>
 				</md-input-container>
 
@@ -448,7 +447,7 @@
 
 			<md-button class="btn-acao-card" data-toggle="modal"
 				data-target="#modalEditContato"
-				ng-click="loadNotas(lead, $event )">Notas</md-button> 
+				ng-click="loadNotas(lead, $event )">Notas</md-button>
 
 			</md-card-actions> </md-card>
 
@@ -515,7 +514,7 @@
 						<md-button ng-click="deletarLead(lead, $event)"> <md-icon
 							md-font-library="material-icons">delete_forever</md-icon> Excluir </md-button> </md-menu-item>
 
-						</md-menu-content> 
+						</md-menu-content>
 					</md-menu>
 				</div>
 			</div>
@@ -525,7 +524,10 @@
 	</div>
 
 
-	<div class="area-funil" ng-show="filtro.tipoLista == 'funil'">
+	<div class="area-funil" ng-show="filtro.tipoLista == 'funil'" >
+
+		<div ng-controller="FunilController" >
+
 
 
 		<h2>Funil</h2>
@@ -582,6 +584,7 @@
 		</div>
 
 		<hr>
+	</div>
 
 	</div>
 

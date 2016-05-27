@@ -88,6 +88,7 @@ myApp.controller('BBot02Controller', [
                 contatosList.$loaded().then(function () {
                     $rootScope.howManyContatos = contatosList.length;
                 });// contatosList.$loaded
+                
 
                 var processDate = function (element, index, list) {
                     console.log(element);
